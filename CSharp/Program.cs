@@ -27,6 +27,12 @@ namespace CSharp
             et.OnChange+=(name)=>{Console.WriteLine("Subscriber "+name +"added.");};
             et.OnChange+=(name)=>{Console.WriteLine("SubScriber 2"+name+"added");};
             et.EventRaise("madhu");
+            /*Pub Sub */
+            EventTestWithDelegate evd = new EventTestWithDelegate("valencia");
+            evd.OnChange+=(name)=>{Console.WriteLine("Hello dude "+name);};
+            evd.OnChange+=(name)=>{throw new Exception("this method is error prone");};
+            evd.OnChange+=(name)=>{Console.WriteLine("Well done"+name);};
+            evd.Raise();
         }
 
         static Action test_closure(string a)
