@@ -1,6 +1,6 @@
-#Having a list of items to keep track of ideas
-##Design patterns 
-###C# language specific
+# Having a list of items to keep track of ideas#
+## Design patterns 
+### C# language specific
 	a)I/O operations
 	b)File operations
 	c)DB operations
@@ -11,7 +11,7 @@
 	h)callback
 	i)Delegates/Events.
 	j)	
-###Python 
+### Python 
 	a)basics
 	b)advanced operations for collections
 	c)db
@@ -19,13 +19,13 @@
 	e)process
 	f)callback
 	g)kwargs
-###SQL	
+### SQL	
 	a)few best practices
 	b)batch insert
 	c)pivot 
 	d)row count
 	e)advanced concepts
-###CS basics
+### CS basics
 	a)REST/SOAP and web basics
 	b)OS basic concepts memory management, process management, interupt
 	c)compiler basics
