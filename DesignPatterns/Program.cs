@@ -18,6 +18,8 @@ namespace DesignPatterns
             Console.WriteLine("Counter count is now "+c2.ToString());
             MainShop mshop = new MainShop();
             mshop.TestMethod();
+            MainRoom mr = new MainRoom();
+            mr.TestMethod();
         }
     }
 }
