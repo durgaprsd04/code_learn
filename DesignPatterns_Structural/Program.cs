@@ -36,8 +36,33 @@ namespace DesignPatterns_Structural
             trunkc.AddTwig(trunkb);
             trunk2.AddTwig(trunkc);
             trunk3.DisplayTwig(2);
-
             Console.WriteLine("Decorator pattern");
+            Book bk1 = new Book(10, "Amitav Ghosh","Sea of poppies");
+            Video v1 = new Video(2, "Spileberg","jaws","1:30 hr");
+            Borrower b1 = new Borrower( bk1);
+            b1.Borrow("cust1");
+            Borrower b2 = new Borrower(v1);
+            b1.Display();
+            b1.Return("cust1");
+            b1.Display();
+            b2.Borrow("cust2");
+            b2.Display();
+            b2.Return("cust2");
+            b2.Display();
+
+            Console.WriteLine("FacadePattern");
+            Customer cust1 = new Customer(10,"ram", 200002, 200, false);
+            Customer cust2 = new Customer(11,"laxman", 500002, 700, false);
+            Mortgage mortgage = new Mortgage(cust1);
+            if(mortgage.Eligible())
+            {
+                Console.WriteLine(cust1.UName+" is eligible");
+            }
+            mortgage = new Mortgage(cust2);
+            if(mortgage.Eligible())
+            {
+                Console.WriteLine(cust2.UName+" is eligible");
+            }
         }
     }
 }

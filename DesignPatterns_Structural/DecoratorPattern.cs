@@ -53,7 +53,7 @@ namespace DesignPatterns_Structural
     }
     public class Decorator: Item
     {
-        private Item _libraryItem;
+        protected Item _libraryItem;
         public Decorator(Item item )
         {
             _libraryItem=item;
@@ -69,7 +69,17 @@ namespace DesignPatterns_Structural
         public Borrower(Item item):base(item)
         {
 
+        }
+        public void Borrow(string name)
+        {
+            _libraryItem.NumCopies--;
+            _borrowers.Add(name);
         } 
+        public void Return(string name)
+        {
+            _libraryItem.NumCopies++;
+            _borrowers.Remove(name);
+        }
         public override void Display()
         {
             base.Display();
