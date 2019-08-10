@@ -9,7 +9,8 @@ Having a list of items to keep track of ideas
 	f)Multiple process
 	g)IOC
 	h)callback
-	i)
+	i)Delegates/Events.
+	j)	
 3)Python 
 	a)basics
 	b)advanced operations for collections
