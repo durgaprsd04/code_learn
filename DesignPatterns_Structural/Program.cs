@@ -49,7 +49,6 @@ namespace DesignPatterns_Structural
             b2.Display();
             b2.Return("cust2");
             b2.Display();
-
             Console.WriteLine("FacadePattern");
             Customer cust1 = new Customer(10,"ram", 200002, 200, false);
             Customer cust2 = new Customer(11,"laxman", 500002, 700, false);
@@ -63,6 +62,20 @@ namespace DesignPatterns_Structural
             {
                 Console.WriteLine(cust2.UName+" is eligible");
             }
+            Console.WriteLine("Flyweight Pattern");
+            CharacterFactory cf = new CharacterFactory();
+            Character char1 = cf.GetCharacter('A');
+            char1.Display(10);
+            Character char2=cf.GetCharacter('B');
+            char2.Display(10);
+             Character char3=cf.GetCharacter('B');
+            char2.Display(10);
+            Console.WriteLine("Proxy Pattern");
+            MathProxy mp = new MathProxy();
+            Console.WriteLine("Add "+mp.Add(34,43));
+            Console.WriteLine("Mul "+mp.Mul(34,43));
+            Console.WriteLine("Sub "+mp.Sub(34,43));
+            Console.WriteLine("Div "+mp.Div(34,43));
         }
     }
 }
