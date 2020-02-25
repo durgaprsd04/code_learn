@@ -3,5 +3,5 @@ insertion
 shell 
 merge
 -merbe bottom up
--quick
+quick
 -quick with cutoff

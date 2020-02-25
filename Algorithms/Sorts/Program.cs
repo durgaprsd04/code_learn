@@ -8,9 +8,10 @@ namespace Sorts
         static void Main(string[] args)
         {
             Console.WriteLine("Enter N");
-             
             var N =  Convert.ToInt32( Console.ReadLine());
-            List<int> array = new List<int>();//{3,2,0,3,4} ;
+            List<int> array = new List<int>();//{35,57,17,4,37,42,32,17} ;
+            //Console.WriteLine(string.Join(",",array.ToArray()));
+            //var N = array.Count;
             var rand = new Random();
             for(int i=0;i<N;i++)
             {
@@ -19,10 +20,12 @@ namespace Sorts
             
             
             //Shell_Sort s = new Shell_Sort(array.ToArray());
-            Merge_Sort m = new Merge_Sort();
-            m.Sort(array.ToArray());
+            //Merge_Sort m = new Merge_Sort();
+            //QuickSort q = new QuickSort();
+            Merge_Sort_bottomUP msb = new Merge_Sort_bottomUP();
+            msb.Sort(array.ToArray());
             //Console.WriteLine(string.Join(",",array.ToArray()));
-            m.Print();
+            ///msb.Print();
         }
     }
 }
