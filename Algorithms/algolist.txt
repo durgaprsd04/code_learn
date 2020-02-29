@@ -1,0 +1,32 @@
+Sorts
+-----
+selection
+insertion
+shell 
+merge
+merge bottom up - some edge case handling pending.
+quick
+quick with cutoff -pending
+Stacks and Queues
+-----------------
+With Array and Nodes
+3SUM
+-----
+what 3 digits give a sum of zero
+Union Find
+----------
+Union Find
+Union Find Weighted 
+Union Find Path compression
+SymbolTables
+------------
+with Array
+with List 
+With Nodes - Ordered, Associate array(mapping array for key and value)
+With array - Sequential and Ordered
+Binary Search Trees
+-------------------
+Implementation
+operations rank, floor, ceil - not done 
+size, insert, select,  delete and print
+size - as element not done
