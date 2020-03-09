@@ -75,7 +75,7 @@ namespace SymbolTables
                 //Console.WriteLine(leftmax);
                 max = (string.Compare(node.value, leftmax)>0)?node.value:leftmax;
             }   
-            if(node.right!=null)
+            if(node.right!=null)pointer=1;``
             {
                 rightmax=Max(node.right);
                 //Console.WriteLine(rightmax);
