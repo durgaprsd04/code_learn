@@ -1,7 +1,0 @@
-selection
-insertion
-shell 
-merge
--merbe bottom up
-quick
--quick with cutoff
