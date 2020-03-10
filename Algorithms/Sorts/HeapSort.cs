@@ -1,6 +1,6 @@
 using System;
 /*Heap sort uses a max heap which pushes out max all the time. Array implementation of heap sort. */
-/*Possible bug on the first few lines of the code. */
+/*Possible bug fixed in the code. */
 namespace Sorts
 {
     public class Heap
