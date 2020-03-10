@@ -21,6 +21,7 @@ namespace Sorts
         } 
         public void Sink(int n,int limit)
         {
+            //Console.WriteLine("n is {0} limit {1}",n,limit);
             int largerindex=0;
             var flag=false;
             if(2*n >=limit)
@@ -33,6 +34,7 @@ namespace Sorts
                         swap(largerindex,n);
                         return;
                     }
+                return;
             }
 
             if(array[2*n+1]>array[n] || array[2*n]> array[n])
