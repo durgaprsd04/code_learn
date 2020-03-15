@@ -1,0 +1,8 @@
+*.targets
+*.props
+*.csproj.*.txt
+*.AssemblyInfo.cs
+*.dll
+*.json
+*.cache
+*.pdb
