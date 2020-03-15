@@ -31,4 +31,13 @@
 	c)compiler basics
 	d) concepts of software engineering
 	e)version control
+
+### Algorithms
+	a)Sorts
+	b)3SUM
+	c)Stacks and Queues
+	d)Priority tables
+	e)Symbol Tables
+	f)Hash Tables
+
 	
