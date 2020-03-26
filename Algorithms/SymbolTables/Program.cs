@@ -14,7 +14,7 @@ namespace SymbolTables
             Console.WriteLine("Hello World!");
             
             //BinarySearchTree bst = new BinarySearchTree();
-            ST st = new ST();
+            STArray<char, int> st = new STArray<char,int>();
         
             /* count positions */
         
@@ -23,6 +23,7 @@ namespace SymbolTables
             for(int i =0;i<entry.Length;i++)
                st.Add( (char)entry[i],i+1);
             st.Print();
+            /*
             Console.WriteLine("Search of o is {0}",st.Search('o'));
             Console.WriteLine("Size of the ST is "+ st.Size());
             Console.WriteLine("Removal of o is {0}",st.Remove('o'));
@@ -35,6 +36,7 @@ namespace SymbolTables
             {
                 Console.WriteLine(c.ToString());
             }
+            */
                 //s1.Print();
             /* count occurences */
             /*
