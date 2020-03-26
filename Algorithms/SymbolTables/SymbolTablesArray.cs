@@ -1,165 +1,91 @@
-// // using System;
-// // namespace SymbolTables
-// // {
-// // public class STNew<T1,T2>
-// // {
+using System;
+using System.Linq;
+using System.Diagnostics.CodeAnalysis;
 
-// //     private const int INIT_COUNT=1;
-// //     ArrayHelper<T1> t1 = new ArrayHelper<T1>();
-// //     ArrayHelper<T2> t2 = new ArrayHelper<T2>();
-
-// //     private T1 [] t1Array = new T1[INIT_COUNT];
-// //     private T2 [] t2Array = new T2 [INIT_COUNT];
-// //     private int count=0;
-
-// //     public void Add(T1 a, T2 b)
-// //     {
-// //         if(count >= t1Array.Length)
-// //         {
-// //             T1 [] t1ArrayNew = new T1[4*count];
-// //             for(int i=0;i<t1Array.Length;i++)
-// //             {
-// //                 t1ArrayNew[i]=t1Array[i];
-// //             }
-// //             t1Array= t1ArrayNew;
-// //             T2 [] t2ArrayNew = new T2[4*count];
-// //             for(int i=0;i<t2Array.Length;i++)
-// //             {
-// //                 t2ArrayNew[i]=t2Array[i];
-// //             }
-// //             t2Array= t2ArrayNew;
-// //         }
-// //         int c=-1;
-// //         if(count>=1){ c= t1.HasElement(t1Array, a);}
-// //         if(c==-1)
-// //         {
-// //             t1Array[count]=a;
-// //             t2Array[count]=b;
-// //             count++;
-// //         }
-// //         else
-// //         {
-// //             //Console.WriteLine(c);
-// //             t2Array[c]=b;   
-// //         }
+namespace SymbolTables
+{
+    public class STArray<T1, T2> where T1 :System.IComparable<T1> 
+    {
+        private T1 [] keyarray =new T1[1];
+        private T2 [] valuearray = new T2[1];
         
-// //     }
-// //     public bool HasElement(T1 a)
-// //     {
-// //         Console.WriteLine(t1.HasElement(t1Array, a));
-// //         return t1.HasElement(t1Array, a)!=-1?true:false;
-// //     }
-// //     public T2 GetElement(T1 a)
-// //     {
-// //         var c1=t1.HasElement(t1Array, a);
-// //         if(c1!=-1)
-// //             return t2Array [c1];
-// //         else
-// //             return default(T2);
-// //     }
-// //     public void Print()
-// //     {
-// //         for(int i=0;i<count;i++)
-// //         {
-// //             Console.WriteLine("{0} : {1}",t1Array[i],t2Array[i]);
-// //         }
-// //     }
-// //     public void Remove(T1 a)
-// //     {
-// //         int i;
-// //         for( i=0;i<t1Array.Length;i++)
-// //             if(t1Array[i].Equals(a))
-// //                 break;
-        
-// //         t1.RemoveAt(t1Array, i);
-// //         t2.RemoveAt(t2Array,i);
-// //         count--;
-// //         /* if(count<t1Array.Length/4)
-// //         {
-// //             T1 [] t1ArrayNew = new T1[4*count];
-// //             for(int i=0;i<t1Array.Length;i++)
-// //             {
-// //                 t1ArrayNew[i]=t1Array[i];
-// //             }
-// //             t1Array= t1ArrayNew;
-// //             T2 [] t2ArrayNew = new T2[4*count];
-// //             for(int i=0;i<t2Array.Length;i++)
-// //             {
-// //                 t2ArrayNew[i]=t2Array[i];
-// //             }
-// //             t2Array= t2ArrayNew;
-// //         } */
-        
-// //     }   
-// // }
-// // public class ArrayHelper<T3>
-// // {
-// //     public  void  RemoveAt(T3 [] a, int i)
-// //     {
-// //         T3 [] a1 = new T3 [i];
-// //         for(int j=0;j<a.Length;j++)
-// //             if(i!=j)
-// //                 a1[j]=a[j];   
-// //         a=a1;
-// //     }
-// //     public int HasElement(T3 [] a, T3 j)
-// //     {
-// //         //Console.WriteLine(a.Length);
-// //         int i;
-// //         for( i=0;i<a.Length;i++)
-// //         {
-// //             if(a[i]==null)
-// //             {
-// //                 i=-1;
-// //                 break;
-// //             }
-// //             if(a[i].Equals(j))
-// //                 break;
-// //         }
-// //         if(i<a.Length)
-// //             return i;
-// //         else
-// //             return -1;
-// //     }
-// // }
-
-// // }
-
-// using System;
-// namespace SymbolTables
-// {
-//     private class Node
-//     {
-//         char key;
-//         char value;
-//          Node(char key, char value)
-//         {
-//             this.key=key;
-//             this.value=value;
-
-//         }
-//         Node Next;
-//     }
-//     public class ST
-//     {
-//         private Node head;
-//         public void Add(char key, char value)
-//         {
+        private int size=0;
+        public void Add(T1 key, T2 value)
+        {
+            if(keyarray.Length<=(size+1))
+            {
+                var limit=keyarray.Length;
+                var tempKeyArray = new T1[limit];
+                var tempValueArray = new T2[limit];
+                for(int i=0;i<limit;i++)
+                {
+                    tempKeyArray[i]=keyarray[i];
+                    tempValueArray[i]=valuearray[i];
+                }
+                keyarray= new T1[limit*2];
+                valuearray = new T2[limit*2];
+                for(int i=0;i<limit;i++)
+                {
+                    keyarray[i]=tempKeyArray[i];
+                    valuearray[i]=tempValueArray[i];
+                }
+            }
+            var index= Contains(key);
+            if(index!=-1)
+                valuearray[index]=value;
+            else{
+                AddInOrder(key,value);
+            }
             
-//             if(head==null)
-//                 head= new Node(key, value);
-//             if(head!=null)
-//                 Add(head, new Node(key,value));
-//         }
-//         private void Add(Node parent, Node child)
-//         {
-//             if(parent.key==child.key)
-//                 parent.value=child.value;
-//             if(parent.Next==null)
-//                 parent.Node=child;
-//             if(parent.Next!=null)
-//                 Add(parent.Next,child);
+        }
+        private int Contains(T1 key)
+        {
+            var index =-1;
+            for(int i=0;i<size;i++)
+            {
+                if(keyarray[i].Equals(key))
+                {
+                    index=i;
+                    break;
+                }
+            }
+            return index;
+        }
+        private void AddInOrder(T1 key, T2 value)
+        {
+            int i=0;
+            for(i=0;i<size;i++)
+            {
+                if(key.CompareTo(keyarray[i])<=0)
+                    break;
+            }
+             Insert(key, value,i);
+            
+        }
+        private void Insert(T1  key , T2 value, int index)
+        {
+            //Console.WriteLine("inserting {0} ,{1},{2}",key.ToString(),index,size);
+            for(int i=size;i>index;i--)
+            {
+                //Console.WriteLine("inserting "+i);
+                keyarray[i]=keyarray[i-1];
+                valuearray[i]=valuearray[i-1];
+            }
+            keyarray[index]=key;
+            valuearray[index]=value;
+            size++;
+        }
+        public void Print()
+        {
+            for(int i=0;i<size;i++)
+            {
+                Console.WriteLine("{0}:{1}",keyarray[i].ToString(), valuearray[i].ToString());
+            }
+        }
 
-//         }
-//     }
-// }
+        public int CompareTo([AllowNull] T1 other)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
