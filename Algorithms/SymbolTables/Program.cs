@@ -15,17 +15,34 @@ namespace SymbolTables
             
             //BinarySearchTree bst = new BinarySearchTree();
             STArray<char, int> st = new STArray<char,int>();
-        
+            Console.WriteLine("Is ST array empty {0}",st.IsEmpty());
             /* count positions */
         
             Console.WriteLine("Enter String");
-            var entry = "helloworld";//Console.ReadLine();
+            var entry = "helliworld";//Console.ReadLine();
             for(int i =0;i<entry.Length;i++)
                st.Add( (char)entry[i],i+1);
             st.Print();
+
+            Console.WriteLine("Is ST array empty {0}",st.IsEmpty());
+            Console.WriteLine("Value of o is {0}",st.Get('o'));
+            Console.WriteLine("Value of o is {0}",st.Get('z'));
+            Console.WriteLine("The key z is {0}",st.ContainsKey('z'));
+            Console.WriteLine("The floor of k is {0}",st.Floor('k'));
+            Console.WriteLine("The ceil of  k {0}",st.Ceil('k'));
+            st.DeleteMin();
+            Console.WriteLine("After delete min");
+            st.Print();
+            st.DeleteMax();
+            Console.WriteLine("after delete max");
+            st.Print();
+            Console.WriteLine("After deleting 'i'");
+            st.Delete('i');
+            st.Print();
+            st.Delete('l');
+            st.Delete('o');
+            st.Print();
             /*
-            Console.WriteLine("Search of o is {0}",st.Search('o'));
-            Console.WriteLine("Size of the ST is "+ st.Size());
             Console.WriteLine("Removal of o is {0}",st.Remove('o'));
             st.Print();
             Console.WriteLine("Removal of a is {0}",st.Remove('a'));
