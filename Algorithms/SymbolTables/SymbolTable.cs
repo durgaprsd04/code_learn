@@ -33,8 +33,8 @@ namespace SymbolTables
         }
         private void Add( ref Nodenew  parent,  Nodenew child)
         {
-            Console.WriteLine("here 1" +parent.ToString());
-            Console.WriteLine( "here 2"+child.ToString());
+            //Console.WriteLine("here 1" +parent.ToString());
+            //Console.WriteLine( "here 2"+child.ToString());
             if(parent.key==child.key)
             {
                 parent.value=child.value;
@@ -128,8 +128,9 @@ namespace SymbolTables
         private void Print(Nodenew node)
         {
             if(node==null)
-                return;
+            return;
             Console.Write("[{0}{1}]>",node.key,node.value);
+            //Console.WriteLine(node.key + ":"+node.value);
             if(node.Next!=null)
                 Print(node.Next);
         }
