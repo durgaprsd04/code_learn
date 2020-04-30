@@ -31,7 +31,7 @@
 	c)compiler basics
 	d)concepts of software engineering
 	e)version control
-#### Algo and DS
+#### Algo and DS - I
 		1)Elementary Sorts - done 
 		2)Union Find - done
 		3)Stacks and Queues - done
@@ -43,4 +43,5 @@
 		9)Hash Tables - some done (refresh needed)
 		10)Applications of BST - refresh 
 		11)Applications of Symbol tables -refresh
-
+#### Algo and DS - II
+		1)All that portion in second version - will come back with a list once the above is done
