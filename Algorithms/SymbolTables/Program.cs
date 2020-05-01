@@ -11,10 +11,31 @@ namespace SymbolTables
     {
         static void Main(string[] args)
         {
-            NodeSymbolTables();
+            //NodeSymbolTables();
             //OrderedSymbolTables();
+            BST();
             
         }
+        public static void BST()
+        {
+            Console.WriteLine("Binary Symobl table implementation");
+            BST<char,int>  st = new BST<char, int>();
+            //Console.WriteLine("Is ST array empty {0}",st.IsEmpty());
+        
+            Console.WriteLine("Enter String");
+            var entry ="helloworldarg"; 
+            //Console.ReadLine(); 
+            for(int i =0;i<entry.Length;i++)
+               st.Add( (char)entry[i],i+1);
+            st.Print();
+            Console.WriteLine("Mininmum of tree "+st.Min());
+            Console.WriteLine("Mininmum of tree "+st.Max());
+            Console.WriteLine("Floor of 't' is  "+st.Floor('t'));
+            Console.WriteLine("Floor of 'g' is  "+st.Floor('g'));
+            Console.WriteLine("Floor of 'x' is  "+st.Floor('x'));
+
+        }
+
         public static void NodeSymbolTables()
         {
             

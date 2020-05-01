@@ -1,5 +1,5 @@
 Symbol tables
-	Ordered implementaion
+	Ordered implementaion(rewrite with binary search)
 		[x]void put(Key key, Value val)
 		[x]Value get(Key key)
 		[X]void delete(Key key)
@@ -21,6 +21,18 @@ Symbol tables
 		[ ]Iterable<Key> all keys in the table, in sorted order
 Binary search tree
 	Full Implementation
+		[X]Add
+		[X]min
+		[X]max
+		[X]floor
+		[ ]ceil
+		[ ]select
+		[ ]size
+		[ ]rank
+		[ ]delete
+		[ ]range queries
+		[ ]delete max
+		[ ]delete min
 	2-3 trees
 	Red black tree
 HashTable
