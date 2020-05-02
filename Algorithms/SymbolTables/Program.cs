@@ -30,10 +30,27 @@ namespace SymbolTables
             st.Print();
             Console.WriteLine("Mininmum of tree "+st.Min());
             Console.WriteLine("Mininmum of tree "+st.Max());
-            Console.WriteLine("Floor of 't' is  "+st.Floor('t'));
-            Console.WriteLine("Floor of 'g' is  "+st.Floor('g'));
-            Console.WriteLine("Floor of 'x' is  "+st.Floor('x'));
-
+            Console.WriteLine("Floor of 't' is  "+st.Floor('t').GetKey());
+            Console.WriteLine("Floor of 'g' is  "+st.Floor('g').GetKey());
+            Console.WriteLine("Floor of 'p' is  "+st.Floor('p').GetKey());
+            Console.WriteLine("Floor of 'k' is  "+st.Ceil('k').GetKey());
+            Console.WriteLine("Floor of 'f' is  "+st.Ceil('f').GetKey());
+            Console.WriteLine("Floor of 'p' is  "+st.Ceil('p').GetKey());
+            Console.WriteLine("Size of tree is "+st.Size(st.Floor('p')));
+            Console.WriteLine("Rank of 'o' is "+st.Rank('o'));
+            Console.WriteLine("Rank of 'r' is "+st.Rank('r'));
+            Console.WriteLine("Rank of 'e' is "+st.Rank('e'));
+            Console.WriteLine("Rank of 'g' is "+st.Rank('g'));
+            Console.WriteLine("BST queue ");
+            var c= st.InOrder();
+            while(c.Count>0)
+            {
+                Console.Write(c.Dequeue());
+            }
+            st.DeleteMin();
+            st.Add('a',10);
+            st.Add('z', 11);
+            st.Print();
         }
 
         public static void NodeSymbolTables()

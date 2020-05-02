@@ -25,14 +25,15 @@ Binary search tree
 		[X]min
 		[X]max
 		[X]floor
-		[ ]ceil
-		[ ]select
-		[ ]size
-		[ ]rank
-		[ ]delete
+		[X]ceil
+		[X]select
+		[X]size
+		[X]rank
+		[X]Inorder
+		[ ]hubbard deletion
 		[ ]range queries
 		[ ]delete max
-		[ ]delete min
+		[X]delete min
 	2-3 trees
 	Red black tree
 HashTable
