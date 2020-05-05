@@ -81,27 +81,43 @@ namespace SymbolTables
 
         public void DeleteNode(T1 node)
         {
-            var delete_node = Floor(node);
-            parent = DeleteNode(delete_node);
+            //var root = Floor(node);
+            //Console.WriteLine(root.key);
+            parent = DeleteNode(parent, node);
         }
-        private BSTNode<T1, T2> DeleteNode(BSTNode<T1, T2> delete_node)
+        private BSTNode<T1, T2> DeleteNode(BSTNode<T1, T2> root, T1 key)
         {
-            
-            if(delete_node ==null)
+            if(root ==null)
                 return null;
-            if(delete_node.left == null)
-                return delete_node.right;
-            if(delete_node.right ==null)
-                return delete_node.left;
-            if(delete_node.right!=null && delete_node.left!=null)
+            //Console.WriteLine(root.key);
+            
+            if(root.key.CompareTo(key)<0 )
             {
-                var v = delete_node;
-                delete_node.right = DeleteNode(delete_node.right);
-                delete_node.left = v.left;
-                return delete_node;                    
+                root.right=  DeleteNode(root.right, key);
             }
-            return delete_node;
-
+            else if(root.key.CompareTo(key)> 0)
+            {
+                root.left = DeleteNode(root.left, key );
+            }
+            else
+            {
+                Console.WriteLine(root.key);
+                Console.ReadKey();
+                if(root.left == null)
+                    return root.right;
+                if(root.right ==null)
+                    return root.left;
+                if(root.right!=null && root.left!=null)
+                {
+                    var v = root;
+                    root = Min(v.right);
+                    root.right = DeleteMin(v.right);
+                    root.left = v.left;
+                    return root;                    
+                }
+            }
+            return root;
+            
         }
         private BSTNode<T1, T2> DeleteMin(BSTNode<T1, T2> root)
         {

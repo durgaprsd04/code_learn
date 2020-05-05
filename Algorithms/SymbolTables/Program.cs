@@ -13,8 +13,27 @@ namespace SymbolTables
         {
             //NodeSymbolTables();
             //OrderedSymbolTables();
-            BST();
+            //BST();
+            two3BST();
             
+        }
+        public static void two3BST()
+        {
+            Console.WriteLine("Binary Search Tree implementation");
+            two3Tree<char,int>  st = new two3Tree<char, int>();
+            //Console.WriteLine("Is ST array empty {0}",st.IsEmpty());
+        
+            Console.WriteLine("Enter String");
+            var entry ="helodr"; 
+            //Console.ReadLine(); 
+            for(int i =0;i<entry.Length;i++)
+            {
+                st.Add( (char)entry[i],i+1);
+                //Console.WriteLine("------------------------------------------------------------------");
+            }
+               
+            st.Print();
+
         }
         public static void BST()
         {
@@ -27,7 +46,7 @@ namespace SymbolTables
             //Console.ReadLine(); 
             for(int i =0;i<entry.Length;i++)
                st.Add( (char)entry[i],i+1);
-            st.Print();
+            /*st.Print();
             Console.WriteLine("Mininmum of tree "+st.Min());
             Console.WriteLine("Mininmum of tree "+st.Max());
             Console.WriteLine("Floor of 't' is  "+st.Floor('t').GetKey());
@@ -49,8 +68,26 @@ namespace SymbolTables
             }
             st.DeleteMin();
             st.Add('a',10);
+            */
+            st.Add('y', 11);
+            st.Add('x', 11);
             st.Add('z', 11);
+            Console.WriteLine("------------------------------------------------------------------");
             st.Print();
+            Console.WriteLine("------------------------------------------------------------------");
+            st.DeleteNode('g');
+            st.Print();
+            Console.WriteLine("------------------------------------------------------------------");
+            st.DeleteNode('r');
+            st.Print();
+            Console.WriteLine("------------------------------------------------------------------");
+            st.DeleteNode('y');
+            st.Print();
+            Console.WriteLine("------------------------------------------------------------------");
+            st.DeleteNode('h');
+            st.Print();
+            Console.WriteLine("------------------------------------------------------------------");
+
         }
 
         public static void NodeSymbolTables()
