@@ -46,7 +46,7 @@ namespace SymbolTables
         {
             if(root==null)
             {
-                Console.WriteLine("here 1 "+valueNode.key);
+                Console.WriteLine("root is null case "+valueNode.key);
                 root = new BSTtwo3Node<T1, T2>(valueNode);
                 return root;
             }
@@ -54,19 +54,25 @@ namespace SymbolTables
             {
                 if(root.max ==null && root.left ==null && root.right==null && root.center==null)
                 {
-                    Console.WriteLine("here 2 "+valueNode.key);
+                    Console.WriteLine("max is null case "+valueNode.key);
                     root.max =  valueNode;
                     Swap(ref root.max, ref root.min);
                 }       
                 else
                 {
-                    Console.WriteLine("here 3 "+valueNode.key);
+                    
                     if(root.max==null)
                     {
+                        Console.WriteLine("node is not full case "+valueNode.key);
                         if(valueNode.key.CompareTo(root.min.key)<0)
                         {
                             root.left = Add(ref root.left, valueNode);
-                           
+                            if(root.left.left!=null && root.left.right!=null)
+                            {
+                                root.center = root.left.right;
+                                root.max = root.left.min;
+                                root.left = root.left.left;
+                            }
 
                         }
                         else if(valueNode.key.CompareTo(root.min.key)>0)
@@ -84,12 +90,23 @@ namespace SymbolTables
                     }
                     else
                     {
+                        string c;
+                        if(root.min.key==null)
+                         c = "null";
+                        else
+                            c=root.min.key.ToString();
+
+                        Console.WriteLine("node is  full case {0} on {1}",valueNode.key,c );
                          if(valueNode.key.CompareTo(root.min.key)<0)
                         {
                             
                             root.left = Add(ref root.left, valueNode);
-                            root.right = new BSTtwo3Node<T1,T2>(root.max);
-                            root.max=null;
+                            if(root.right==null)
+                            {
+                                root.right = new BSTtwo3Node<T1,T2>(root.max);
+                                root.max=null;
+                            }
+                            
                         }
                         else if(valueNode.key.CompareTo(root.min.key)>0 && valueNode.key.CompareTo(root.max.key)<0 )
                         {
@@ -98,10 +115,40 @@ namespace SymbolTables
                         
                         else if(valueNode.key.CompareTo(root.max.key)>0 )
                         {
+                            bool rightWasNull=false, maxWasNull=true, transformHappened=false;
+
+                            if(root.right==null)
+                                rightWasNull=true;
+                            else
+                            {
+                                if(root.right.max==null)
+                                    maxWasNull = true;
+                                else
+                                    maxWasNull=false;
+                            }
                             root.right = Add(ref root.right, valueNode);
-                            root.left = new BSTtwo3Node<T1,T2>(root.min);
-                            root.min = root.max;
-                            root.max=null;
+                            if(root.right.max==null && !maxWasNull)
+                                transformHappened=true;
+                            if(rightWasNull)
+                            {
+                                //Console.WriteLine("herel"+valueNode.key.ToString());
+                                root.left = new BSTtwo3Node<T1,T2>(root.min);
+                                root.min = root.max;
+                                root.max=null;
+                            } 
+                           if(transformHappened)
+                            {
+                                var newleftroot = new BSTtwo3Node<T1,T2>(root.min);
+                                newleftroot.left = root.left;
+                                newleftroot.right =  root.center;
+
+                                var mainnode =  new BSTtwo3Node<T1,T2>(root.max);
+                                mainnode.right = root.right;
+                                mainnode.left = newleftroot;
+                                root = mainnode;
+
+                            }
+                            
                         }
                     }
                    
@@ -125,28 +172,28 @@ namespace SymbolTables
         public void Print()
         {
             if(parent!=null)
-                PrintNode(parent, ' ', 50);
+                PrintNode(parent, ' ', 50, '*');
             
         }
-        private void PrintNode(BSTtwo3Node<T1,T2> root, char symbol, int n)
+        private void PrintNode(BSTtwo3Node<T1,T2> root, char symbol, int n, char location)
         {
             Console.ReadKey();
             if(n<0)
                 n=0;
             var c = new string(symbol, n);
             //Console.WriteLine("here");
-            Console.Write(c+"({0},{1})({2})",root.min.key, root.min.value, root.count);
+            Console.Write(c+"({0},{1})({2}({3}))",root.min.key, root.min.value, root.count, location);
             if(root.max!=null)
             {
-                Console.Write(" ({0},{1})({2})",root.max.key, root.max.value, root.count);
+                Console.Write(" ({0},{1})({2}({3}))",root.max.key, root.max.value, root.count,location);
             }
             Console.WriteLine();
             if(root.right!=null)
-                PrintNode(root.right, ' ', n+10);
+                PrintNode(root.right, ' ', n+10,'r');
             if(root.center!=null)
-                PrintNode(root.center, ' ', n);
+                PrintNode(root.center, ' ', n,'c');
             if(root.left!=null)
-                PrintNode(root.left, ' ', n-7);
+                PrintNode(root.left, ' ', n-7,'l');
             
         }
     }

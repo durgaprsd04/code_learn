@@ -24,7 +24,7 @@ namespace SymbolTables
             //Console.WriteLine("Is ST array empty {0}",st.IsEmpty());
         
             Console.WriteLine("Enter String");
-            var entry ="helodr"; 
+            var entry ="helodrpx"; 
             //Console.ReadLine(); 
             for(int i =0;i<entry.Length;i++)
             {
