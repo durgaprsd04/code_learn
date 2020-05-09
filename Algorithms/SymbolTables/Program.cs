@@ -14,8 +14,29 @@ namespace SymbolTables
             //NodeSymbolTables();
             //OrderedSymbolTables();
             //BST();
-            two3BST();
+            //two3BST();
+            RedBlackBST();
+
             
+        }
+        public static void RedBlackBST()
+        {
+            Console.WriteLine("Binary Search Tree implementation");
+            RedBlackTree<char,int>  st = new RedBlackTree<char, int>();
+            //Console.WriteLine("Is ST array empty {0}",st.IsEmpty());
+        
+            Console.WriteLine("Enter String");
+            var entry ="searchexample"; 
+            //Console.ReadLine(); 
+            for(int i =0;i<entry.Length;i++)
+            {
+                st.Add( (char)entry[i],i+1);
+                if(entry[i]=='m')
+                st.Print();
+                //Console.WriteLine("------------------------------------------------------------------");
+            }
+               
+            st.Print();
         }
         public static void two3BST()
         {
