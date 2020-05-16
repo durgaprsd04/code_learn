@@ -1,0 +1,2 @@
+topological sort
+Kosharaju-Sharir algorithm(Strong Components)
