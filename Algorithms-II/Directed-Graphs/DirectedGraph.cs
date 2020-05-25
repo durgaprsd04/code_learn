@@ -6,6 +6,8 @@ namespace Directed_Graphs
     {
         private Bag<int> [] vertices ;
         private int size;
+        
+        private DirectedGraph reverseGraph;
 
         public DirectedGraph(int size )
         {
@@ -15,6 +17,20 @@ namespace Directed_Graphs
             {
                 vertices[i] = new Bag<int>(i);
             }
+        }
+        public DirectedGraph Reverse()
+        {
+            reverseGraph = new DirectedGraph(size);
+            for(int i=0;i<size;i++)
+            {
+                var c = Adj(i);
+                while(c.Count>0)
+                {
+                    var d= (int)c.Dequeue();
+                    reverseGraph.AddEdge(d, i);
+                }
+            }
+            return reverseGraph;
         }
         public void AddEdge(int u, int w)
         {
@@ -37,7 +53,6 @@ namespace Directed_Graphs
                 v.Print();
             }
         }
-        
     }
     
 }

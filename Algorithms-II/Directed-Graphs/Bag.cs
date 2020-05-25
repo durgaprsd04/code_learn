@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-
 namespace Directed_Graphs
 {
 
@@ -33,11 +32,11 @@ namespace Directed_Graphs
         {
             if(node.element.CompareTo(element)==0)
             {
-                node.element = default(T);
+                node = DeleteNode(node ,  element);
             }
             else
             {
-                DeleteNode(node.next ,  element);
+                node.next = DeleteNode(node.next ,  element);
             }
         }
         public Queue GetIterator()
@@ -56,6 +55,10 @@ namespace Directed_Graphs
             PrintNode(node);
             Console.WriteLine();
         }
+         public void PrintReverse()
+        {
+            Console.WriteLine();
+        }
         private void PrintNode(Node<T> n)
         {
             if(n!=null)
@@ -64,16 +67,18 @@ namespace Directed_Graphs
                 PrintNode(n.next);
             }
         }
-        private void DeleteNode( Node<T> n, T element)
+        private Node<T> DeleteNode( Node<T> n, T element)
         {
             if(n.element.CompareTo(element)==0)
             {
-                n=null;
+                return n.next;
             }
             else
             {
                 if(n!=null)
-                    DeleteNode(n.next, element);
+                    return DeleteNode(n.next, element);
+                else 
+                return null;
             }
                
         }
