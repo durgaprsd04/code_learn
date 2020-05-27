@@ -7,8 +7,8 @@ namespace Minimum_Spanning_Trees
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Reading tinyG3.txt");
-            StreamReader sr = new StreamReader("tinyG3.txt");
+            Console.WriteLine("Reading tinyG4.txt");
+            StreamReader sr = new StreamReader("tinyG4.txt");
             var vertices = Convert.ToInt32(sr.ReadLine());
             var edges = Convert.ToInt32(sr.ReadLine());
             Graph graph =new Graph(vertices, edges);
@@ -25,7 +25,11 @@ namespace Minimum_Spanning_Trees
             graph.PrintEdgeList();
             KruskalAlgorithm ka = new KruskalAlgorithm(graph);
             ka.Run();
-            graph.PrintEdgeList();
+            Console.WriteLine("-------------------------");
+            graph.PrintEdgeList(true);
+             Console.WriteLine("MST Path sum {0}",graph.MSTSum());
+             LazyPrimsAlgorithm lz = new LazyPrimsAlgorithm(graph);
+             lz.Run();
         }
     }
 }

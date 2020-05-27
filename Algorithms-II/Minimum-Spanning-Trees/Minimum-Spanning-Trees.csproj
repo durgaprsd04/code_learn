@@ -1,8 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+
+
   <ItemGroup>
+    <ProjectReference Include="..\..\Algorithms\PriorityQueues\PriorityQueues.csproj" />
     <ProjectReference Include="..\..\Algorithms\Union\Union.csproj" />
   </ItemGroup>
+
+
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>

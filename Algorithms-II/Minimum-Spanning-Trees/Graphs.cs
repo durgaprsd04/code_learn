@@ -13,21 +13,32 @@ namespace Minimum_Spanning_Trees
         public bool Isblack { get => isblack; set => isblack = value; }
         public int Vertice { get => vertice; set => vertice = value; }
         public int Other { get => other; set => other = value; }
+        public double Weight { get => weight; set => weight = value; }
 
         public Edge(double weight, int vertice, int other)
         {
-            this.weight = weight;
+            this.Weight = weight;
             this.Vertice= vertice;
             this.Other = other;
         }
         public override string ToString()
         {
-            return string.Format("{0}->{1}({2} black -{3})",vertice, Other, weight,isblack);
+            return string.Format("[{0}->{1}]({2} black -{3})",vertice, Other, Weight,isblack);
         }
 
         public int CompareTo(Edge e)
         {
-            return (int)(100*(this.weight - e.weight));
+            if(e==null)
+                return (int)(100*this.weight);
+            return (int)(100*(this.Weight - e.Weight));
+        }
+
+        public int CompareTo(object obj)
+        {
+             if(obj==null)
+                return (int)(100*this.weight);
+            var e = obj as Edge;
+           return (int)(100*(this.Weight - e.Weight));
         }
     }
     public class Graph
@@ -56,11 +67,10 @@ namespace Minimum_Spanning_Trees
                 edges[to]= new Bag<Edge>(edge);
             else
                 edges[to].Add(edge);
-            var edge1 = new Edge(weight, from, to);
             if(edges[from]==null)
-                edges[from]= new Bag<Edge>(edge1);
+                edges[from]= new Bag<Edge>(edge);
             else
-                edges[from].Add(edge1);
+                edges[from].Add(edge);
             
         }
         public void Print()
@@ -77,13 +87,37 @@ namespace Minimum_Spanning_Trees
              Console.WriteLine("[{0}]",i);
             }
         }
-        public void PrintEdgeList()
+        public void PrintEdgeList(bool checkFlag=false)
         {
             EdgeList1.Sort();
             foreach(var edge in EdgeList1)
             {
-                Console.WriteLine(edge.ToString());
+                if(checkFlag )
+                {
+                    if(edge.Isblack )
+                    Console.WriteLine(edge.ToString());
+                }                    
+                else
+                {
+                     Console.WriteLine(edge.ToString());
+                }
+
+                
             }
+        }
+        public Bag<Edge> GetIterator(int to)
+        {
+            return edges[to];
+        }
+        public double MSTSum()
+        {
+            var sum=0.0;
+            foreach(var edge in EdgeList1)
+            {
+             if(edge.Isblack )
+                   sum+=edge.Weight;
+            }
+            return sum;
         }
     }
 }
