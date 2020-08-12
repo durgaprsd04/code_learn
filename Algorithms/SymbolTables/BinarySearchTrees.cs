@@ -1,182 +1,183 @@
 using System;
 namespace SymbolTables
 {
-    public class Node
+    public class BSTNode<T1,T2> where T1:System.IComparable<T1>
     {
-        public string value;
-        public Node left;
-        public Node right;
-    }
-    public class BinarySearchTree
-    { 
-        private Node root;
-        public void Add(string key)
+        internal T1 key;
+        internal T2 value;
+        internal BSTNode<T1,T2> right;
+        internal BSTNode<T1,T2> left;
+        public BSTNode(T1 key, T2 value)
         {
-           AddItem(ref root, key);
-                
+            this.key=key;
+            this.value=value;
         }
-        private void AddItem(ref Node root,string key)
+    }
+    public class BST<T1, T2>  where T1 : System.IComparable<T1>
+    {
+        private BSTNode<T1, T2> parent;
+       public void Add(T1 key, T2 value)
         {
-             if(root==null)
+            
+            var newNode = new BSTNode<T1,T2>(key,value);
+            if(parent!=null)
+                Add(ref parent,   newNode);
+            if(parent==null)
+                parent= newNode;
+            
+        }
+        public T1 Min()
+        {
+            if(parent.left==null)
+                return parent.key;
+            else
+                return Min(parent.left);
+        }
+        private T1 Min(BSTNode<T1,T2> node)
+        {
+            if (node.left==null)
+                return node.key;
+            else
+                return Min(node.left);
+        }
+        public T1 Max()
+        {
+            if(parent.right==null)
+                return parent.key;
+            else
+                return Max(parent.right);
+        }
+        private T1 Max(BSTNode<T1,T2> node)
+        {
+            if (node.right==null)
+                return node.key;
+            else
+                return Max(node.right);
+        }
+        public T1 Floor(T1 key)
+        {
+            if(parent==null)
+                return default(T1);
+            if(parent.key.CompareTo(key)<0)
             {
-                //Console.WriteLine("here in adding item"+key);
-                root = new Node();
-                root.value=key;
+                //left is lesser so there could be on in right node.
+                var returnNode = Floor(parent.right, key);
+                if(returnNode.Equals(default(T1)))
+                    return parent.key;
+                else
+                    return returnNode;
+            }
+            else if(parent.key.CompareTo(key)>0)
+            {
+                var returnNode = Floor(parent.left, key);
+                if(returnNode.Equals(default(T1)))
+                    return parent.key;
+                else
+                    return returnNode;
             }
             else
+                return parent.key;
+            
+        }
+        private T1 Floor(BSTNode<T1, T2> root, T1 key)
+        {
+            if(root==null)
+                return default(T1);
+            if(root.key.CompareTo(key)<0)
             {
-                if(string.Compare(root.value,key)>0)
-                {
-                    //Console.WriteLine("Adding {0} to left of {1}",key,root.value);
-                    AddItem(ref root.left,key);
-                    
-                }
+                //root is lesser so there could be on in right node.
+                var returnNode = Floor(root.right, key);
+                if(returnNode.Equals(default(T1)))
+                    return root.key;
                 else
-                {
-                    //Console.WriteLine("Adding {0} to right {1}",key, root.value);
-                    AddItem(ref root.right, key);
-                    
-                }
+                    return returnNode;
             }
+            else if(root.key.CompareTo(key)>0)
+            {
+                var returnNode = Floor(root.left, key);
+                if(returnNode.Equals(default(T1)))
+                    return root.key;
+                else
+                    return returnNode;
+            }
+            else
+                return root.key;
         }
-        public bool Search(string key)
-        {
-            return Search(root, key);
 
-            
-        }
-        private bool Search(Node node, string key)
-        {
-            if(node==null)
-                return false;
-            if(node.value==key)
-                return true;
-            
-            bool i=false;
-            if(node.left!=null)
-                i= Search(node.left,key);
-            if(node.right!=null)
-                i = i||  Search(node.right,key);
-            return i;
-        }
-        public  string Max()
-        {
-            return Max(root);
-        }
-        private string Max(Node node)
-        {
-            string max = string.Empty,leftmax=string.Empty,rightmax=string.Empty;
-            if(node==null)
-                return string.Empty;
-            max=node.value;
-            if(node.left!=null)
-            {
-                leftmax=Max(node.left);
-                //Console.WriteLine(leftmax);
-                max = (string.Compare(node.value, leftmax)>0)?node.value:leftmax;
-            }   
-            if(node.right!=null)pointer=1;``
-            {
-                rightmax=Max(node.right);
-                //Console.WriteLine(rightmax);
-                max = (string.Compare(leftmax, rightmax)>0)?leftmax:rightmax;
-            }
-            //Console.WriteLine(max);
-            return max;
-        }
-        public string Min()
-        {
-            return Min(root);
-        }
-        public string Min(Node node)
-        {
-            string min = string.Empty,leftmin=string.Empty,rightmin=string.Empty;
-            if(node==null)
-                return null;
-            min=node.value;
-            if(node.left!=null)
-            {
-                leftmin=Min(node.left);
-                //Console.WriteLine(leftmin);
-                min = (leftmin!=null)?node.value:leftmin;
-            }   
-            if(node.right!=null)
-            {
-                rightmin=Min(node.right);
-                //Console.WriteLine(rightmin);
-                min = (string.Compare(leftmin, rightmin)>0)?leftmin:rightmin;
-            }
-            Console.WriteLine(min);
-            return min;
-        }
-        public string Ceil(string key)
-        {
-            return string.Empty;
-        }
-        public string Floor(string key)
-        {
-            return string.Empty;
-        }
-        public int Rank(string key)
-        {
-            return 0;
-        }
-        public int Size(string key)
-        {
-            return Size(root, key,false);
-        }
-        private int Size(Node root, string key, bool isFound)
+
+        public int Size()
         {
             int size=0;
-            if(root==null)
-            {
+            if(parent==null)
                 return 0;
+            size += Size(parent.left);
+            size +=Size(parent.right);
+        }
+        private  int Size
+
+        // number of keys lesser than the given one.
+        public int Rank(T1 key)
+        {
+            if(parent==null)
+                return 0;
+            if(parent.key.CompareTo(key)<0)
+            {
+                //this is lesser
+                return 1 + Rank(parent.left, key);
             }
-            //Console.Write(root.value);
-            if(root.value==key || isFound)
-            {   
-                //Console.WriteLine("insert "+root.value+"key "+key);
-                if(root.left!=null)
-                    size+=(1+Size(root.left,key, true));   
-                if(root.right!=null)
-                    size+=(1+Size(root.right,key, true));  
-                return size; 
+        }
+        private int Rank(BSTNode<T1, T2> root, T1 key)
+        {
+            int rank=0;
+            if(root==null)
+                return 0;
+            if(root.key.CompareTo(key)<0)
+                rank+=Rank(root.left, key);
+            rank+=Rank(root.right, key);
+            return rank;    
+            
+        }
+        private void Add( ref BSTNode<T1, T2> root  ,  BSTNode<T1, T2> child)
+        {
+            //Console.WriteLine("here 1" +parent.ToString());
+            //Console.WriteLine( "here 2"+child.ToString());
+            if(root.key.CompareTo(child.key)<0)
+            {
+                if(root.right==null)
+                    root.right=child;
+                else
+                    Add(ref root.right, child);
+            }
+            else if(root.key.CompareTo(child.key)>0)
+            {
+                if(root.left==null)
+                    root.left=child;
+                else
+                    Add(ref root.left, child);
             }
             else
             {
-            if(root.left!=null)
-                size+=Size(root.left,key, false);
-            if(root.right!=null)
-                size+=Size(root.right,key, false);
-            return size;
+                root.value=child.value;
             }
-            
-            //Console.WriteLine("not so impossible"+root.value+":"+key);
-            //return 0;
         }
         public void Print()
         {
-            //Console.WriteLine("Size of h"+Size("q"));
-            //Console.WriteLine("The element x exists in "+ Search("y"));
-            Console.WriteLine("The max element is {0}", Max());
-            Print(root, '?');
-        }
-        private void Print(Node n , char j)
-        {
-            if(n==null)
-            {       
-                //Console.WriteLine("Weird line");
-                return;
-            }
-            //Console.WriteLine( Size(n.value));
-            Console.Write(new String(j,1+Size(n.value))+n.value);
-            Console.WriteLine();
-            if(n.left!=null)
-                Print(n.left, '>');
-            if(n.right!=null)
-                Print(n.right, '<');
+            if(parent!=null)
+                PrintNode(parent, ' ', 25);
             
-
         }
+        private void PrintNode(BSTNode<T1,T2> root, char symbol, int n)
+        {
+            if(n<0)
+                n=0;
+            var c = new string(symbol, n);
+            Console.WriteLine(c+"({0},{1})",root.key, root.value);
+            if(root.right!=null)
+                PrintNode(root.right, ' ', n+5);
+            if(root.left!=null)
+                PrintNode(root.left, ' ', n-5);
+            
+        }
+
     }
 }

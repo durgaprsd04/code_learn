@@ -1,126 +1,204 @@
 using System;
+using System.Linq;
+using System.Diagnostics.CodeAnalysis;
+
 namespace SymbolTables
 {
-public class STNew<T1,T2>
-{
-
-    private const int INIT_COUNT=1;
-    ArrayHelper<T1> t1 = new ArrayHelper<T1>();
-    ArrayHelper<T2> t2 = new ArrayHelper<T2>();
-
-    private T1 [] t1Array = new T1[INIT_COUNT];
-    private T2 [] t2Array = new T2 [INIT_COUNT];
-    private int count=0;
-
-    public void Add(T1 a, T2 b)
+    public class STArray<T1, T2> where T1 :System.IComparable<T1> 
     {
-        if(count >= t1Array.Length)
-        {
-            T1 [] t1ArrayNew = new T1[4*count];
-            for(int i=0;i<t1Array.Length;i++)
-            {
-                t1ArrayNew[i]=t1Array[i];
-            }
-            t1Array= t1ArrayNew;
-            T2 [] t2ArrayNew = new T2[4*count];
-            for(int i=0;i<t2Array.Length;i++)
-            {
-                t2ArrayNew[i]=t2Array[i];
-            }
-            t2Array= t2ArrayNew;
-        }
-        int c=-1;
-        if(count>=1){ c= t1.HasElement(t1Array, a);}
-        if(c==-1)
-        {
-            t1Array[count]=a;
-            t2Array[count]=b;
-            count++;
-        }
-        else
-        {
-            //Console.WriteLine(c);
-            t2Array[c]=b;   
-        }
+        private T1 [] keyarray =new T1[1];
+        private T2 [] valuearray = new T2[1];
         
-    }
-    public bool HasElement(T1 a)
-    {
-        Console.WriteLine(t1.HasElement(t1Array, a));
-        return t1.HasElement(t1Array, a)!=-1?true:false;
-    }
-    public T2 GetElement(T1 a)
-    {
-        var c1=t1.HasElement(t1Array, a);
-        if(c1!=-1)
-            return t2Array [c1];
-        else
-            return default(T2);
-    }
-    public void Print()
-    {
-        for(int i=0;i<count;i++)
+        private int size=0;
+        public void Add(T1 key, T2 value)
         {
-            Console.WriteLine("{0} : {1}",t1Array[i],t2Array[i]);
+            if(keyarray.Length<=(size+1))
+            {
+                var limit=keyarray.Length;
+                var tempKeyArray = new T1[limit];
+                var tempValueArray = new T2[limit];
+                for(int i=0;i<limit;i++)
+                {
+                    tempKeyArray[i]=keyarray[i];
+                    tempValueArray[i]=valuearray[i];
+                }
+                keyarray= new T1[limit*2];
+                valuearray = new T2[limit*2];
+                for(int i=0;i<limit;i++)
+                {
+                    keyarray[i]=tempKeyArray[i];
+                    valuearray[i]=tempValueArray[i];
+                }
+            }
+            var index= Contains(key);
+            if(index!=-1)
+                valuearray[index]=value;
+            else{
+                AddInOrder(key,value);
+            }
+            
         }
-    }
-    public void Remove(T1 a)
-    {
-        int i;
-        for( i=0;i<t1Array.Length;i++)
-            if(t1Array[i].Equals(a))
-                break;
-        
-        t1.RemoveAt(t1Array, i);
-        t2.RemoveAt(t2Array,i);
-        count--;
-        /* if(count<t1Array.Length/4)
+        public T2 Get(T1 key)
         {
-            T1 [] t1ArrayNew = new T1[4*count];
-            for(int i=0;i<t1Array.Length;i++)
-            {
-                t1ArrayNew[i]=t1Array[i];
-            }
-            t1Array= t1ArrayNew;
-            T2 [] t2ArrayNew = new T2[4*count];
-            for(int i=0;i<t2Array.Length;i++)
-            {
-                t2ArrayNew[i]=t2Array[i];
-            }
-            t2Array= t2ArrayNew;
-        } */
-        
-    }   
-}
-public class ArrayHelper<T3>
-{
-    public  void  RemoveAt(T3 [] a, int i)
-    {
-        T3 [] a1 = new T3 [i];
-        for(int j=0;j<a.Length;j++)
-            if(i!=j)
-                a1[j]=a[j];   
-        a=a1;
-    }
-    public int HasElement(T3 [] a, T3 j)
-    {
-        //Console.WriteLine(a.Length);
-        int i;
-        for( i=0;i<a.Length;i++)
-        {
-            if(a[i]==null)
-            {
-                i=-1;
-                break;
-            }
-            if(a[i].Equals(j))
-                break;
+            var c = Contains(key);
+            if(c==-1)
+                return default(T2);
+            else
+                return valuearray[c];
         }
-        if(i<a.Length)
-            return i;
-        else
-            return -1;
-    }
-}
+        public bool ContainsKey(T1 key)
+        {
+            return (Contains(key)==-1)?false:true;
+        }
+        public bool IsEmpty()
+        {
+            return (size==0);
+        }
+        public int Size()
+        {
+            return size;
+        }
+        public T1 MinKey()
+        {
+            return keyarray[0];
+        }
+        public T1 MaxKey()
+        {
+            return keyarray[size];
+        }
+        public T1 Floor( T1 key)
+        {
+            int i;
+            for(i=0;i<size;i++)
+            {
+                if(keyarray[i].CompareTo(key)>0)
+                    break;
+            }
+            if(i!=0)
+                return keyarray[i-1];
+            else 
+                return default(T1);
+        }
+         public T1 Ceil( T1 key)
+        {
+            int i;
+            for(i=0;i<size;i++)
+            {
+                if(keyarray[i].CompareTo(key)>0)
+                    break;
+            }
+            if(i!=0)
+                return keyarray[i];
+            else 
+                return default(T1);
+        }
+        public int Rank(T1 key)
+        {
+            int i;
+            for(i=0;i<size;i++)
+            {
+                if(keyarray[i].CompareTo(key)>0)
+                    break;
+            }
+            return i-1;
+        }
+        public void DeleteMin()
+        {
+            for(int i=0;i<size-1;i++)
+            {
+                keyarray[i]=keyarray[i+1];
+                valuearray[i]=valuearray[i+1];
+            }
+             keyarray[size-1]=default(T1);
+            valuearray[size-1]=default(T2);
+            size=size-1;
+        }
+        public void DeleteMax()
+        {
+            keyarray[size-1]=default(T1);
+            valuearray[size-1]=default(T2);
+            size = size-1;
+        }
+        public void Delete(T1 key)
+        {
+            var index = Contains(key);
+            if(index ==-1)
+                return;
+            for(int i=index;i<size;i++)
+            {
+                keyarray[i]=keyarray[i+1];
+                valuearray[i]=valuearray[i+1];
+            }
+            keyarray[size-1]=default(T1);
+            valuearray[size-1]=default(T2);
+            size = size-1;
+            //resizing
+            if(size<keyarray.Length/4)
+            {
+                var limit = keyarray.Length/2;
+                var tempKeyArray = new T1[limit];
+                var tempValueArray = new T2[limit];
+                for(int i=0;i<limit;i++)
+                {
+                    tempKeyArray[i]=keyarray[i];
+                    tempValueArray[i]=valuearray[i];
+                }
+                keyarray = new T1[limit];
+                valuearray = new T2[limit];
+                for(int i=0;i<limit;i++)
+                {
+                    keyarray[i]=tempKeyArray[i];
+                    valuearray[i]=tempValueArray[i];
+                }
+            }
+        }
+        private int Contains(T1 key)
+        {
+            var index =-1;
+            for(int i=0;i<size;i++)
+            {
+                if(keyarray[i].Equals(key))
+                {
+                    index=i;
+                    break;
+                }
+            }
+            return index;
+        }
+       
+        private void AddInOrder(T1 key, T2 value)
+        {
+            int i=0;
+            for(i=0;i<size;i++)
+            {
+                if(key.CompareTo(keyarray[i])<=0)
+                    break;
+            }
+             Insert(key, value,i);
+            
+        }
+        private void Insert(T1  key , T2 value, int index)
+        {
+            //Console.WriteLine("inserting {0} ,{1},{2}",key.ToString(),index,size);
+            for(int i=size;i>index;i--)
+            {
+                //Console.WriteLine("inserting "+i);
+                keyarray[i]=keyarray[i-1];
+                valuearray[i]=valuearray[i-1];
+            }
+            keyarray[index]=key;
+            valuearray[index]=value;
+            size++;
+        }
+        public void Print()
+        {
+                Console.WriteLine(string.Join(",", keyarray.Where(a => a.Equals(default(T1))==false).ToArray()));
+                Console.WriteLine(string.Join(",", valuearray.Where(a => a.Equals(default(T2))==false).ToArray()));
+        }
 
+        public int CompareTo([AllowNull] T1 other)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

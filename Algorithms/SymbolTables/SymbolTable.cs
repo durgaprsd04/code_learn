@@ -1,64 +1,138 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 namespace SymbolTables
 {
-public class ST<T1,T2>
-{
-    private class SingleST<T3,T4>
+    public class Nodenew
     {
-        private T3 key;
-        private T4 value;
-        public SingleST(T3 key, T4 value)
+        public char key;
+        public int value;
+         public Nodenew(char key, int value)
         {
             this.key=key;
             this.value=value;
-        }
-        public string Print()
-        {
-            return key.ToString() +" : "+value.ToString();
-        }
-        public  T4 GetValue()
-        {
-            return this.value;
-        }
-    }
-    private  Dictionary<T1,SingleST<T1, T2>> DictOfST;
-    private List<T1> listOfSTKeys;
-    
-    public ST()
-    {
-        DictOfST = new  Dictionary<T1,SingleST<T1, T2>>();
-        listOfSTKeys = new List<T1>();
 
-    }
-    public void Add(T1 a, T2 b)
-    {
-        if(listOfSTKeys.Contains(a))
-        {
-            DictOfST[a]= new SingleST<T1,T2>(a,b);
         }
-        else
+        public Nodenew Next;
+        public override string ToString()
         {
-         DictOfST.Add(a,new SingleST<T1, T2>(a,b));
-         listOfSTKeys.Add(a);   
+            return string.Format("[{0}:{1}]",this.key,this.value);
         }
     }
-    public void Print()
+    public class ST
     {
-        foreach(var s in DictOfST)
+        private Nodenew head;
+        public void Add(char key, int value)
         {
-            Console.WriteLine(s.Value.Print());
+            
+            var newNode = new Nodenew(key,value);
+            if(head!=null)
+                Add( ref head,  newNode );
+            if(head==null)
+                head= newNode;
+            
         }
-    }
-    public bool HasElement(T1 a)
-    {
-        return listOfSTKeys.Contains(a);
-    }
-    public T2 GetElement(T1 a)
-    {
-        return DictOfST[a].GetValue();
+        private void Add( ref Nodenew  parent,  Nodenew child)
+        {
+            //Console.WriteLine("here 1" +parent.ToString());
+            //Console.WriteLine( "here 2"+child.ToString());
+            if(parent.key==child.key)
+            {
+                parent.value=child.value;
+                return;
 
+            }
+            if(parent.Next!=null)
+            {
+                Add(ref parent.Next,child);
+            }
+            if(parent.Next==null)
+            {
+                parent.Next=child;
+                return;
+            }
+        }
+        public int Search(char key)
+        {
+            if(head.key==key)
+                return head.value;
+            else
+                return Search(head.Next,key);
+        }
+        private int Search(Nodenew nodenew, char key)
+        {
+            if(nodenew==null)
+                return -1;
+            if(nodenew.key==key)
+                return nodenew.value;
+            else{
+                return Search(nodenew.Next,key);
+            }
+        }
+        public bool Remove (char c )
+        {
+            if(head.key==c)
+            {       
+                head = head.Next;
+                return true;
+            }
+            else
+                return Remove(ref head.Next,c);
+        }
+        private bool Remove(ref Nodenew node , char c)
+        {
+            if(node==null)
+                return false;
+            if(node.key==c)
+            {
+                node= node.Next;
+                return true;
+            }
+            else 
+                return Remove(ref node.Next, c);   
+        }
+        public int Size()
+        {
+            if(head!=null)
+                return 1+Size(head.Next);
+            else
+                return 0;
+        }
+        public List<char> Keys()
+        {
+            var v=  new List<char>(){this.head.key};
+            v.AddRange(Keys(head.Next));
+            return v;
+        }
+        private List<char> Keys(Nodenew parent)
+        {
+            if(parent==null)
+                return new List<char>();
+             var v=  new List<char>(){parent.key};
+             v.AddRange(Keys(parent.Next));
+             return v;
+        }
+        private int Size(Nodenew parent)
+        {
+            if(parent==null)
+                return 0;
+            if(parent.Next!=null)
+                return (1+Size(parent.Next));
+            return 1;
+        }
+        public void Print()
+        {
+
+            Print(head);
+           
+        }
+        private void Print(Nodenew node)
+        {
+            if(node==null)
+            return;
+            Console.Write("[{0}{1}]>",node.key,node.value);
+            //Console.WriteLine(node.key + ":"+node.value);
+            if(node.Next!=null)
+                Print(node.Next);
+        }
     }
-}
 }

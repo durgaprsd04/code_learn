@@ -1,0 +1,40 @@
+Symbol tables
+	Ordered implementaion(rewrite with binary search)
+		[x]void put(Key key, Value val)
+		[x]Value get(Key key)
+		[X]void delete(Key key)
+		[X]remove key (and its value) from table
+		[X]boolean contains(Key key) is there a value paired with key ?
+		[X]boolean isEmpty() is the table empty?
+		[X]int size() number of key-value pairs
+		[X]Key min() smallest key
+		[X]Key max() largest key
+		[X]Key floor(Key key) largest key less than or equal to key
+		[X]Key ceiling(Key key) smallest key greater than or equal to key
+		[X]int rank(Key key) number of keys less than key
+		[?]Key select(int k) key of rank k
+		[X]void deleteMin() delete smallest key
+		[X]void deleteMax() delete largest key
+		[X]int size(Key lo, Key hi)
+		[ ]number of keys in [lo..hi]
+		[ ]Iterable<Key> keys(Key lo, Key hi) keys in [lo..hi] , in sorted order
+		[ ]Iterable<Key> all keys in the table, in sorted order
+Binary search tree
+	Full Implementation
+		[X]Add
+		[X]min
+		[X]max
+		[X]floor
+		[ ]ceil
+		[ ]select
+		[ ]size
+		[ ]rank
+		[ ]delete
+		[ ]range queries
+		[ ]delete max
+		[ ]delete min
+	2-3 trees
+	Red black tree
+HashTable
+	Separate Chaining
+	Linear Probing
