@@ -13,7 +13,7 @@ namespace DesignPatterns
         {
             this.AddRoom();
         }
-       public abstract void AddRoom();
+        public abstract void AddRoom();
         public abstract void PrintRoomList();
         
     }
@@ -47,7 +47,7 @@ namespace DesignPatterns
         {
             foreach(Room room in _listOfRooms)
             {
-                Console.WriteLine("1rk"+room.ToString());
+                Console.Write(" 1rk"+room.ToString());
             }
         }     
     }
@@ -70,10 +70,32 @@ namespace DesignPatterns
         {
             foreach(Room room in _listOfRooms)
             {
-                Console.WriteLine("3bhk"+room.ToString());
+                Console.Write(" 3bhk"+room.ToString());
             }
         }     
     }
+    public class HouseFactory{
+public static House GetHouse(string type)
+    {
+        House house=null;
+        switch (type)
+            {
+            case "1rk":
+                house= new RK_1();
+                break;
+            case "2bhk":
+                house= new BHK_2();
+                break;
+            case "3bhk":
+                house= new BHK_3();
+                break;
+            default:
+                throw new ArgumentException("type");
+            }
+            return house;
+    }
+    }
+    
     public class BHK_2:House
     {
         private List<Room> _listOfRooms=new List<Room>();
@@ -90,7 +112,7 @@ namespace DesignPatterns
         {
             foreach(Room room in _listOfRooms)
             {
-                Console.WriteLine("2bhk"+room.ToString());
+                Console.Write(" 2bhk"+room.ToString());
             }
         }     
     }
@@ -99,9 +121,9 @@ namespace DesignPatterns
         House [] ListOfHouses = new House[3];
      public void TestMethod()
      {
-        ListOfHouses[0] = new BHK_2();
-        ListOfHouses[1] = new BHK_3(); 
-        ListOfHouses[2]= new RK_1();
+        ListOfHouses[0] = HouseFactory.GetHouse("2bhk");
+        ListOfHouses[1] = HouseFactory.GetHouse("3bhk");
+        ListOfHouses[2] =HouseFactory.GetHouse("1rk");
         foreach(House house in ListOfHouses)
         {
             Console.WriteLine( house.ToString());
