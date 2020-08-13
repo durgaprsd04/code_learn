@@ -83,14 +83,105 @@ namespace Practise
             var resolution = 180.0/(2*radius);
             for(int i=0;i<2*radius;i++)
             {
-                Console.WriteLine(new string(' ',radius)+"#"+new string(' ',(int)(1*radius*Math.Cos((Math.PI/180.0)*(-90.0+(double)i*resolution))))+"#");
+                var cosComponent=(int)(1*radius*Math.Cos((Math.PI/180.0)*(-90.0+(double)i*resolution)));
+                if(i==0)
+                    continue;
+                Console.WriteLine(new string(' ',radius-cosComponent)+"#"+new string(' ',2*cosComponent)+"#");
             }
+        }
+        public string CapitalizeFirst(string s)
+        {
+            //better capitalize chars which are after space.
+            var stringarray = s.Split(' ');
+            for(int i=0;i<stringarray.Length;i++)
+            {
+                stringarray[i] = stringarray[i].Replace(stringarray[i][0],stringarray[i][0].ToString().ToUpperInvariant().ToCharArray()[0]);
+            }
+            return string.Join(' ', stringarray );
+        }
+        public void Steps(int n, int i)
+        {
+            //column less than  row
+            if(i==0)
+                return;
+            
+            Console.WriteLine("'"+new string('#',n-i+1)+new string(' ',i-1)+"'");
+            Steps(n, i-1);
+        }
+        public void Pyramid(int n, int i)
+        {
+            //column less than  row
+            if(i==0)
+                return;
+            
+            Console.WriteLine("'"+new string(' ',i-1)+new string('#',2*(n-i)+1)+new string(' ',i-1)+"'");
+            Pyramid(n, i-1);
+        }
+        public int FindVowels(string s)
+        {
+            //regex matching.
+            List<char> vowels = new List<char>{'a','e','i','o','u'};
+            int count=0;
+            foreach(char c in s)
+            {
+                if(vowels.Contains(c))
+                count++;
+            }
+            return count;
+        }
+        public void PrintSpiralMatrix(int n)
+        {
+            int [,] a = new int [n,n];
+            int maxLimit=n;
+            int minLimit=0;
+            bool jlimitReached=false, iLimitReached=false;
+            int i=0,j=0,k=0;
+            while(true) 
+            {
+                a[i,j]=++k;
+                if(j+1<maxLimit)
+                {
+                    j++;
+                }
+                else
+                {
+                   if(i+1<maxLimit)
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        j--;
+                    }
+                }
+                
+            }    
+            PrintArray(a, n);
+        }
+        public void PrintArray(int [,] a, int n)
+        {
+            for(int i=0;i<n;i++)
+             {  
+                Console.WriteLine();  
+                Console.Write("[");
+                for(int j=0;j<n;j++)
+                {
+                    Console.Write(" "+a[i,j]+" ");
+                }
+                Console.Write("]");
+             }
         }
         public bool isAnagram(string a, string b)
         {
+            //sorting strings are easier
             var dict1 = GetCharDict(a);
             var dict2 = GetCharDict(b);
             var isAnagramString =false;
+            if(dict1.Count!=dict2.Count)
+            {
+                return false;
+            }
+                
             foreach(var key in dict1.Keys)
             {
                 if(dict2.ContainsKey(key))

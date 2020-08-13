@@ -25,7 +25,7 @@ namespace Practise
             Console.WriteLine("Max chars ");
             Console.WriteLine("The max char element is '"+rs.MaxChars("HeeeeeelloWorld!")+"'");
             //circle
-            //srs.DrawCircle(5);
+            rs.DrawCircle(5);
             //chunkc array
             int []a=    {3,4,2,1,27,8,3};
             rs.ChunkSize(a, 3);
@@ -33,7 +33,19 @@ namespace Practise
             Console.WriteLine();
             Console.WriteLine("Fairytale and railsafe are anagram "+rs.isAnagram("fairytales", "railsafety"));
             Console.WriteLine("Fairytale and manga are anagram "+rs.isAnagram("fairytale", "manga"));
-
-        }
+            // joined string lines
+            Console.WriteLine("String joined "+ rs.CapitalizeFirst("a quick fox jumped over a lazy dog"));
+            //printing steps
+            Console.WriteLine("printing steps ");
+            rs.Steps(4,4);
+            //pyramid
+             Console.WriteLine("printing pyramid ");
+            rs.Pyramid(4,4);
+            //Find Vowels
+            Console.WriteLine("Number of vowels in abcdef "+rs.FindVowels("abcdef"));
+            Console.WriteLine("Number of vowels in hello world "+rs.FindVowels("hello world"));
+            //print matrix
+            rs.PrintSpiralMatrix(3);
+        }   
     }
 }
