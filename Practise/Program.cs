@@ -45,7 +45,7 @@ namespace Practise
             Console.WriteLine("Number of vowels in abcdef "+rs.FindVowels("abcdef"));
             Console.WriteLine("Number of vowels in hello world "+rs.FindVowels("hello world"));
             //print matrix
-            rs.PrintSpiralMatrix(3);
+            rs.PrintSpiralMatrix(11);
         }   
     }
 }

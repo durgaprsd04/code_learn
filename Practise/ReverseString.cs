@@ -134,28 +134,31 @@ namespace Practise
             int [,] a = new int [n,n];
             int maxLimit=n;
             int minLimit=0;
-            bool jlimitReached=false, iLimitReached=false;
+            bool jIncrement=true, jDecrement=false, iIncrement=false, iDecrement=false;
             int i=0,j=0,k=0;
-            while(true) 
+            while(k<=n*n-1)
             {
                 a[i,j]=++k;
-                if(j+1<maxLimit)
+                Console.WriteLine($"Inserting into {i} postion  {j} with k value {k}");
+                if(i==1 &&j==2)
                 {
+                  Console.WriteLine("max limit "+maxLimit);
+                  //break;
+                }
+                if(jIncrement)
                     j++;
-                }
-                else
-                {
-                   if(i+1<maxLimit)
-                    {
-                        i++;
-                    }
-                    else
-                    {
-                        j--;
-                    }
-                }
-                
-            }    
+                if(jDecrement)
+                    j--;
+                if(iIncrement)
+                    i++;
+                if(iDecrement)
+                  i--;
+                if(j+1>=maxLimit){jIncrement=false; iIncrement=true;}
+                if(iIncrement&& i+1>=maxLimit){iIncrement=false;}
+                if(!iIncrement && !jIncrement&&!jDecrement &&!iDecrement ){jDecrement=true; maxLimit--;}
+                if(jDecrement&&j<=minLimit){jDecrement=false;iDecrement=true; minLimit++; }
+                if(iDecrement&&i<=minLimit){iDecrement=false;jIncrement=true;}
+           }
             PrintArray(a, n);
         }
         public void PrintArray(int [,] a, int n)
