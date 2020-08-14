@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Practise
 {
@@ -45,7 +46,31 @@ namespace Practise
             Console.WriteLine("Number of vowels in abcdef "+rs.FindVowels("abcdef"));
             Console.WriteLine("Number of vowels in hello world "+rs.FindVowels("hello world"));
             //print matrix
-            rs.PrintSpiralMatrix(11);
+            rs.PrintSpiralMatrix(8);
+            Console.WriteLine();
+            //fibnonnaci
+            Console.WriteLine("Fibonnaci upto 10 "+string.Join( ',', rs.Fibonacci(10).ToArray()));
+            //fibonnacci recursion
+             Console.WriteLine("Fibonnaci upto 10 (recursion)");
+             rs.FibonacciRecurse(10);
+             //myquee implementation
+            MyQueue<string> myqueue = new MyQueue<string>();
+            var string1 = "Harum unde numquam eaque non. Molestiae sint molestias pariatur maxime. Esse non non molestiae sapiente quas enim occaecati. Voluptas quia vel ratione tempore nisi consequatur. Dolores repellendus nesciunt rerum delectus quia dignissimos.";
+            var result = string1.Split(' ');
+            foreach(string s in result)
+            {
+                myqueue.Enqueue(s);
+            } 
+            Console.WriteLine();
+            myqueue.Traverse();
+            Console.WriteLine();
+            Console.WriteLine(myqueue.DeQueue());
+             //myqueue.Traverse();
+            Console.WriteLine(myqueue.DeQueue());
+             ///myqueue.Traverse();
+            Console.WriteLine(myqueue.DeQueue());
+            myqueue.Traverse();
         }   
+        
     }
 }

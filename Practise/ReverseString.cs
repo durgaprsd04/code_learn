@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 namespace Practise
 {
     public class Operations
     {
+        private static List<int> fiblist = new List<int>();
         public string reverse(string s)
         {
             char [] stringArray = s.ToCharArray();
@@ -173,6 +175,41 @@ namespace Practise
                 }
                 Console.Write("]");
              }
+        }
+        public List<int> Fibonacci(int n)
+        {
+            int first=0, second=1;
+            List<int> fib = new List<int>{first, second};
+            var counter=2;
+            while(counter<=n)
+            {
+                var temp = second;
+                second = first +second;
+                first = temp;
+                fib.Add(second);
+                counter++;
+            }
+            return fib;
+        }
+        public void FibonacciRecurse(int n)
+        {
+            var v = fib(n);
+            //Console.WriteLine("nth fibonacci is "+string.Join(',',fiblist.ToArray()));
+            Console.Write("nth fibonacci is "+v);
+        }
+        private int fib(int n)
+        {
+            //you can use memoization.
+            if(n<2)
+            {
+                //Console.WriteLine(n+",");
+               //fiblist.Add(0);
+                return n;                
+            }                
+            var v= fib(n-2)+fib(n-1);
+            //Console.Write(v+",");
+            //fiblist.Add(v);
+            return v;
         }
         public bool isAnagram(string a, string b)
         {
