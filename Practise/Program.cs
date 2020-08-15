@@ -60,17 +60,19 @@ namespace Practise
             foreach(string s in result)
             {
                 myqueue.Enqueue(s);
-            } 
+            }
             Console.WriteLine();
             myqueue.Traverse();
             Console.WriteLine();
             Console.WriteLine(myqueue.DeQueue());
-             //myqueue.Traverse();
             Console.WriteLine(myqueue.DeQueue());
-             ///myqueue.Traverse();
             Console.WriteLine(myqueue.DeQueue());
             myqueue.Traverse();
-        }   
-        
+            //hackerranktest
+            Console.WriteLine();
+            int n = Convert.ToInt32(Console.ReadLine());
+            int[] arr = Array.ConvertAll(Console.ReadLine().Split(' '), arrTemp => Convert.ToInt32(arrTemp));
+            Solution.almostSorted(arr);
+        }
     }
 }
