@@ -19,7 +19,7 @@ namespace Practise
     }
     public void Traverse()
     {
-        Console.Write(this.element +",");        
+        Console.Write(this.element +((this.node!=null)?",":""));        
         if(this.node==null)
             return;  
         node.Traverse();      

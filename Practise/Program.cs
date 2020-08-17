@@ -8,7 +8,7 @@ namespace Practise
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Reverse");
+           /* Console.WriteLine("Reverse");
             Operations rs = new Operations();
             Console.WriteLine(" reverse of hello world!" +rs.reverse("Hello World!"));
             //paliendrome 
@@ -73,6 +73,49 @@ namespace Practise
             int n = Convert.ToInt32(Console.ReadLine());
             int[] arr = Array.ConvertAll(Console.ReadLine().Split(' '), arrTemp => Convert.ToInt32(arrTemp));
             Solution.almostSorted(arr);
+            */
+            /*
+            MyQueue<string> s1 = new MyQueue<string>();
+            MyQueue<string> s2 = new MyQueue<string>();
+            foreach(char c in "abcdef")
+                s1.Enqueue(c.ToString());
+            foreach(char c in "ghijkl")
+                s2.Enqueue(c.ToString());
+            s1.Traverse();
+            Console.WriteLine();
+            s2.Traverse();
+            Console.WriteLine();
+            Weave w = new Weave();
+            var s4= w.WeaveQueue(s1,s2);
+            s4.Traverse();
+            Console.WriteLine(s4.DeQueue());
+            */
+            /*
+            MyStack<string> myStack =new MyStack<string>();
+            foreach(char c in "abcdef")
+                myStack.Push(c.ToString());
+            myStack.Traverse();
+            var c1 = myStack.Pop();
+            while(c1!=null)
+            {
+                Console.WriteLine("popped "+c1);
+                c1 = myStack.Pop();
+            }*/
+            /*
+            QueueWitStacks<string> qs = new QueueWitStacks<string>();
+            foreach(char c in "abcdef")
+            {
+                qs.Enqueue(c.ToString());
+            }
+            Console.WriteLine(qs.Dequeue());
+            Console.WriteLine(qs.Dequeue());
+            */
+            LinkedList<string> linkedList = new LinkedList<string>();
+            foreach(char c in "abcdef")
+                linkedList.Add(c.ToString());
+            linkedList.Traverse();
+            var c1 = linkedList.GetLast();
+            Console.WriteLine("node last "+c1.ToString());
         }
     }
 }
