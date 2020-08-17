@@ -73,7 +73,7 @@ class SteadyGeneClass
             }
         }
         int k=0;
-        while((sub.Count(x=> x==diffKey)<limit))
+        while((sub.Count(x=> x.Equals( diffKey))<limit))
             {
                 sub = gene.Substring(beginIndex, limit+k);
                 k++;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 namespace LeetCode
 {
     class Program
@@ -37,16 +38,35 @@ namespace LeetCode
               var l2 = s3.LongestPalindrome(v);
               Console.WriteLine(l2);
             }
-            */
-             StreamReader sr = new StreamReader("input_zigzag.txt");
-            ZigZag s4 = new ZigZag();
+            *//*
+             streamreader sr = new streamreader("input_zigzag.txt");
+            zigzag s4 = new zigzag();
+            while(sr.peek()>0)
+            {
+              var v = sr.readline().split(' ');;
+              console.writeline(v[0] +" : "+v[1]);
+              var l2 = s4.convert(v[0], convert.toint32( v[1]));
+              console.writeline(l2);
+            }*/
+            /*
+            StreamReader sr = new StreamReader("input_container.txt");
+            ContainerWater wt  = new ContainerWater();
             while(sr.Peek()>0)
             {
-              var v = sr.ReadLine().Split(' ');;
-              Console.WriteLine(v[0] +" : "+v[1]);
-              var l2 = s4.Convert(v[0], Convert.ToInt32( v[1]));
+              var v = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var l2  = wt.MaxArea(v);
               Console.WriteLine(l2);
             }
+            */
+            StreamReader sr = new StreamReader("input_roman.txt");
+            NumberToRoman nr  = new NumberToRoman();
+            while(sr.Peek()>0)
+            {
+              var v = Convert.ToInt32(sr.ReadLine())
+              var l2  = nr.IntToRoman(v);
+              Console.WriteLine(l2);
+            }
+
 
         }
     }

@@ -42,13 +42,15 @@ namespace HackerRank
               var result = CommonChildClass.CommonChild(str1,str2);
               Console.WriteLine(result);
             }*/
-            StreamReader sr = new StreamReader("input_stadgene.txt");
+            StreamReader sr = new StreamReader("input_tutchallenge.txt");
+            var intro = new IntroTutorial();
             while(sr.Peek()>=0)
             {
-              var n =Convert.ToInt32(sr.ReadLine());
-              var str1 = sr.ReadLine();
-              var result = SteadyGeneClass.steadyGene(str1);
-              Console.WriteLine(result);
+                  int V = Convert.ToInt32(sr.ReadLine());
+                  int n = Convert.ToInt32(sr.ReadLine());
+                  int[] arr = Array.ConvertAll(sr.ReadLine().Split(' '), arrTemp => Convert.ToInt32(arrTemp));
+                  int result = intro.introTutorial(V, arr);
+                  Console.WriteLine($"index of ${V} is "+result);
             }
 
             Console.WriteLine("hello");
