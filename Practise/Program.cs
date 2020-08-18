@@ -110,12 +110,23 @@ namespace Practise
             Console.WriteLine(qs.Dequeue());
             Console.WriteLine(qs.Dequeue());
             */
+            /*
             LinkedList<string> linkedList = new LinkedList<string>();
             foreach(char c in "abcdef")
                 linkedList.Add(c.ToString());
             linkedList.Traverse();
             var c1 = linkedList.GetLast();
             Console.WriteLine("node last "+c1.ToString());
+            */
+            Trees<string> tree = new Trees<string>("a");
+            foreach(var str in "bcdefg")
+            {
+                tree.Add(str.ToString());
+                tree.DFS();
+                Console.WriteLine();
+            }
+
+            tree.DFS();
         }
     }
 }
