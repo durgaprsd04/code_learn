@@ -58,14 +58,16 @@ namespace LeetCode
               Console.WriteLine(l2);
             }
             */
-            StreamReader sr = new StreamReader("input_roman.txt");
+            StreamReader sr = new StreamReader(@"inputs\input_roman.txt");
             NumberToRoman nr  = new NumberToRoman();
+             Console.WriteLine("hello");
             while(sr.Peek()>0)
-            {
-              var v = Convert.ToInt32(sr.ReadLine())
-              var l2  = nr.IntToRoman(v);
-              Console.WriteLine(l2);
+            {             
+              var v = Convert.ToInt32(sr.ReadLine());
+              var l2  = nr.IntToRoman(v); 
+              Console.WriteLine(v +" : "+l2);            
             }
+             
 
 
         }
