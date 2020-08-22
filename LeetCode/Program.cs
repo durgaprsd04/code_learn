@@ -81,6 +81,7 @@ namespace LeetCode
                 Console.WriteLine(string.Join(',', v1.ToArray()));
             }
             */
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_nthNode.txt");
             RemoveNthNode nth = new RemoveNthNode();
             Console.WriteLine("hello");
@@ -97,7 +98,34 @@ namespace LeetCode
               var v2 = nth.RemoveNthFromEnd(l,limit);
               v2.Traverse();
             }
-
+          */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_swapPairNode.txt");
+            SwapNodesInPair swp  = new SwapNodesInPair();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var limit = Convert.ToInt32(sr.ReadLine());
+              ListNode l=null;
+              foreach(int v1 in v)
+              {
+                 l = new ListNode(v1, l);
+              }
+              var v2 =swp.SwapPairs(l);
+              v2.Traverse();
+            }
+            */
+            StreamReader sr = new StreamReader(@"inputs/input_nextPerm.txt");
+            NextPermutation2 next = new NextPermutation2();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              Console.WriteLine(string.Join(',', v1));
+              next.NextPermutation(v1);
+              Console.WriteLine(string.Join(',', v1));
+            }
         }
     }
 }
