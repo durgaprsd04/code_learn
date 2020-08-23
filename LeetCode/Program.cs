@@ -116,6 +116,7 @@ namespace LeetCode
               v2.Traverse();
             }
             */
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_nextPerm.txt");
             NextPermutation2 next = new NextPermutation2();
             Console.WriteLine("hello");
@@ -125,6 +126,73 @@ namespace LeetCode
               Console.WriteLine(string.Join(',', v1));
               next.NextPermutation(v1);
               Console.WriteLine(string.Join(',', v1));
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_twosum.txt");
+             TwoSumClass  twosum = new TwoSumClass();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var v2 = Convert.ToInt32(sr.ReadLine());
+              Console.WriteLine(string.Join(',',v1)+" search for  "+v2 );
+              var v3 = twosum.TwoSum(v1,v2);
+              Console.WriteLine(string.Join(',', v3));
+            }
+            */
+            /* 
+              StreamReader sr = new StreamReader(@"inputs/input_reverseint.txt");
+              ReverseInt reverse= new ReverseInt();
+             Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+              var v2 = Convert.ToInt32(sr.ReadLine());
+              var result = reverse.Reverse(v2);
+              Console.WriteLine($"Reverse of {v2}: {result}");
+             }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_romantoInt.txt");
+             RomanToIntClass roman= new RomanToIntClass();
+             Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+              var v2 = sr.ReadLine();
+              var result = roman.RomanToInt(v2);
+              Console.WriteLine($"Roman of {v2}: {result}");
+             }
+            */
+            /*
+             StreamReader sr = new StreamReader(@"inputs/input_ValidParenthesis.txt");
+             ValidParenthesisClass validpara = new ValidParenthesisClass();
+             Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+              var v2 = sr.ReadLine();
+              var result = validpara.IsValid(v2);
+              Console.WriteLine($"Result of {v2}: {result}");
+             }
+            */
+            StreamReader sr = new StreamReader(@"inputs/input_twoSortedLists.txt");
+             MergeTwoSortedLists merge = new MergeTwoSortedLists();
+             Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+              var v1 =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var v2 =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              ListNode l1=null, l2=null;
+              foreach(int v3 in v1)
+              {
+                 l1 = new ListNode(v3, l1);
+              }
+              foreach(int v3 in v2)
+              {
+                 l2 = new ListNode(v3, l2);
+              }
+              var result = merge.MergeTwoLists(l1,l2);
+              Console.Write($"Result of ");
+              result.Traverse();
             }
         }
     }
