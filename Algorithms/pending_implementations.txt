@@ -19,22 +19,39 @@ Symbol tables
 		[ ]number of keys in [lo..hi]
 		[ ]Iterable<Key> keys(Key lo, Key hi) keys in [lo..hi] , in sorted order
 		[ ]Iterable<Key> all keys in the table, in sorted order
-Binary search tree
-	Full Implementation
-		[X]Add
-		[X]min
-		[X]max
-		[X]floor
-		[ ]ceil
-		[ ]select
-		[ ]size
-		[ ]rank
-		[ ]delete
-		[ ]range queries
-		[ ]delete max
-		[ ]delete min
-	2-3 trees
-	Red black tree
-HashTable
-	Separate Chaining
-	Linear Probing
+	Binary search tree
+		Full Implementation
+			[X]Add
+			[X]min
+			[X]max
+			[X]floor
+			[X]ceil
+			[X]select
+			[X]size
+			[X]rank
+			[X]Inorder
+			[ ]hubbard deletion
+			[ ]range queries
+			[ ]delete max
+			[X]delete min
+		2-3 trees - stoppinng at add as other implementaions are very complicated
+			[X]Add
+			[]min
+			[]max
+			[]floor
+			[]ceil
+			[]size
+			[]rank
+			[]delete
+		Red black tree - stoppinng at add once hast table is done we will come back to this.
+			[X]Add
+			[]min
+			[]max
+			[]floor
+			[]ceil
+			[]size
+			[]rank
+			[]delete
+HashTables
+	[]Separate Chaining
+	[]Linear Probing
