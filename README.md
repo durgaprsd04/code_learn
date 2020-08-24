@@ -31,6 +31,9 @@
 	c)compiler basics
 	d)concepts of software engineering
 	e)version control
+### Dynamic programming
+	1) Basics
+	2) Few problems
 #### Algo and DS - I
 		1)Elementary Sorts - done 
 		2)Union Find - done
