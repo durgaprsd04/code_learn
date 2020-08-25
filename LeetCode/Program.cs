@@ -174,6 +174,7 @@ namespace LeetCode
               Console.WriteLine($"Result of {v2}: {result}");
              }
             */
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_twoSortedLists.txt");
              MergeTwoSortedLists merge = new MergeTwoSortedLists();
              Console.WriteLine("hello");
@@ -194,6 +195,57 @@ namespace LeetCode
               Console.Write($"Result of ");
               result.Traverse();
             }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_duplicateArray.txt");
+            RemoveDuplicatesArray removeDuplicates = new RemoveDuplicatesArray();
+            Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+               var v1 =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+               Console.WriteLine("Array before duplicate removal "+ string.Join(',', v1));
+               var result = removeDuplicates.RemoveDuplicates(v1);
+               Console.WriteLine($"Result of  "+string.Join(',', v1)+" : "+ result.ToString());
+             }
+             */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_removeInstances.txt");
+            RemoveAllInstances removeInstances = new RemoveAllInstances();
+            Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+               var v1 =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+               var v2 = Convert.ToInt32(sr.ReadLine());
+               Console.WriteLine("Array before duplicate removal "+ string.Join(',', v1));
+               var result = removeInstances.RemoveElement(v1, v2);
+               Console.WriteLine($"Result of  "+string.Join(',', v1)+" : "+ result.ToString());
+             }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_needle.txt");
+            NeedleHaystack needle = new NeedleHaystack();
+            Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+               var v1 =sr.ReadLine().Split(',');
+               var v2 =v1[0];
+               var v3 = v1[1];
+               Console.WriteLine($"Needle {v3} haystack  {v2}");
+               var result = needle.StrStr(v2, v3);
+               Console.WriteLine("Result of  "+ result.ToString());
+             }
+            */
+            StreamReader sr = new StreamReader(@"inputs/input_searchinsert.txt");
+            SearchInsertClass search = new SearchInsertClass();
+            Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+               var v1 =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();;
+               var v2 =Convert.ToInt32(sr.ReadLine());
+               var result = search.SearchInsert(v1, v2);
+               Console.WriteLine("Result of  "+string.Join(',',v1)+" for "+ v2 +" "+ result.ToString());
+             }
+
         }
     }
 }

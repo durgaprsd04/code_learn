@@ -12,6 +12,7 @@ namespace LeetCode
           }
           public ListNode MergeRecursive(ListNode l1, ListNode l2)
           {
+            /*
             if(l1==null || l2 ==null)
               return null;
             ListNode l3 =null;
@@ -64,6 +65,24 @@ namespace LeetCode
              else
                 l3 = new ListNode(l1.val, l3);
              return l3;
+             */
+          ListNode l3=null;
+          if(l1==null && l2==null)
+              return l3;
+          if(l1==null || l2==null)
+            return (l1==null)?l2:l1;
+          if(l1!=null && l2!=null)
+          {
+            if(l1.val>l2.val)
+            {
+              l3 = new ListNode(l2.val, MergeRecursive(l1, l2.next));
+            }
+            else
+            {
+              l3 = new ListNode(l1.val,  MergeRecursive(l1.next,l2));
+            }
+          }
+          return l3;
           }
           public ListNode CopyFullNode(ListNode l2)
           {
