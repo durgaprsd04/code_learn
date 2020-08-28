@@ -235,16 +235,59 @@ namespace LeetCode
                Console.WriteLine("Result of  "+ result.ToString());
              }
             */
-            StreamReader sr = new StreamReader(@"inputs/input_searchinsert.txt");
-            SearchInsertClass search = new SearchInsertClass();
+              /*
+            StreamReader sr = new StreamReader(@"inputs/input_countAndSay.txt");
+            CountAndSayClass count = new CountAndSayClass();
             Console.WriteLine("hello");
              while(sr.Peek()>0)
              {
-               var v1 =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();;
                var v2 =Convert.ToInt32(sr.ReadLine());
-               var result = search.SearchInsert(v1, v2);
-               Console.WriteLine("Result of  "+string.Join(',',v1)+" for "+ v2 +" "+ result.ToString());
+               var result = count.CountAndSay(v2);
+               Console.WriteLine("Result of  "+v2+": "+ result.ToString());
              }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_maximumsubarray.txt");
+            MaximumSubArrayClass max = new MaximumSubArrayClass();
+            Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+               var v1 =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+               var result = max.MaxSubArray(v1);
+               Console.WriteLine("Result of  ["+string.Join(',',v1)+" ]: "+ result.ToString());
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_lengthOfLastWord.txt");
+            LengthOfLastWordClass l = new LengthOfLastWordClass();
+            Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+               var v1 =sr.ReadLine();
+               var result = l.LengthOfLastWord(v1);
+               Console.WriteLine("Result of  ["+string.Join(',',v1)+" ]: "+ result);
+             }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_plusOneClass.txt");
+            PlusOneClass plus = new PlusOneClass();
+            Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+               var v1 =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+               var result = plus.PlusOne(v1);
+               Console.WriteLine("Result of  ["+string.Join(',',v1)+" ]: "+ string.Join(',',result));
+            }
+          */
+            StreamReader sr = new StreamReader(@"inputs/input_TwoBinariesClass.txt");
+            TwoBinariesClass two = new TwoBinariesClass();
+            Console.WriteLine("hello");
+             while(sr.Peek()>0)
+             {
+               var v1 =sr.ReadLine().Split(',');
+               var result = two.AddBinary(v1[0], v1[1]);
+               Console.WriteLine("Result of  [" + v1[0] + " + " +v1[1] +" ]: "+result);
+            }
 
         }
     }
