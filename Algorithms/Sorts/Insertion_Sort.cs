@@ -27,6 +27,6 @@ namespace Sorts
         public void Print()
         {
             Console.WriteLine(string.Join(",",_array));
-        } 
+        }
     }
 }
