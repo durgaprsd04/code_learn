@@ -27,7 +27,7 @@ namespace Minimum_Spanning_Trees
                 var c = graph.GetIterator(i).GetIterator().ToArray().Select(x => x as Edge).ToArray();
                 if(minHeap==null)
                     minHeap = new MinHeap<Edge>(c, c.Length);
-                else 
+                else
                     minHeap.Add(c, c.Length);
                 minHeap.Sort();
                 foreach(var e in l)

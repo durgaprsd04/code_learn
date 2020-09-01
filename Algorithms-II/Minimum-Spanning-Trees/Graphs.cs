@@ -53,7 +53,6 @@ namespace Minimum_Spanning_Trees
             this.edgeCount= edgeCount;
             edges = new Bag<Edge>[vertices];
             marked  = new bool[vertices];
-          
         }
 
         public int Vertices { get => vertices; set => vertices = value; }
@@ -71,7 +70,6 @@ namespace Minimum_Spanning_Trees
                 edges[from]= new Bag<Edge>(edge);
             else
                 edges[from].Add(edge);
-            
         }
         public void Print()
         {
@@ -82,9 +80,8 @@ namespace Minimum_Spanning_Trees
                   Console.Write("[{0}]",i);
                   edges[i].Print();
               }
-                 
              else
-             Console.WriteLine("[{0}]",i);
+                Console.WriteLine("[{0}]",i);
             }
         }
         public void PrintEdgeList(bool checkFlag=false)
@@ -96,13 +93,11 @@ namespace Minimum_Spanning_Trees
                 {
                     if(edge.Isblack )
                     Console.WriteLine(edge.ToString());
-                }                    
+                }
                 else
                 {
                      Console.WriteLine(edge.ToString());
                 }
-
-                
             }
         }
         public Bag<Edge> GetIterator(int to)
