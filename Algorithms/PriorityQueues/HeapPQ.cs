@@ -121,7 +121,7 @@ public class MinHeap<T> where T:IComparable<T>
         public void Sort()
         {
             for(int k=N/2-1;k>=1;k--)
-            {       
+            {
                 Sink(k,N);
             }
         }
