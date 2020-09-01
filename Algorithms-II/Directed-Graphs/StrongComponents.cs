@@ -4,7 +4,7 @@ using System.Collections;
 using System.Linq;
 namespace Directed_Graphs
 {
-    public class StrongComponents  
+    public class StrongComponents
     {
         DirectedGraph graph, reverseGraph;
         DepthFirstSearch dfs ;
@@ -20,34 +20,29 @@ namespace Directed_Graphs
         {
             TopologicalSort ts = new TopologicalSort(reverseGraph);
             var postOrder = ts.TopologicalSorting();
-            Stack st = new Stack();
-            while(postOrder.Count>0)
-            {
-                st.Push(postOrder.Dequeue());
-            }
+            Stack st = ts.Dfs.ReversePostOrder;
             var count=0;
-            Console.WriteLine(string.Join(',',postOrder.ToArray().Select(x=> (int)x)));
+            Console.WriteLine(string.Join(',',st.ToArray().Select(x=> (int)x)));
             //dfs.DFS();
             while(st.Count>0)
             {
                 var i =(int) st.Pop();
                 if(dfs.isVisited[i])
                 {
-                    Console.WriteLine("peaking "+i);
+                    Console.WriteLine("peeking "+i);
                    // postOrder.Dequeue();
                     cc[i]=count;
                 }
-                else{
+                else
+                {
                      dfs.Dfs(i);
-                    cc[i]= ++count;
+                    cc[i]= count++;
                 }
-               
             }
             for(int i =0;i<cc.Length;i++)
             {
                 Console.WriteLine("Connected component {0} {1} ",i, cc[i]);
             }
-            
         }
     }
 }

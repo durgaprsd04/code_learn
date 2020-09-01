@@ -20,22 +20,39 @@ namespace Directed_Graphs
             }
             g.Print();
 
+            /*
             var rv = g.Reverse();
             Console.WriteLine("reverse printing");
             rv.Print();
+            */
+            /*
+            Reachability reach = new Reachability();
+            var v1=0;
+            var v2=4;
+            var result = reach.Reachable(g,v1,v2);
+            Console.WriteLine($"{v1} & {v2} are reachable "+result);
+            */
+            
             StrongComponents sc = new StrongComponents(g);
             sc.Kosharaju_Sharir();
-
-            //DepthFirstSearch depthFirstSearch = new DepthFirstSearch(g);
-           //depthFirstSearch.DFS();
-            //depthFirstSearch.Print();
-            //BreadthFirstSearch bfs = new BreadthFirstSearch(g);
-          //  bfs.Bfs();
-           // bfs.Print();
-           //TopologicalSort ts = new TopologicalSort(g);
-           //var postorder = ts.TopologicalSorting();
-           //Console.Write("Post Order  ");
-          // Console.WriteLine(string.Join(',',postorder.ToArray()));
+            
+            /*
+            DepthFirstSearch depthFirstSearch = new DepthFirstSearch(g);
+            depthFirstSearch.DFS();
+            depthFirstSearch.Print();
+            */
+            /*
+            BreadthFirstSearch bfs = new BreadthFirstSearch(g);
+            bfs.Bfs();
+            bfs.Print();
+            */
+           /*
+            TopologicalSort ts = new TopologicalSort(g);
+            var postorder = ts.TopologicalSorting();
+            Console.WriteLine("Post Order  "+string.Join(',',postorder.ToArray()));
+            Console.WriteLine("Pre Order  "+string.Join(',',ts.Dfs.PreOrder.ToArray()));
+            Console.WriteLine("Reverse  PostOrder  "+string.Join(',',ts.Dfs.ReversePostOrder.ToArray()));
+           */
         }
     }
 }

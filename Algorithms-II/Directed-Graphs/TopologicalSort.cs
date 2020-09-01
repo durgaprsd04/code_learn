@@ -7,19 +7,18 @@ namespace Directed_Graphs
     {
         Queue postorder = new Queue();
         DirectedGraph graph;
-        DepthFirstSearch Dfs;
+        public DepthFirstSearch Dfs;
         int vertices;
         public TopologicalSort(DirectedGraph graph )
         {
-            this.graph = graph; 
+            this.graph = graph;
             vertices = graph.Vertices;
             Dfs = new DepthFirstSearch(graph);
         }
-        public Queue TopologicalSorting() 
+        public Queue TopologicalSorting()
         {
             Dfs.DFS();
             return Dfs.PostOrder;
         }
-        
     }
 }
