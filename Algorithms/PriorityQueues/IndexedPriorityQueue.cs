@@ -6,7 +6,7 @@ namespace PriorityQueues
   {
       private int Size=1;
       private Node<T> [] indexedArray;
-      class Node<T1>
+      public class Node<T1>
       {
         private int key;
         private T1 value;
@@ -79,7 +79,7 @@ namespace PriorityQueues
                 return;
             if((2*n+1)>=limit)
             {
-                if(indexedArray[2*n].Key < indexedArray[n].Key)
+                if(indexedArray[2*n].Value.CompareTo( indexedArray[n].Value)<0)
                     {
                         largerindex=2*n;
                         Swap(largerindex,n);
@@ -87,9 +87,9 @@ namespace PriorityQueues
                     }
                 return;
             }
-            if((indexedArray[2*n+1].Key < indexedArray[n].Key)  || (indexedArray[2*n].Key < indexedArray[n].Key))
+            if((indexedArray[2*n+1].Value.CompareTo(indexedArray[n].Value)<0)  || (indexedArray[2*n].Value.CompareTo(indexedArray[n].Value)<0))
             {
-                largerindex = indexedArray[2*n+1].Key< indexedArray[n].Key?2*n+1:2*n;
+                largerindex = (indexedArray[2*n+1].Value.CompareTo(indexedArray[n].Value)<0)?2*n+1:2*n;
                 Swap(largerindex, n);
                 flag=true;
             }
@@ -98,25 +98,33 @@ namespace PriorityQueues
             Sink(largerindex, limit);
       }
 
-      public T DeleteMin()
+      public Node<T> DeleteMin()
       {
         Swap(1,Size-1);
-        var returnChar = indexedArray[--Size].Value ;
+        --Size;
+        var returnChar = new Node<T>(indexedArray[Size].Key, indexedArray[Size].Value);
         if(Size<= indexedArray.Length/4)
         {
            var temp = new Node<T> [Size+1];
-          for(int i=0;i<indexedArray.Length ;i++)
+          for(int i=0;i<Size ;i++)
           {
+            //Console.WriteLine(" i "+i);
             temp[i] = indexedArray[i];
           }
           indexedArray = new Node<T> [(indexedArray.Length)/2];
-          for(int i=0;i<temp.Length;i++)
+          for(int i=0;i<Size ;i++)
           {
             indexedArray[i] = temp[i];
           }
         }
         Sort();
         return returnChar;
+      }
+      public bool IsEmpty()
+      {
+        if(Size==1)
+          return true;
+        return false;
       }
       private void Swap(int i, int j)
       {

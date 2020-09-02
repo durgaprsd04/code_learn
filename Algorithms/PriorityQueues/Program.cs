@@ -8,13 +8,15 @@ namespace PriorityQueues
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            var seed ="MinimumPriorityQueue".ToCharArray();
+            var seed ="abc".ToCharArray();
             var indexPQ = new IndexedPriorityQueue<char>(5);
             for(int i=0;i<seed.Length;i++)
               indexPQ.Add((int)seed[i], seed[i]);
             indexPQ.Print();
             Console.WriteLine("Min on first pop : " +indexPQ.DeleteMin());
             Console.WriteLine("Min on first pop : " +indexPQ.DeleteMin());
+            Console.WriteLine("Min on first pop : " + indexPQ.DeleteMin());
+            Console.WriteLine("after all Delete min "+ indexPQ.IsEmpty());
             indexPQ.Print();
             /*
             var v ="aquickkkkkkbrownfx";
