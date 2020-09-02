@@ -23,13 +23,19 @@ namespace Minimum_Spanning_Trees
             Console.WriteLine("Graph created");
             graph.Print();
             graph.PrintEdgeList();
+            /*
+            Console.WriteLine("Kruskal Algorithm");
             KruskalAlgorithm ka = new KruskalAlgorithm(graph);
             ka.Run();
-            Console.WriteLine("-------------------------");
+            Console.WriteLine("Lazy Prims Algorithm");
             graph.PrintEdgeList(true);
-             Console.WriteLine("MST Path sum {0}",graph.MSTSum());
-             LazyPrimsAlgorithm lz = new LazyPrimsAlgorithm(graph);
-             lz.Run();
+            Console.WriteLine("MST Path sum {0}",graph.MSTSum());
+            LazyPrimsAlgorithm lz = new LazyPrimsAlgorithm(graph);
+            lz.Run();
+            */
+            Console.WriteLine("Eager prims Algorithm");
+            EagerPrimsAlgorithm ep = new EagerPrimsAlgorithm(graph);
+            ep.Run();
         }
     }
 }
