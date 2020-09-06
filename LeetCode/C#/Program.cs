@@ -492,6 +492,7 @@ namespace LeetCode
               Console.WriteLine("Result of   ["+string.Join( ',',v1) +"]  with sum "+v2+" :" + result);
             }
             */
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_PascalTriangle.txt");
             PascalTriangle pt = new PascalTriangle();
             Console.WriteLine("hello");
@@ -504,7 +505,82 @@ namespace LeetCode
                 Console.WriteLine("["+string.Join( ',',v.ToArray()) +"]");
               Console.WriteLine();
             }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_linkedListCycle.txt");
+            LinkedListCycle l1 = new LinkedListCycle();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              ListNode l=null, c=null;
+              foreach(int v1 in v)
+              {
+                 l = new ListNode(v1, l);
+                if(v1==1)
+                   c=l;
+              }
+              l.next = new ListNode(l.val, l);
+              //l.Traverse();
+              var r = l1.HasCycle(l);
+              Console.WriteLine("Has cycle "+r);
 
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_intersection.txt");
+            LinkedListIntersection ln = new LinkedListIntersection();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var v2 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var n = Convert.ToInt32(sr.ReadLine());
+              ListNode l1=null, l2=null,l=null;
+              for(int i =0;i<n;i++)
+              {
+                 l = new ListNode(v1[i], l);
+              }
+              l1 = new ListNode(v1[n], l);
+              for(int  i=n+1;i<v1.Length;i++)
+              {
+                  l1 = new ListNode(v1[i], l1);
+              }
+              l2 = new ListNode(v2[n],l);
+              for(int  i=n+1;i<v2.Length;i++)
+              {
+                  l2 = new ListNode(v2[i], l2);
+              }
+
+              //l.next = new ListNode(l.val, l);
+              l.Traverse();
+              l1.Traverse();
+              l2.Traverse();
+              var r = ln.GetIntersectionNode(l1,l2);
+              Console.WriteLine("intersecting node");
+              r.Traverse();
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_excelsheet.txt");
+            ExcelSheetColumn ex = new ExcelSheetColumn();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var n = Convert.ToInt32(sr.ReadLine());
+              var r = ex.ConvertToTitle(n);
+              Console.WriteLine($"excel for array {n} :  " +r);
+            }
+            */
+            StreamReader sr = new StreamReader(@"inputs/input_majority.txt");
+            MajorityElementClass me = new MajorityElementClass();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var res = me.MajorityElement(v1);
+              Console.WriteLine($"excel for array {string.Join(',', v1)} :  " +res);
+            }
 
         }
     }
