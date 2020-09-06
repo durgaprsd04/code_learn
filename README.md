@@ -13,7 +13,8 @@
 	g)IOC
 	h)callback
 	i)Delegates/Events.
-	j)Functional/LINQ. 	
+	j)Functional/LINQ. 
+	k)TPL/other nifty features
 ### Python :question:
 	a)basics
 	b)advanced operations for collections
