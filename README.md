@@ -1,5 +1,8 @@
-# Having a list of items to keep track of ideas
+# Having a list of items to keep track of changes done
 ## Design patterns 
+a)Creational
+b)Behavioural
+c)Structural
 ### C# language specific
 	a)I/O operations
 	b)File operations
@@ -10,7 +13,7 @@
 	g)IOC
 	h)callback
 	i)Delegates/Events.
-	j)	
+	j)Functional/LINQ. 	
 ### Python 
 	a)basics
 	b)advanced operations for collections
@@ -47,4 +50,9 @@
 		10)Applications of BST - refresh 
 		11)Applications of Symbol tables -refresh
 #### Algo and DS - II
-		1)All that portion in second version - will come back with a list once the above is done
+		1)Graphs API
+		2)BFS & DFS
+		3)Prim's
+		4)Kruskal's
+		5)Dijksra's
+		6)Kosaraju Sharir
