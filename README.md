@@ -1,8 +1,8 @@
 # Having a list of items to keep track of changes done
 ## Design patterns 
-a)Creational
-b)Behavioural
-c)Structural
+	a)Creational
+	b)Behavioural
+	c)Structural
 ### C# language specific
 	a)I/O operations
 	b)File operations
@@ -25,7 +25,7 @@ c)Structural
 ### SQL	
 	a)few best practices
 	b)batch insert
-	c)pivot 
+	c)pivot :blush:
 	d)row count
 	e)advanced concepts
 ### CS basics
@@ -38,17 +38,17 @@ c)Structural
 	1) Basics
 	2) Few problems
 #### Algo and DS - I
-		1)Elementary Sorts - done 
-		2)Union Find - done
-		3)Stacks and Queues - done
-		4)Merge Sort - done
-		5)Quick Sort - done
-		6)Elementary Symbol tables - done(refresh neededd)
-		7)Priority Queues - done (refresh needed)
-		8)Balanced Search Trees - some done (refresh needed)
-		9)Hash Tables - some done (refresh needed)
-		10)Applications of BST - refresh 
-		11)Applications of Symbol tables -refresh
+		1)~~Elementary Sorts~~ 
+		2)Union Find 
+		3)Stacks and Queues 
+		4)Merge Sort
+		5)Quick Sort 
+		6)Elementary Symbol tables
+		7)Priority Queues
+		8)Balanced Search Trees
+		9)Hash Tables
+		10)Applications of BST
+		11)Applications of Symbol tables
 #### Algo and DS - II
 		1)Graphs API
 		2)BFS & DFS
