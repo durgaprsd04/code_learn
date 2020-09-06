@@ -35,9 +35,10 @@
 	c)compiler basics
 	d)concepts of software engineering
 	e)version control
-### Dynamic programming :question:
+### Dynamic programming
 1. Basics  (under python) :heavy_check_mark:
 2. Few problems (under python) :heavy_check_mark:
+3. Solutions to classic problems :question:
 
 ### Algorithm and Data Structures
 #### Algo and DS - I :heavy_check_mark:
