@@ -572,6 +572,7 @@ namespace LeetCode
               Console.WriteLine($"excel for array {n} :  " +r);
             }
             */
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_majority.txt");
             MajorityElementClass me = new MajorityElementClass();
             Console.WriteLine("hello");
@@ -581,7 +582,24 @@ namespace LeetCode
               var res = me.MajorityElement(v1);
               Console.WriteLine($"excel for array {string.Join(',', v1)} :  " +res);
             }
-
+            */
+             StreamReader sr = new StreamReader(@"inputs/input_removeListElement.txt");
+            RemoveListElementsClass rm = new RemoveListElementsClass();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var n = Convert.ToInt32(sr.ReadLine());
+              ListNode l=null;
+              for(int i =0;i<v1.Length;i++)
+              {
+                 l = new ListNode(v1[i], l);
+              }
+              l.Traverse();
+              var r = rm.RemoveElements(l, n);
+              Console.WriteLine("after removal");
+              r.Traverse();
+            }
         }
     }
 }
