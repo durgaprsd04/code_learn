@@ -1,14 +1,14 @@
 # Links to some stuff
 
-## Stuff from Thampi
+## Links to articles
 1. [Github repo shashank88](https://github.com/shashank88/system_design)
 2. [Distributed Systems blog](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
+3. [Database indexing](https://www.freecodecamp.org/news/database-indexing-at-a-glance-bb50809d48bd/)
+4. [Resilency in Distributed Systems](https://link.medium.com/IOwlKnzs5Z) 
 
-## Stuff from Melvin
-1. [Database indexing](https://www.freecodecamp.org/news/database-indexing-at-a-glance-bb50809d48bd/)
-2. [Resilency in Distributed Systems](https://link.medium.com/IOwlKnzs5Z) 
-3. [Gurav Sen](https://www.youtube.com/watch?v=mhUQe4BKZXs&list=PLkQkbY7JNJuBoTemzQfjym0sqbOHt5fnV)
-4. [Tech Dummies](https://www.youtube.com/channel/UCn1XnDWhsLS5URXTi5wtFTA)
+## Youtube channels
+1. [Gurav Sen](https://www.youtube.com/watch?v=mhUQe4BKZXs&list=PLkQkbY7JNJuBoTemzQfjym0sqbOHt5fnV)
+2. [Tech Dummies](https://www.youtube.com/channel/UCn1XnDWhsLS5URXTi5wtFTA)
 
 ## Books
 1. [Software Architecture Patterns](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/)
