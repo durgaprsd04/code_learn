@@ -26,6 +26,12 @@ namespace RadixSort
             Console.WriteLine("Before Sort "+ string.Join(',', resultArray));
             lsd.LowestRadixSortFunc(resultArray);
             Console.WriteLine("After sort " + string.Join(',', resultArray));
+            Console.WriteLine("MSD Sorting");
+            var resultArray1 = listOfStrings.ToArray();
+            Console.WriteLine("Before Sort  "+string.Join(',', resultArray1));
+            MostSignificantDigitRadixSort msd = new MostSignificantDigitRadixSort();
+            msd.MSD(resultArray1);
+            Console.WriteLine("Result array "+string.Join(',', resultArray1));
         }
     }
 }
