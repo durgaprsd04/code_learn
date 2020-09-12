@@ -32,6 +32,12 @@ namespace RadixSort
             MostSignificantDigitRadixSort msd = new MostSignificantDigitRadixSort();
             msd.MSD(resultArray1);
             Console.WriteLine("Result array "+string.Join(',', resultArray1));
+            Console.WriteLine("3-way quick sort");
+            var resultArray2 = listOfStrings.ToArray();
+            Console.WriteLine("Before Sort  "+string.Join(',', resultArray2));
+            ThreeWayQuickSort twqs = new ThreeWayQuickSort();
+            twqs.Sort(resultArray2);
+            Console.WriteLine("After Sort "+string.Join(',', resultArray2));
         }
     }
 }
