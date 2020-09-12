@@ -36,8 +36,13 @@ namespace RadixSort
             var resultArray2 = listOfStrings.ToArray();
             Console.WriteLine("Before Sort  "+string.Join(',', resultArray2));
             ThreeWayQuickSort twqs = new ThreeWayQuickSort();
-            twqs.Sort(resultArray2);
-            Console.WriteLine("After Sort "+string.Join(',', resultArray2));
+            //twqs.Sort(resultArray2);
+            Console.WriteLine("After Sort(not complete) "+string.Join(',', resultArray2));
+            var opening="aquickbrownfoxjumpedoveralazydogbrownfoxbrosattacked";
+            Console.WriteLine("Suffix Array");
+            SuffixArray sa = new SuffixArray();
+            var suffix = sa.LongestRepeatingSubSequence(opening);
+            Console.WriteLine("Longest repeating suffix "+suffix);
         }
     }
 }
