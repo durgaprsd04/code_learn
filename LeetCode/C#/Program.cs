@@ -583,7 +583,8 @@ namespace LeetCode
               Console.WriteLine($"excel for array {string.Join(',', v1)} :  " +res);
             }
             */
-             StreamReader sr = new StreamReader(@"inputs/input_removeListElement.txt");
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_removeListElement.txt");
             RemoveListElementsClass rm = new RemoveListElementsClass();
             Console.WriteLine("hello");
             while(sr.Peek()>0)
@@ -600,6 +601,64 @@ namespace LeetCode
               Console.WriteLine("after removal");
               r.Traverse();
             }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_climbStairs.txt");
+            ClimbingStairs cs = new ClimbingStairs();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var n = Convert.ToInt32(sr.ReadLine());
+              var r = cs.ClimbStairs(n);
+              Console.WriteLine("no of ways" + r);
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_subSequence.txt");
+            SubSequence ss = new SubSequence();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var t = sr.ReadLine();
+              var s = sr.ReadLine();
+              var r = ss.IsSubsequence(s,t);
+              Console.WriteLine("no of ways" + r);
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_minCostClimb.txt");
+            MinCostClimbingStairsClass mc = new MinCostClimbingStairsClass();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var r = mc.MinCostClimbingStairs(v1);
+              Console.WriteLine("min cost " + r);
+            }
+            *
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_divisorGame.txt");
+            DivisorGameClass dg = new DivisorGameClass();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var n = Convert.ToInt32(sr.ReadLine());
+              var r = dg.DivisorGame(n);
+              Console.WriteLine("Alice wins ? " + r);
+            }
+            */
+            StreamReader sr = new StreamReader(@"inputs/input_houseRobber.txt");
+            HouseRobber hr = new HouseRobber();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var r = hr.Rob(v1);
+              Console.WriteLine("max amount" + r);
+            }
+
+
         }
     }
 }
