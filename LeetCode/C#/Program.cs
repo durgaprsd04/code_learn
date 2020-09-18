@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-namespace LeetCode
+namespace Leetcode
 {
     class Program
     {
@@ -11,15 +11,14 @@ namespace LeetCode
             //Solution sol = new Solution();
             //int [] a = {1,1,1};
             //Console.WriteLine("sum" +string.Join(',', sol.RunningSum(a)));
-            /*ListNode l = new ListNode(5);
+            //ListNode l = new ListNode(5);
             //l.next = new ListNode(4);
             //l.next.next= new ListNode(3);
-            l.Traverse();
-            ListNode l1 = new ListNode(5);
+            //l.Traverse();
+            //ListNode l1 = new ListNode(5);
             //l1.next = new ListNode(6);
             //l1.next.next= new ListNode(4);
-            l1.Traverse();
-            */
+            //l1.Traverse();
             /*Solution2 sn = new Solution2();
             StreamReader sr = new StreamReader("input_longestsubstring.txt");
             while(sr.Peek()>0)
@@ -648,16 +647,52 @@ namespace LeetCode
               Console.WriteLine("Alice wins ? " + r);
             }
             */
-            StreamReader sr = new StreamReader(@"inputs/input_houseRobber.txt");
-            HouseRobber hr = new HouseRobber();
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_rangeSum.txt");
             Console.WriteLine("hello");
             while(sr.Peek()>0)
             {
               var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
-              var r = hr.Rob(v1);
-              Console.WriteLine("max amount" + r);
+              NumArray n = new NumArray(v1);
+              var r = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var res =  n.SumRange(r[0],r[1]);
+              Console.WriteLine($"sum abount for range [{r[0]} {r[1]}]" + res);
             }
-
+            */
+            /*
+             StreamReader sr = new StreamReader(@"inputs/input_ContinousSubArray.txt");
+            ContinousSubArray cs = new ContinousSubArray();
+             Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var r = Convert.ToInt32(sr.ReadLine());
+              var res =  cs.CheckSubarraySum(v1,r);
+              Console.WriteLine($"continous sub array exits" + res);
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_KConcatenation.txt");
+            KConcatenation kc = new KConcatenation();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var r = Convert.ToInt32(sr.ReadLine());
+              var res =  kc.KConcatenationMaxSum(v1,r);
+              Console.WriteLine($"continous sub array exits" + res);
+            }
+            */
+            StreamReader sr = new StreamReader(@"inputs/input_NonOverlapping.txt");
+            NonOverLappingSubArray ns = new NonOverLappingSubArray();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var r = Convert.ToInt32(sr.ReadLine());
+              var res =  ns.MinSumOfLengths(v1, r);
+              Console.WriteLine($"sum of min lengths" + res);
+            }
 
         }
     }
