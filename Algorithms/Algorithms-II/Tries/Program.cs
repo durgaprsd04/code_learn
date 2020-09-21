@@ -39,6 +39,12 @@ namespace Tries
             r.Delete("brownstone");
             r.Delete("lazy");
             r.Print();
+
+            Console.WriteLine("Ternary Tries");
+            TernaryTries tt = new TernaryTries();
+            tt.Add("hello",1);
+            tt.Add("abcd",2);
+            tt.Print();
         }
     }
 }
