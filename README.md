@@ -60,11 +60,19 @@
 4. Kruskal's :heavy_check_mark:
 5. Dijksra's :heavy_check_mark:
 6. Kosaraju Sharir :heavy_check_mark:
-7. Bellam Ford :question:
+7. Bellman Ford :question:
 8. Single Source Path for DAG :question:
 9. Bipartite :question:
 10. Maximal Flow :question:
 11. Radix Sort :heavy_check_mark:
+12. Ford Fulkerson :question:
+13. Boyer Moore :question:
+14. Knuth-Morris-Prat :question:
+15. Rabin-Karp :question:
+16. Huffman coding
+17. LZW coding :question:
+18. Regular Experession  :question:
+19. Brewer's Problem :question:
 
 ### System Design
 > As there is no particular code for this i will try to link all the books are resources used.
