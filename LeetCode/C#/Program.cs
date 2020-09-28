@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-namespace Leetcode
+namespace LeetCode
 {
     class Program
     {
@@ -683,7 +683,8 @@ namespace Leetcode
               Console.WriteLine($"continous sub array exits" + res);
             }
             */
-            StreamReader sr = new StreamReader(@"inputs/input_NonOverlapping.txt");
+            
+            /*StreamReader sr = new StreamReader(@"inputs/input_NonOverlapping.txt");
             NonOverLappingSubArray ns = new NonOverLappingSubArray();
             Console.WriteLine("hello");
             while(sr.Peek()>0)
@@ -693,7 +694,49 @@ namespace Leetcode
               var res =  ns.MinSumOfLengths(v1, r);
               Console.WriteLine($"sum of min lengths" + res);
             }
-
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_countPrime.txt");
+            CountPrimesClass c = new CountPrimesClass();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var n = Convert.ToInt32(sr.ReadLine());
+              var res =  c.CountPrimes(n);
+              Console.WriteLine($"number of primes" + res);
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_isomorphic.txt");
+            IsoMorphicClass isc = new IsoMorphicClass();
+            Console.WriteLine("hello");
+            while(sr.Peek()>0)
+            {
+              var s1 = sr.ReadLine();
+              var s2 = sr.ReadLine();
+              var res =  isc.IsIsomorphic(s1, s2);
+              Console.WriteLine($"is isomorphic" + res);
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_linkedlistreverse.txt");
+            LinkedListReverse llr = new LinkedListReverse();
+            var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+            ListNode  l1=null;
+            for(int i =0;i<v1.Length;i++)
+            {
+                 l1 = new ListNode(v1[i], l1);
+            }
+            l1.Traverse();
+            var l2 = llr.ReverseList(l1);
+            l2.Traverse();
+            */
+             StreamReader sr = new StreamReader(@"inputs/input_containsDuplicate.txt");
+            ContainsDuplicateClass cdc = new ContainsDuplicateClass();
+             var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+             var res = cdc.ContainsDuplicate(v1);
+             Console.WriteLine($"contains duplicate {string.Join(',', v1)} in  {res}");
+ 
         }
     }
 }

@@ -1,22 +1,7 @@
 using System;
 namespace LeetCode{
 //  Definition for singly-linked list.
-  public class ListNode {
-      public int val;
-      public ListNode next;
-      public ListNode(int val=0, ListNode next=null) {
-          this.val = val;
-          this.next = next;
-      }
-      public void Traverse()
-      {
-        Console.Write(val+"->");
-        if(next!=null)
-          next.Traverse();
-        else
-          Console.WriteLine();
-      }
-  }
+
 public class Solution1 {
     public ListNode AddTwoNumbers(ListNode l1, ListNode l2) {
         var l3=l1;
