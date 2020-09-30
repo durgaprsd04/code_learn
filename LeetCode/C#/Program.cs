@@ -731,12 +731,39 @@ namespace LeetCode
             var l2 = llr.ReverseList(l1);
             l2.Traverse();
             */
-             StreamReader sr = new StreamReader(@"inputs/input_containsDuplicate.txt");
+            /* 
+            StreamReader sr = new StreamReader(@"inputs/input_containsDuplicate.txt");
             ContainsDuplicateClass cdc = new ContainsDuplicateClass();
              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
              var res = cdc.ContainsDuplicate(v1);
              Console.WriteLine($"contains duplicate {string.Join(',', v1)} in  {res}");
- 
+            */
+            /*
+             StreamReader sr = new StreamReader(@"inputs/input_shuffle.txt");
+             ShuffleTheArray st =  new ShuffleTheArray();
+             var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+             var v2 = Convert.ToInt32(sr.ReadLine());
+             var res = st.Shuffle(v1,v2);
+             Console.WriteLine($"contains duplicate {string.Join(',', res)}");
+             */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_nondecreasing.txt");
+            while(sr.Peek()>0)
+            {
+             NonDecreasingSubArray ns = new NonDecreasingSubArray();
+             var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+             var res = ns.CheckPossibility(v1);
+             Console.WriteLine($"non decreasing in array {string.Join(',', v1)} is  {res}");
+            }*/
+            StreamReader sr = new StreamReader(@"inputs/input_thirdmaximum.txt");
+            while(sr.Peek()>0)
+            {
+             ThirdMaximumClass th = new ThirdMaximumClass();
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+             var res = th.ThirdMax(v1);
+             Console.WriteLine($"third maximum {string.Join(',', v1)} is  {res}");
+            }
+
         }
     }
 }
