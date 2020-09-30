@@ -731,11 +731,21 @@ namespace LeetCode
             var l2 = llr.ReverseList(l1);
             l2.Traverse();
             */
-             StreamReader sr = new StreamReader(@"inputs/input_containsDuplicate.txt");
-            ContainsDuplicateClass cdc = new ContainsDuplicateClass();
+             
+            /*
+             ContainsDuplicateClass cdc = new ContainsDuplicateClass();
              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
              var res = cdc.ContainsDuplicate(v1);
              Console.WriteLine($"contains duplicate {string.Join(',', v1)} in  {res}");
+              */
+              StreamReader sr = new StreamReader(@"inputs/input_thirdmax.txt");
+              ThirdMaxNumberClass th1 = new ThirdMaxNumberClass();
+              while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var res =  th1.ThirdMax(v1);
+              Console.WriteLine($"third max for {string.Join(',',v1)} :" + res);
+            }
  
         }
     }
