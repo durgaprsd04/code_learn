@@ -41,11 +41,11 @@ namespace LeetCode
                         secondMax = nums[i];
                     }
                     else
-                    {                      
+                    {
                         thirdMax = nums[i];
                     }
-                }         
-                
+                }
+
             }
             Console.WriteLine( $"min  {Int32.MinValue} first max {firstMax} second {secondMax} thrid {thirdMax}");
             if(distintElements)

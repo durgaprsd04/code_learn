@@ -7,6 +7,7 @@ namespace LeetCode
     {
       public int ThirdMax(int[] nums)
       {
+        /*
         int firstMax=Int32.MinValue , secondMax=Int32.MinValue, thirdMax=Int32.MinValue;
         bool secondMaxSet =false, thirdmaxSet=false;
         for(int i=0;i<nums.Length;i++)
@@ -34,7 +35,8 @@ namespace LeetCode
         Console.WriteLine( $"min  {Int32.MinValue} first max {firstMax} second {secondMax} thrid {thirdMax}");
         if(!thirdmaxSet)
           return firstMax;
-        return thirdMax;
+        return thirdMax;*/
+        return 0;
       }
     }
 }

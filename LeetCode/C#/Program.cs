@@ -755,6 +755,7 @@ namespace LeetCode
              var res = ns.CheckPossibility(v1);
              Console.WriteLine($"non decreasing in array {string.Join(',', v1)} is  {res}");
             }*/
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_thirdmaximum.txt");
             while(sr.Peek()>0)
             {
@@ -762,6 +763,138 @@ namespace LeetCode
               var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
              var res = th.ThirdMax(v1);
              Console.WriteLine($"third maximum {string.Join(',', v1)} is  {res}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_shortestunsorted.txt");
+            while(sr.Peek()>0)
+            {
+              FindUnsortedSubarrayClass f = new FindUnsortedSubarrayClass();
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+             var res = f.FindUnsortedSubarray(v1);
+             Console.WriteLine($"third maximum {string.Join(',', v1)} is  {res}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_flowerbed.txt");
+            while(sr.Peek()>0)
+            {
+              FlowerBed fb  = new FlowerBed();
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var v2 = Convert.ToInt32(sr.ReadLine());
+             var res = fb.CanPlaceFlowers(v1,v2);
+             Console.WriteLine($"can place flower bed {string.Join(',', v1)} in {v2} is  {res}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_greatestcandies.txt");
+            while(sr.Peek()>0)
+            {
+              GreatestCandiesClass gc = new GreatestCandiesClass();
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var v2 = Convert.ToInt32(sr.ReadLine());
+              var res = gc.KidsWithCandies(v1,v2);
+             Console.WriteLine($"can place flower bed {string.Join(',', v1)} in {v2} is  {string.Join(',',res.ToArray())}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_partitionArray.txt");
+            while(sr.Peek()>0)
+            {
+              PartitionArray pa = new PartitionArray();
+              var v1 = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              var res = pa.CanThreePartsEqualSum(v1);
+             Console.WriteLine($"Can be split into 3 {string.Join(',', v1)} is  {res}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_positionLargeGroup.txt");
+            while(sr.Peek()>0)
+            {
+              PositioninLargeGroup pg = new PositioninLargeGroup();
+              var v1 = sr.ReadLine();
+              var res = pg.LargeGroupPositions(v1);
+              Console.Write($"substring arrays {v1} is");
+              foreach(var res1 in res)
+              {
+                Console.Write("["+string.Join(',', res1.ToArray())+"]");
+              }
+              Console.WriteLine();
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_1bit2bit.txt");
+            while(sr.Peek()>0)
+            {
+              OneBit2Bit on = new OneBit2Bit();
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var res = on.IsOneBitCharacter(v1);
+              Console.Write($"substring arrays {string.Join(',', v1)} is {res}");
+              Console.WriteLine();
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_prefix5.txt");
+            while(sr.Peek()>0)
+            {
+              BinaryPrefix5 b5 = new BinaryPrefix5();
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var res = b5.PrefixesDivBy5(v1);
+              Console.Write($"divsible by arrays {string.Join(',', v1)} is {string.Join(',', res.ToArray())}");
+              Console.WriteLine();
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_pairofsongs.txt");
+            PairofSongs ps = new PairofSongs();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var res = ps.NumPairsDivisibleBy60(v1);
+              Console.Write($"pairs of songs {string.Join(',', v1)} is {res}");
+              Console.WriteLine();
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_maxProductof3.txt");
+            MaxProductof3 mx3= new MaxProductof3();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var res = mx3.MaximumProduct(v1);
+              Console.Write($"maximum product {res}");
+              Console.WriteLine();
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_EquivalentDomino.txt");
+            EquivalentDomino ed = new EquivalentDomino();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var v2 = new int [v1.Length/2 ][];
+              for(int i=0;i<v1.Length;i=i+2)
+              {
+                  v2[i/2] = new int []{v1[i], v1[i+1]};
+              }
+              foreach(var j in v2)
+              {
+                foreach(var k in j)
+                  Console.Write(k);
+                Console.WriteLine();
+              }
+
+              var res = ed.NumEquivDominoPairs(v2);
+              Console.Write($"number of dominos {res}");
+              Console.WriteLine();
+            }*/
+            StreamReader sr = new StreamReader(@"inputs/input_lcis.txt");
+            LongestIncreasingSubSequence lcs = new LongestIncreasingSubSequence();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var res = lcs.FindLengthOfLCIS(v1);
+              Console.WriteLine($"length lcs {res}");
             }
 
         }
