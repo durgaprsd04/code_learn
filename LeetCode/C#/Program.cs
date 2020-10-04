@@ -1039,25 +1039,29 @@ namespace LeetCode
               Console.WriteLine($"result for {v1} :  {string.Join(',', res.ToArray())}");
             }
             */
+
             StreamReader sr = new StreamReader(@"inputs/input_longestunivaluepath.txt");
             LongestUniValuePathTree lvt = new LongestUniValuePathTree();
+            TreeUtility tu = new TreeUtility();
             Console.WriteLine("hello");
-            TreeNode res1=null,res2=null;
+            TreeNode res1=null;
             while(sr.Peek()>0)
              {
-              var v1 =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
-              foreach(var v in v1)
+              var v1 =sr.ReadLine().Split(',');//select(x => Convert.ToInt32(x)).ToArray();
+              var v2 = new int?[v1.Length +1 ];
+              v2[0]=0;
+              for(int i=1;i<=v1.Length;i++)
               {
-                  if(res1==null)
-                    res1 = new TreeNode(v,null,null);
-                  else
-                    res1.Add(new TreeNode(v, null,null));
+                int a=0;
+                if(Int32.TryParse(v1[i-1],out a))
+                  v2[i]=a;
               }
-              res1.Traverse();
-              var res = lvt.LongestUnivaluePath(res1);
-              Console.WriteLine($"Longest value path {res}");
+              //res1 = tu.BuildTreeFromInorder(v1);
+              res1 = tu.ConstructTreeFromArray(v2);
              }
-
+            res1.InOrderTraverse();
+            res1.PreOrderTraversal();
+            res1.PostOrderTraversal();
         }
     }
 }

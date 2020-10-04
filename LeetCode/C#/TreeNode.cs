@@ -43,25 +43,59 @@ namespace LeetCode
       {
         return val.ToString();
       }
-      public void Traverse()
+      public void InOrderTraverse()
       {
-        Console.Write(this.val);
-        //Console.WriteLine();
-        Traverse(this.left);
-        Traverse(this.right);
-        Console.WriteLine();
+        InOrderTraverse(this);
       }
-      public void Traverse(TreeNode node)
+      private void InOrderTraverse(TreeNode node)
       {
         if(node==null)
         {
           //Console.Write("*");
           return;
         }
-        Console.Write(node.val);
-        //Console.WriteLine();
-        Traverse(node.left);
-        Traverse(node.right);
+        if(node.left !=null)
+        {
+          InOrderTraverse(node.left);
+        }
+        else
+        {
+          Console.Write(node.val);
+          return;
+        }
+        Console.Write(node.val); 
+        InOrderTraverse(node.right);
+      }
+      public void PreOrderTraversal()
+      {
+          Console.WriteLine();
+          PreOrderTraversal(this);
+      }
+      private void PreOrderTraversal(TreeNode t)
+      {
+          if(t!=null)
+          {
+            Console.Write(t.val);
+            PreOrderTraversal(t.left);
+            PreOrderTraversal(t.right);
+          }
+            //Console.WriteLine();
+      }
+      public void PostOrderTraversal()
+      {
+        Console.WriteLine();
+        PostOrderTraversal(this);
+        Console.WriteLine();
+
+      }
+      private void PostOrderTraversal(TreeNode t)
+      {
+        if(t!=null)
+        {
+          PostOrderTraversal(t.left);
+          PostOrderTraversal(t.right);
+          Console.Write(t.val);
+        }
       }
       public void AddFromLevelOrderArray(int? [] a)
       {
@@ -89,6 +123,59 @@ namespace LeetCode
           }
         }
       }
+
+  }
+  public class TreeUtility
+  {
+      public TreeNode BuildTreeFromInorder(int [] a)
+      {
+        if(a.Length <1)
+          return null;
+        TreeNode t = new TreeNode(a[0],null,null);
+        return BuildTreeFromInorder(ref t, a, 1);
+     }
+      private TreeNode BuildTreeFromInorder(ref TreeNode t, int []a,int i)
+      {
+        var len = a.Length;
+        if(i>=len)
+          return t;
+        if(t.left==null && t.right==null)
+          t = new TreeNode(a[1],t, null);
+        else if(t.left!=null && t.right ==null)
+          t.right = new TreeNode(a[i], null,null);
+        else if(t.left!=null && t.right!=null)
+          t= new TreeNode(a[i], t, null);
+        return BuildTreeFromInorder(ref t, a, i+1);
+      }
+    public  TreeNode ConstructTreeFromArray(int? [] a)
+    {
+       int i=1;
+        if(a.Length <=1)
+          return null;
+        TreeNode node = new TreeNode(a[1]??0, null, null);
+       node.left =  ConstructTreeFromArray1(ref node.left, a, 2*i);
+       node.right = ConstructTreeFromArray1(ref node.right, a, 2*i+1);
+       return node;
+    }
+    public TreeNode ConstructTreeFromArray1(ref TreeNode t, int? [] a, int i)
+    {
+      var len = a.Length;
+      if(i>=len)
+        return t;
+      if(t==null)
+        if(a[i]==null)
+          t = null;
+        else
+          t = new TreeNode(a[i].Value,null,null);
+      if(t!=null)
+      {
+       t.left =  ConstructTreeFromArray1(ref t.left, a, 2*i);
+       t.right = ConstructTreeFromArray1(ref t.right, a, 2*i+1);
+      }
+      Console.WriteLine($"a[{i}] {a[i]}");
+      return t;
+    }
+
   }
 
 }
