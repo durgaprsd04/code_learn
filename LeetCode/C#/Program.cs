@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 namespace LeetCode
 {
     class Program
@@ -195,7 +197,7 @@ namespace LeetCode
               result.Traverse();
             }
             */
-            /*
+           /* 
             StreamReader sr = new StreamReader(@"inputs/input_duplicateArray.txt");
             RemoveDuplicatesArray removeDuplicates = new RemoveDuplicatesArray();
             Console.WriteLine("hello");
@@ -888,7 +890,8 @@ namespace LeetCode
               Console.Write($"number of dominos {res}");
               Console.WriteLine();
             }*/
-            StreamReader sr = new StreamReader(@"inputs/input_lcis.txt");
+            /*
+             StreamReader sr = new StreamReader(@"inputs/input_lcis.txt");
             LongestIncreasingSubSequence lcs = new LongestIncreasingSubSequence();
             while(sr.Peek()>0)
             {
@@ -896,6 +899,164 @@ namespace LeetCode
               var res = lcs.FindLengthOfLCIS(v1);
               Console.WriteLine($"length lcs {res}");
             }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_straightline.txt");
+            CheckIfStraightLine csl = new CheckIfStraightLine();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var v2 = new int [v1.Length/2 ][];
+              for(int i=0;i<v1.Length;i=i+2)
+              {
+                  v2[i/2] = new int []{v1[i], v1[i+1]};
+              }
+              foreach(var j in v2)
+              {
+                foreach(var k in j)
+                  Console.Write(k +",");
+                Console.Write(" ");
+              }
+              var res = csl.CheckStraightLine(v2);
+              Console.Write($"is straight line  {res}");
+              Console.WriteLine();
+
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_AddNumberinArray.txt");
+            AddArrayForm af = new AddArrayForm();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var k = Convert.ToInt32(sr.ReadLine());
+              var res = af.AddToArrayForm(v1,k);
+              Console.WriteLine($"length lcs {string.Join(',', res.ToArray()) }");
+            }
+          */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_CountTeams.txt");
+            CountTeams ct = new CountTeams();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var k = Convert.ToInt32(sr.ReadLine());
+              var res =ct.NumTeams(v1);
+              Console.WriteLine($"length lcs { res}");
+            }
+          */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_minAnagrams.txt");
+            MinAnagramDist m = new MinAnagramDist();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine();
+              var v2 = sr.ReadLine();
+              var res =m.MinSteps(v1,v2);
+              Console.WriteLine($"min dist { res}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_findreplace.txt");
+            FindReplace fr = new FindReplace();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',');
+              var v2 = sr.ReadLine();
+              var res =fr.FindAndReplacePattern(v1,v2);
+              Console.WriteLine($"min dist { string.Join(',', res)}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_goodwaysplit.txt");
+            GoodWaySplit gw = new GoodWaySplit();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine();
+               var res = gw.NumSplits(v1);
+              Console.WriteLine($"good split count for {v1} { string.Join(',', res)}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_complex.txt");
+            ComplexMultiplication cm = new ComplexMultiplication();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine();
+              var v2 = sr.ReadLine();
+               var res = cm.ComplexNumberMultiply(v1, v2);
+              Console.WriteLine($"result for {v1} and {v2} {res}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_breakstring.txt");
+            CheckifItCanBreak  cb = new CheckifItCanBreak();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine();
+              var v2 = sr.ReadLine();
+              var res = cb.CheckIfCanBreak(v1,v2);
+              Console.WriteLine($"result for {v1} and {v2} {res}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_customsort.txt");
+            CustomSortStringClass css = new CustomSortStringClass();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine();
+              var v2 = sr.ReadLine();
+              var res = css.CustomSortString(v1,v2);
+              Console.WriteLine($"result for {v1} and {v2} :  {res}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_findcorresponding.txt");
+            TreeNode tree = new TreeNode();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',');
+              int? [] v2 = new int? [v1.Length+1];
+              v2[0] =0;
+              for(int i=1;i<=v1.Length;i++)
+              {
+                if(v1[i-1]!="null")
+                {
+                  v2[i] = Convert.ToInt32(v1[i-1]);
+                }
+              }
+              tree.AddFromLevelOrderArray(v2);
+              Console.WriteLine($"Corresponding node of tree ");
+              tree.Traverse();
+            }*/
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_simplifiedFraction.txt");
+           SimplifiedFraction sf = new SimplifiedFraction();
+            while(sr.Peek()>0)
+            {
+              var v1 = Convert.ToInt32(sr.ReadLine());
+              var res =sf.SimplifiedFractions(v1);
+              Console.WriteLine($"result for {v1} :  {string.Join(',', res.ToArray())}");
+            }
+            */
+            StreamReader sr = new StreamReader(@"inputs/input_longestunivaluepath.txt");
+            LongestUniValuePathTree lvt = new LongestUniValuePathTree();
+            Console.WriteLine("hello");
+            TreeNode res1=null,res2=null;
+            while(sr.Peek()>0)
+             {
+              var v1 =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+              foreach(var v in v1)
+              {
+                  if(res1==null)
+                    res1 = new TreeNode(v,null,null);
+                  else
+                    res1.Add(new TreeNode(v, null,null));
+              }
+              res1.Traverse();
+              var res = lvt.LongestUnivaluePath(res1);
+              Console.WriteLine($"Longest value path {res}");
+             }
 
         }
     }
