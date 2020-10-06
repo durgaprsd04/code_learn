@@ -1039,7 +1039,7 @@ namespace LeetCode
               Console.WriteLine($"result for {v1} :  {string.Join(',', res.ToArray())}");
             }
             */
-
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_longestunivaluepath.txt");
             LongestUniValuePathTree lvt = new LongestUniValuePathTree();
             TreeUtility tu = new TreeUtility();
@@ -1062,6 +1062,38 @@ namespace LeetCode
             res1.InOrderTraverse();
             res1.PreOrderTraversal();
             res1.PostOrderTraversal();
+            */
+
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_power.txt");
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',');
+              var res1 = Convert.ToDouble(v1[0]);
+              var res2 = Convert.ToInt32(v1[1]);
+              Power pwr = new Power();
+              var res = pwr.MyPow(res1, res2);
+              Console.WriteLine($"result {res}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_assinCookies.txt");
+            AssignCookies ac = new AssignCookies();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var v2 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var res = ac.FindContentChildren(v1,v2);
+              Console.WriteLine($"result {res}");
+            }*/
+            StreamReader sr = new StreamReader(@"inputs/input_sqrt.txt");
+            SquareRoot sqrt = new SquareRoot();
+            while(sr.Peek()>0)
+            {
+              var v1 = Convert.ToInt32(sr.ReadLine());
+              var res = sqrt.MySqrt(v1);
+              Console.WriteLine($"resulti of {v1} : {res}");
+            }
         }
     }
 }
