@@ -1010,9 +1010,10 @@ namespace LeetCode
               Console.WriteLine($"result for {v1} and {v2} :  {res}");
             }
             */
-            /*
-            StreamReader sr = new StreamReader(@"inputs/input_findcorresponding.txt");
+            
+            /*StreamReader sr = new StreamReader(@"inputs/input_findcorresponding.txt");
             TreeNode tree = new TreeNode();
+            TreeNode tree1 = new TreeNode();
             while(sr.Peek()>0)
             {
               var v1 = sr.ReadLine().Split(',');
@@ -1026,8 +1027,11 @@ namespace LeetCode
                 }
               }
               tree.AddFromLevelOrderArray(v2);
+              tree1.AddFromLevelOrderArray(v2);
               Console.WriteLine($"Corresponding node of tree ");
-              tree.Traverse();
+              tree.InOrderTraverse();
+              tree1.InOrderTraverse();
+
             }*/
             /*
             StreamReader sr = new StreamReader(@"inputs/input_simplifiedFraction.txt");
@@ -1086,6 +1090,7 @@ namespace LeetCode
               var res = ac.FindContentChildren(v1,v2);
               Console.WriteLine($"result {res}");
             }*/
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_sqrt.txt");
             SquareRoot sqrt = new SquareRoot();
             while(sr.Peek()>0)
@@ -1094,6 +1099,54 @@ namespace LeetCode
               var res = sqrt.MySqrt(v1);
               Console.WriteLine($"resulti of {v1} : {res}");
             }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_prime.txt");
+            PrimePaliendromeClass ppc = new PrimePaliendromeClass();
+            while(sr.Peek()>0)
+            {
+              var v1 = Convert.ToInt32(sr.ReadLine());
+              var res = ppc.PrimePalindrome(v1);
+              Console.WriteLine($"resulti of {v1} : {res}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_assinCookies.txt");
+           ConstructBinaryFromPreOrder cb = new ConstructBinaryFromPreOrder();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var v2 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
+              var res = cb.BuildTree(v1, v2);
+              res.InOrderTraverse();
+              res.PreOrderTraversal();
+              res.PostOrderTraversal();
+            }
+            */
+            StreamReader sr = new StreamReader(@"inputs/input_addOneRow.txt");
+            AddRowToTreeClass ar = new AddRowToTreeClass();
+            TreeNode tree = new TreeNode(0,null,null);
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',');
+              var v3 = Convert.ToInt32(sr.ReadLine());
+              var v4 = Convert.ToInt32(sr.ReadLine());
+              int? [] v2 = new int? [v1.Length+1];
+              v2[0] =0;
+              for(int i=1;i<=v1.Length;i++)
+              {
+                if(v1[i-1]!="null")
+                {
+                  v2[i] = Convert.ToInt32(v1[i-1]);
+                }
+              }
+              tree.AddFromLevelOrderArray(v2);
+              tree.PostOrderTraversal();
+            var res = ar.AddOneRow(tree, v3, v4);
+            res.InOrderTraverse();
+            }
+
+
         }
     }
 }
