@@ -1123,6 +1123,7 @@ namespace LeetCode
               res.PostOrderTraversal();
             }
             */
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_addOneRow.txt");
             AddRowToTreeClass ar = new AddRowToTreeClass();
             TreeNode tree = new TreeNode(0,null,null);
@@ -1145,8 +1146,51 @@ namespace LeetCode
             var res = ar.AddOneRow(tree, v3, v4);
             res.InOrderTraverse();
             }
-
-
+          */
+            /*
+             StreamReader sr = new StreamReader(@"inputs/input_sumRow.txt");
+            SumRowTree srt = new SumRowTree();
+            TreeNode tree = new TreeNode(0,null,null);
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',');
+              int? [] v2 = new int? [v1.Length+1];
+              v2[0] =0;
+              for(int i=1;i<=v1.Length;i++)
+              {
+                if(v1[i-1]!="null")
+                {
+                  v2[i] = Convert.ToInt32(v1[i-1]);
+                }
+              }
+              tree.AddFromLevelOrderArray(v2);
+              tree.PostOrderTraversal();
+              var res = srt.SumNumbers(tree);
+              Console.WriteLine($"res is {res}");
+            }
+            */
+            StreamReader sr = new StreamReader(@"inputs/input_mergeAccount.txt");
+            IList<string> l1 = new List<string>();
+            IList<IList<string>> l2 = new List<IList<string>>();
+            AccountMergeClass acc = new AccountMergeClass();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split('|');
+              foreach(var v2 in v1)
+              {
+                var v3 = v2.Split(',');
+                foreach( var v4 in v3)
+                  l1.Add(v4);
+                l2.Add(l1);
+                l1 = new List<string>();
+              }
+            foreach(var res1 in l2)
+                Console.WriteLine($"{string.Join(',', res1.ToArray())}");
+            Console.WriteLine("----------------input ends----------------------");
+            var res  = acc.AccountsMerge(l2);
+              foreach(var res1 in res)
+                Console.WriteLine($"{string.Join(',', res1.ToArray())}");
+            }
         }
     }
 }
