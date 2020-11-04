@@ -7,6 +7,7 @@ namespace CSharp
         static void Main(string[] args)
         {
             /*Delegate TeSt */
+          /*
             Console.WriteLine("Test delegate");
             DelegateTest d1 = new DelegateTest();
             testdelegate t1 = d1.test1;
@@ -22,24 +23,42 @@ namespace CSharp
             var arg="vegaman";
             var c=test_closure(arg);
             c();
-            /*Action test */
             EventTest et = new EventTest();
             et.OnChange+=(name)=>{Console.WriteLine("Subscriber "+name +"added.");};
             et.OnChange+=(name)=>{Console.WriteLine("SubScriber 2"+name+"added");};
             et.EventRaise("madhu");
-            /*Pub Sub */
             EventTestWithDelegate evd = new EventTestWithDelegate("valencia");
             evd.OnChange+=(name)=>{Console.WriteLine("Hello dude "+name);};
             evd.OnChange+=(name)=>{throw new Exception("this method is error prone");};
             evd.OnChange+=(name)=>{Console.WriteLine("Well done"+name);};
             evd.Raise();
+            
+          
+          ListIndexer l = new ListIndexer();
+          l.TestList();
+          */
+
+          /*
+          Testclass tc = new Testclass();
+           // Action a1 = ()=>Console.WriteLine("Hello from theother side "+a);
+            //a="asshole";
+             tc.TestMethod();
+             tc.Dispose();
+             */
+             //TestClass1 dt2 = new TestClass1();
+             //dt2.CallStuf();
+             //TestAnonymousDelegate tad = new TestAnonymousDelegate();
+             //tad.TestAnonymous();
+             //Testfunc tf = new Testfunc();
+             //tf.FundTest("2",10); 
+              /*
+             EventTestExec ete = new EventTestExec();
+             ete.TryEventTest();
+              */
+             TestExtMethod tem = new TestExtMethod();
+             tem.TestExtMethod1();
         }
 
-        static Action test_closure(string a)
-        {
-            Action a1 = ()=>Console.WriteLine("Hello from theother side "+a);
-            //a="asshole";
-            return a1;
-        }
+       
     }
 }
