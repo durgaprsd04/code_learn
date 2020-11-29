@@ -9,3 +9,6 @@
 7. TPL
 8. Callback methods
 9. Value type reference type
+## Python
+1. Minor checks and update on knowledge base
+2. Python interview questions
