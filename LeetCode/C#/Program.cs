@@ -1169,6 +1169,7 @@ namespace LeetCode
               Console.WriteLine($"res is {res}");
             }
             */
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_mergeAccount.txt");
             IList<string> l1 = new List<string>();
             IList<IList<string>> l2 = new List<IList<string>>();
@@ -1190,6 +1191,45 @@ namespace LeetCode
             var res  = acc.AccountsMerge(l2);
               foreach(var res1 in res)
                 Console.WriteLine($"{string.Join(',', res1.ToArray())}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_minwindowstring.txt");
+            MinWindowClass mwc = new MinWindowClass();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine();
+              var v2 = sr.ReadLine();
+              var res = mwc.MinWindow(v1, v2);
+              Console.WriteLine($"Min window result {res}");
+            }
+            */
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_versionnumber.txt");
+            VersionComparer vc = new VersionComparer();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',');             
+              var res = vc.CompareVersion(v1[0], v1[1]);
+              Console.WriteLine($"Min window result {res}");
+            }*/
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_decodeways.txt");
+            DecodeWaysClass dwc = new DecodeWaysClass();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine();             
+              var res = dwc.NumDecodings(v1);
+              Console.WriteLine($"Min window result {res}");
+            }
+            */
+             StreamReader sr = new StreamReader(@"inputs/input_atoiClass.txt");
+            AtoiClass ac = new AtoiClass();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine();             
+              var res = ac.MyAtoi(v1);
+              Console.WriteLine($"Atoi result for {v1} :: {res}");
             }
         }
     }

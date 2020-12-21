@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace CSharp
 {
@@ -55,8 +56,22 @@ namespace CSharp
              EventTestExec ete = new EventTestExec();
              ete.TryEventTest();
               */
+              /*
              TestExtMethod tem = new TestExtMethod();
              tem.TestExtMethod1();
+             */
+             /*
+             StringManip s = new StringManip();
+             s.TestFunc();*/
+            // var thread = new ThreadingSetup();
+            // thread.MainMethod();
+              Metronome m = new Metronome();
+            Listener l = new Listener();
+            l.Subscribe(m);
+            m.Start();
+            var th = new Thread(m.Start);
+            Thread.Sleep(1000);
+            th.Start();
         }
 
        

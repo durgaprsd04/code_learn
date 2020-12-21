@@ -8,13 +8,14 @@
 	b)File operations
 	c)DB operations
 	d)REST operations
-	e)Threading
-	f)Multiple process
-	g)IOC
-	h)callback
-	i)Delegates/Events.
-	j)Functional/LINQ. 
-	k)TPL/other nifty features
+	e)Threading/TPL/Multiple process
+	f)IOC
+	g)callback
+	h)Delegates/Events/Func/Action.
+	i)Functional/LINQ.
+	j)Extension Methods :heavy_check_mark:
+	k)Jagged Arrays :heavy_check_mark:
+	l)String manips :heavy_check_mark:
 ### Python :question:
 	a)basics
 	b)advanced operations for collections
