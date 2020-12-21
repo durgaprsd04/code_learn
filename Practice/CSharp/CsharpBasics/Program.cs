@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 
 namespace CSharp
 {
@@ -56,22 +55,44 @@ namespace CSharp
              EventTestExec ete = new EventTestExec();
              ete.TryEventTest();
               */
-              /*
-             TestExtMethod tem = new TestExtMethod();
-             tem.TestExtMethod1();
-             */
-             /*
-             StringManip s = new StringManip();
-             s.TestFunc();*/
-            // var thread = new ThreadingSetup();
-            // thread.MainMethod();
-              Metronome m = new Metronome();
-            Listener l = new Listener();
-            l.Subscribe(m);
-            m.Start();
-            var th = new Thread(m.Start);
-            Thread.Sleep(1000);
-            th.Start();
+            // TestExtMethod tem = new TestExtMethod();
+             //tem.TestExtMethod1();
+           
+            /* var v = DemoCustomer.CreateNewCustomer();
+               DemoCustomer.AddEvent(v);
+             v.CustomerName="raju";
+             v.PhoneNumber="(343)32313";*/
+             /*TestRef tr = new TestRef();
+             tr.Test();*/
+             /*FuncAsArgument fs = new FuncAsArgument();
+             Console.WriteLine($"a{10} b {40} result {fs.CallAdd(10,40)}");*/
+            /*Testfunc tf = new Testfunc();
+            tf.ActionTest("hello world");*/
+            /*IndexerTest<int> it = new IndexerTest<int>();
+            it[0] = 3;
+            it[4]=4;
+            Console.WriteLine($" t[0] {it[0]} it[4] {it[4]}");*/
+            /*TestMethodInfo tmf = new TestMethodInfo();
+            tmf.Main1();*/
+            /*
+            Test t = new Test();
+            t.a=10;
+            t.b=230;
+            Console.WriteLine($"t.a{t.a} t.b {t.b}");
+            */
+            /*
+            var res = Activator.CreateInstance("CSharp","Test123");
+            var res1 = ((Test123)res.Unwrap());
+            res1.Method();
+            */
+            var s = new Stack<int>();
+            s.Push(3);
+            s.Push(4);
+            s.Push(1);
+            Console.WriteLine($" s {s.Pop()}");
+            Console.WriteLine($" s {s.Pop()}");
+            Console.WriteLine($" s {s.Pop()}");
+
         }
 
        

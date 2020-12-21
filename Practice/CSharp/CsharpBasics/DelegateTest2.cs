@@ -48,8 +48,13 @@ namespace CSharp
     {
         public void FundTest(string str2, int mul)
         {
-            Func<string,int, int> myfunc=(str, mul) => int.Parse(str2)*mul;
+            Func<string,int, int> myfunc=(str, mul) => int.Parse(str)*mul;
             Console.WriteLine($"Result {3+ myfunc(str2, mul)}");
+        }
+        public void ActionTest(string a)
+        {
+            Action<string> act = (string s) => {Console.WriteLine($"string is {s}");};
+            act(a);
         }
 
     }
