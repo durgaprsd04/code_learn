@@ -939,10 +939,9 @@ namespace LeetCode
             CountTeams ct = new CountTeams();
             while(sr.Peek()>0)
             {
-              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();
-              var k = Convert.ToInt32(sr.ReadLine());
+              var v1 = sr.ReadLine().Split(',').Select(x=> Convert.ToInt32(x)).ToArray();            
               var res =ct.NumTeams(v1);
-              Console.WriteLine($"length lcs { res}");
+              Console.WriteLine($"count teams { res}");
             }
           */
             /*
@@ -1223,13 +1222,66 @@ namespace LeetCode
               Console.WriteLine($"Min window result {res}");
             }
             */
-             StreamReader sr = new StreamReader(@"inputs/input_atoiClass.txt");
-            AtoiClass ac = new AtoiClass();
+            /*
+             StreamReader sr = new StreamReader(@"inputs/input_minDifference.txt");
+          MinDifferenceClass md = new MinDifferenceClass();
             while(sr.Peek()>0)
             {
-              var v1 = sr.ReadLine();             
-              var res = ac.MyAtoi(v1);
-              Console.WriteLine($"Atoi result for {v1} :: {res}");
+              var v1 = sr.ReadLine().Split(',').Select(x  =>Convert.ToInt32(x)).ToArray();             
+              var res = md.MinDifference(v1);
+              Console.WriteLine($"Atoi result for {string.Join(",", v1)} :: {res}");
+            }*/
+            /*
+             StreamReader sr = new StreamReader(@"inputs/input_minDifference.txt");
+              DuplicatesInArray md = new DuplicatesInArray();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x  =>Convert.ToInt32(x)).ToArray();             
+              var res = md.ContainsDuplicate(v1);
+              Console.WriteLine($"Contains duplicate {string.Join(",", v1)} :: {res}");
+            }*/
+            /*
+            StreamReader sr = new StreamReader(@"inputs/input_containsDuplicate2.txt");
+              var md = new Duplicates2InArray();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(' ');    
+              var v2 = v1[0].Split(',').Select(x  =>Convert.ToInt32(x)).ToArray();    
+                var v3 = Convert.ToInt32(v1[1]);     
+              var res = md.ContainsNearbyDuplicate(v2, v3);
+              Console.WriteLine($"Contains duplicate {string.Join(",", v1[0])} :: {res}");
+            }
+            */
+             /*
+             StreamReader sr = new StreamReader(@"inputs/input_ProductArrayExpectSelf.txt");
+              var md = new ProductArrayExpectSelf();
+            while(sr.Peek()>0)
+            {
+              var v1 = sr.ReadLine().Split(',').Select(x  =>Convert.ToInt32(x)).ToArray();             
+              var res = md.ProductExceptSelf(v1);
+              Console.WriteLine($"Contains duplicate {string.Join(",", v1)} :: {res}");
+            }*/
+            StreamReader sr = new StreamReader(@"inputs/input_RotateImage.txt");
+            var md = new RotateImage();
+            
+            while(sr.Peek()>0)
+            {
+              var v2 = Convert.ToInt32(sr.ReadLine());
+              var v = new int [v2][];
+              for(int i=0;i<v2;i++)
+              {
+                v[i]= sr.ReadLine().Split(',').Select(x  =>Convert.ToInt32(x)).ToArray();             
+              }
+              md.Rotate(v);
+              Console.WriteLine("Output ");
+              for (int i = 0; i < v2; i++)
+              {
+                for (int j = 0; j < v2; j++)
+                {
+                    Console.Write(v[i][j] + " ");
+                }
+                Console.WriteLine();
+              }
             }
         }
     }

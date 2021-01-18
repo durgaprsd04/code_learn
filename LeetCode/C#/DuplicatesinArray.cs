@@ -1,5 +1,5 @@
 using System;
-using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 namespace LeetCode
 {
@@ -22,6 +22,8 @@ namespace LeetCode
                           break;
                     }
               }
+             //var v = new Dictionary<int, int>();
+             // var c = v.Where(x=> x.Value==1);
               return flag;
           }
     }
