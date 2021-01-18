@@ -85,6 +85,7 @@ namespace CSharp
             var res1 = ((Test123)res.Unwrap());
             res1.Method();
             */
+            /*
             var s = new Stack<int>();
             s.Push(3);
             s.Push(4);
@@ -92,7 +93,12 @@ namespace CSharp
             Console.WriteLine($" s {s.Pop()}");
             Console.WriteLine($" s {s.Pop()}");
             Console.WriteLine($" s {s.Pop()}");
-
+            */
+            ThreadingSetup2 th = new ThreadingSetup2();
+            //th.MainMethod();
+            //th.Main1();
+            //th.ThreadCalc(330);
+            th.ThreadCalcWithWait(30);
         }
 
        
