@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Threading;
 namespace CSharp
 {
     class Program
@@ -94,11 +94,19 @@ namespace CSharp
             Console.WriteLine($" s {s.Pop()}");
             Console.WriteLine($" s {s.Pop()}");
             */
-            ThreadingSetup2 th = new ThreadingSetup2();
+            //ThreadingSetup2 th = new ThreadingSetup2();
             //th.MainMethod();
             //th.Main1();
             //th.ThreadCalc(330);
-            th.ThreadCalcWithWait(30);
+            //th.ThreadCalcWithWait(30);
+           // ThreadWithResultClass th = new ThreadWithResultClass();
+           // th.MainTask(50);
+           //ActionTest at = new ActionTest();
+           //at.MainActionTest();
+           ActivatorTest at = new ActivatorTest();
+           at.ActivatorTestMethod1();
+           var result  = Thread.GetDomain().FriendlyName;
+           Console.WriteLine($"Friendly name from thread {result}");
         }
 
        

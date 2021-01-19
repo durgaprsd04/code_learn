@@ -23,4 +23,9 @@ namespace CSharp
         public int a;
             
         }
+    public  abstract class TestAbstract
+    {
+        public abstract void test2();
+        public   void Test(){ Console.WriteLine("test");}
+    }
 }
