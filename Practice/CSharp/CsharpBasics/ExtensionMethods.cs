@@ -24,6 +24,8 @@ namespace CSharp
         str.Add("abc");
         str.Add("efg");
         str.Add("hij");
+        var a = new List<int> {3,4,5};
+        Console.WriteLine($"String join { string.Join(',',a.ToStringArray()) }");
         Console.WriteLine($"String join { string.Join(',',str.ToStringArray()) }");
         }
 

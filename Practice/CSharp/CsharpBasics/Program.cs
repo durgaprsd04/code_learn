@@ -103,10 +103,26 @@ namespace CSharp
            // th.MainTask(50);
            //ActionTest at = new ActionTest();
            //at.MainActionTest();
-           ActivatorTest at = new ActivatorTest();
+           /*ActivatorTest at = new ActivatorTest();
            at.ActivatorTestMethod1();
            var result  = Thread.GetDomain().FriendlyName;
            Console.WriteLine($"Friendly name from thread {result}");
+           */
+           //DelegateTest3 t =new DelegateTest3();
+          // t.Action1();
+          //Taskcheck tc = new Taskcheck();
+        //  tc.TaskRunTest(10);
+        Metronome1 m1 = new Metronome1();
+        Okay o = new Okay();
+         metro1 m = new metro1(4,5);
+        Console.WriteLine(o);
+        m1.TestFunct(o);
+        Console.WriteLine(o);
+        Console.WriteLine("----------");
+        
+        Console.WriteLine(m);
+         m1.TestFunct(m);
+        Console.WriteLine(m);
         }
 
        

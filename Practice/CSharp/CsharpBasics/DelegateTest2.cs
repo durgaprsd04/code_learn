@@ -46,6 +46,17 @@ namespace CSharp
     }
     public class Testfunc
     {
+        private Action<int> p;
+
+        public Testfunc(Action<int> p)
+        {
+            this.p = p;
+        }
+
+        public Testfunc()
+        {
+        }
+
         public void FundTest(string str2, int mul)
         {
             Func<string,int, int> myfunc=(str, mul) => int.Parse(str)*mul;

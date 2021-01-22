@@ -1261,6 +1261,7 @@ namespace LeetCode
               var res = md.ProductExceptSelf(v1);
               Console.WriteLine($"Contains duplicate {string.Join(",", v1)} :: {res}");
             }*/
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_RotateImage.txt");
             var md = new RotateImage();
             
@@ -1281,6 +1282,20 @@ namespace LeetCode
                     Console.Write(v[i][j] + " ");
                 }
                 Console.WriteLine();
+              }
+            }*/
+            StreamReader sr = new StreamReader(@"inputs/input_allsubsets.txt");
+           var allSets = new AllSubSets();
+            var l1 = new List<int>{1,2,3};
+            var l2 = new List<int>{2,3,1};
+            Console.WriteLine($" hashcode l1 {l1.GetHashCode()} l2 {l2.GetHashCode()}");
+            while(sr.Peek()>0)
+            {
+              var res = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();             
+              var result =  allSets.Subsets(res);
+              foreach(var l in result)
+              {
+                Console.Write("["+string.Join(", ", l.ToArray())+"]");
               }
             }
         }
