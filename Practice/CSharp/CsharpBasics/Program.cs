@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
+using System.Collections.Generic;
 using System.Threading;
 namespace CSharp
 {
@@ -6,8 +9,9 @@ namespace CSharp
     {
         static void Main(string[] args)
         {
-            /*Delegate TeSt */
           /*
+         /// Delegate TeSt 
+           
             Console.WriteLine("Test delegate");
             DelegateTest d1 = new DelegateTest();
             testdelegate t1 = d1.test1;
@@ -36,56 +40,56 @@ namespace CSharp
           
           ListIndexer l = new ListIndexer();
           l.TestList();
-          */
+          
 
-          /*
+           
           Testclass tc = new Testclass();
            // Action a1 = ()=>Console.WriteLine("Hello from theother side "+a);
             //a="asshole";
              tc.TestMethod();
              tc.Dispose();
-             */
+             
              //TestClass1 dt2 = new TestClass1();
              //dt2.CallStuf();
              //TestAnonymousDelegate tad = new TestAnonymousDelegate();
              //tad.TestAnonymous();
              //Testfunc tf = new Testfunc();
              //tf.FundTest("2",10); 
-              /*
+               
              EventTestExec ete = new EventTestExec();
              ete.TryEventTest();
-              */
+              
             // TestExtMethod tem = new TestExtMethod();
              //tem.TestExtMethod1();
            
-            /* var v = DemoCustomer.CreateNewCustomer();
+              var v = DemoCustomer.CreateNewCustomer();
                DemoCustomer.AddEvent(v);
              v.CustomerName="raju";
-             v.PhoneNumber="(343)32313";*/
-             /*TestRef tr = new TestRef();
-             tr.Test();*/
-             /*FuncAsArgument fs = new FuncAsArgument();
-             Console.WriteLine($"a{10} b {40} result {fs.CallAdd(10,40)}");*/
-            /*Testfunc tf = new Testfunc();
-            tf.ActionTest("hello world");*/
-            /*IndexerTest<int> it = new IndexerTest<int>();
+             v.PhoneNumber="(343)32313";
+              TestRef tr = new TestRef();
+             tr.Test();
+              FuncAsArgument fs = new FuncAsArgument();
+             Console.WriteLine($"a{10} b {40} result {fs.CallAdd(10,40)}");
+             Testfunc tf = new Testfunc();
+            tf.ActionTest("hello world");
+             IndexerTest<int> it = new IndexerTest<int>();
             it[0] = 3;
             it[4]=4;
-            Console.WriteLine($" t[0] {it[0]} it[4] {it[4]}");*/
-            /*TestMethodInfo tmf = new TestMethodInfo();
-            tmf.Main1();*/
-            /*
+            Console.WriteLine($" t[0] {it[0]} it[4] {it[4]}");
+             TestMethodInfo tmf = new TestMethodInfo();
+            tmf.Main1();
+             
             Test t = new Test();
             t.a=10;
             t.b=230;
             Console.WriteLine($"t.a{t.a} t.b {t.b}");
-            */
-            /*
+            
+             
             var res = Activator.CreateInstance("CSharp","Test123");
             var res1 = ((Test123)res.Unwrap());
             res1.Method();
-            */
-            /*
+            
+             
             var s = new Stack<int>();
             s.Push(3);
             s.Push(4);
@@ -93,7 +97,7 @@ namespace CSharp
             Console.WriteLine($" s {s.Pop()}");
             Console.WriteLine($" s {s.Pop()}");
             Console.WriteLine($" s {s.Pop()}");
-            */
+            
             //ThreadingSetup2 th = new ThreadingSetup2();
             //th.MainMethod();
             //th.Main1();
@@ -103,16 +107,17 @@ namespace CSharp
            // th.MainTask(50);
            //ActionTest at = new ActionTest();
            //at.MainActionTest();
-           /*ActivatorTest at = new ActivatorTest();
+            ActivatorTest at = new ActivatorTest();
            at.ActivatorTestMethod1();
            var result  = Thread.GetDomain().FriendlyName;
            Console.WriteLine($"Friendly name from thread {result}");
-           */
+           
            //DelegateTest3 t =new DelegateTest3();
           // t.Action1();
           //Taskcheck tc = new Taskcheck();
         //  tc.TaskRunTest(10);
-        Metronome1 m1 = new Metronome1();
+        
+         Metronome1 m1 = new Metronome1();
         Okay o = new Okay();
          metro1 m = new metro1(4,5);
         Console.WriteLine(o);
@@ -123,8 +128,109 @@ namespace CSharp
         Console.WriteLine(m);
          m1.TestFunct(m);
         Console.WriteLine(m);
+        */
+        /*
+        var do1 = new DynamicObject();
+        var v =do1.MainTest("hello world");
+        v.Func1("hello world");
+        var res = do1.ParseCsv("inputs/names.csv");
+        dynamic n=null;
+        foreach(var r in res)
+        {
+          n=r;
+         if(( (IDictionary<String,object>)n).ContainsKey("phone") )
+               Console.WriteLine($"name {r.Name},  age {r.age} phone {r.phone}");
+          else 
+          Console.WriteLine($"name {r.Name},  age {r.age}");
         }
+         var v1 = ( (IDictionary<String,object>)n).Remove("Name") ;
+         Console.WriteLine($" name {n.age}");
+        }*/
+        /*
+        var v = new LinqTest();
+        var n1 = v.SumUpto(10);
+        Console.WriteLine($"Sum is {n1}");
+        var l = v.GetAllInts(10);
+        Console.WriteLine(string.Join(',', l.Select(x =>x).ToArray()));
+        Console.WriteLine(string.Join(',', l.Where(x =>x%2==0).ToArray()));*
+        */
+        /*
+        var v2 = new PassByRef();
+        var v1 = new TestClasses(10,20);
+        Console.WriteLine( v1.ToString());
+        var v4 = v1;
+        //v2.PassByRefTest1(v1);
+                v2.PassByRefTest1(v4);
+        Console.WriteLine( v1.ToString());
+        Console.WriteLine( v4.ToString());
 
-       
+        var v3 = new TestStruct(3,4);
+        Console.WriteLine( v3);
+        v2.PassByRefTest1(v3);
+        Console.WriteLine( v3);
+        */
+        /**
+        IInterfaceTest i = new  Testclass();
+        ((Testclass)i).TestMethod();
+        */
+        /*
+        var v = new ReturMultipleTest();
+        var d= v.ReturMultiple();
+        Console.WriteLine($"d.val {d.val} d.flag {d.flag}");
+        StringBuilder sb = new StringBuilder("adfs");
+        sb.Append("he").Append(" is");
+         Metronome1 m1 = new Metronome1();
+*/
+
+//         LinqTest t = new LinqTest();
+        // var v1 = t.MovingSum(new List<float>(){3,4,4,5});
+      //  var v1 = t.Fibonacci(10);
+        // Console.WriteLine(string.Join(", ", v1.ToArray()));
+  //      OrderOfInvocation of = new OrderOfInvocation(4);
+
+    /*    static void ChangeReferenceType(Student std2)
+{
+    std2.StudentName = "Steve";
+    std2.StudentName=null;
+}
+
+  Student std1 = new Student();
+    std1.StudentName = "Bill";
+    
+    ChangeReferenceType(std1);
+
+    Console.WriteLine(std1.StudentName);
+
+*/
+
+/*
+    LinqPractise lp = new LinqPractise();
+    var res = lp.Practise();
+    foreach(var r in res)
+    {
+      Console.WriteLine(r);
     }
+    var res1 = lp.GetPrime(200);
+    Console.WriteLine(string.Join(", ", res1.ToArray()));
+    
+
+    var res2 = lp.GetPrimeEnum(200, lp.isPrime);
+    Console.WriteLine(string.Join(", " , res2.ToArray()));
+    */
+    /*
+    var testA = new TestA();
+    var testB = new TestB();
+    var testc = new TestB();
+
+    LinqTest lt = new LinqTest();
+    Console.WriteLine(lt.Test5().Sum());
+    Console.WriteLine(string.Join(",",lt.Test5()));
+    Console.WriteLine(testc);
+    Console.WriteLine(string.Join(", ", lt.GetSequence(17)));
+    */
+    XMLPractise xML = new XMLPractise();
+    xML.XMLTests();
+    }
+
+  }
 }

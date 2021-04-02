@@ -21,4 +21,8 @@ namespace CSharp
             
         }
     }
+    public class Student
+    {
+        public string StudentName;
+    }
 }

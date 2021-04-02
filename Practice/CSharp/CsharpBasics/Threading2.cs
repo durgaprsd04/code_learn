@@ -70,6 +70,7 @@ namespace CSharp
             {
                 lock(this)
                 {
+                    
                 UpdateMethod(); 
                 }
                 //Console.Write(",");

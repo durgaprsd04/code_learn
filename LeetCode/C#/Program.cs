@@ -1284,6 +1284,7 @@ namespace LeetCode
                 Console.WriteLine();
               }
             }*/
+            /*
             StreamReader sr = new StreamReader(@"inputs/input_allsubsets.txt");
            var allSets = new AllSubSets();
             var l1 = new List<int>{1,2,3};
@@ -1298,6 +1299,18 @@ namespace LeetCode
                 Console.Write("["+string.Join(", ", l.ToArray())+"]");
               }
             }
+            */
+             StreamReader sr = new StreamReader(@"inputs/input_KthSmallest.txt");
+             var a = new int [3][];
+            int i=0;
+            while(sr.Peek()>0)
+            {
+                a[i] =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+                i++;
+            }
+            KthSmallestClass kth = new KthSmallestClass();
+            kth.KthSmallest(a,8);
+
         }
     }
 }

@@ -14,6 +14,18 @@ namespace CSharp
 
             return array;
         }
+        public static string JoinByCommas<T>(this List<T> list)
+        {
+            return string.Join(',', list.ToArray());
+        } 
+        public static string [] SplitByCommas(this string str)
+        {
+            return str.Split(',');
+        }
+        public static string JoinBySemicolons<T>(this List<T> list)
+        {
+            return string.Join(";", list.ToArray());
+        }
     }
 
     public class TestExtMethod
@@ -24,9 +36,13 @@ namespace CSharp
         str.Add("abc");
         str.Add("efg");
         str.Add("hij");
+        var str1 = "once, upon,a timea,a";
         var a = new List<int> {3,4,5};
         Console.WriteLine($"String join { string.Join(',',a.ToStringArray()) }");
         Console.WriteLine($"String join { string.Join(',',str.ToStringArray()) }");
+         Console.WriteLine($"String join {str.JoinByCommas()}");
+          Console.WriteLine($"String join {str.JoinBySemicolons()}");
+         Console.WriteLine($"String join { string.Join(',',str1.SplitByCommas()) }");
         }
 
     }
