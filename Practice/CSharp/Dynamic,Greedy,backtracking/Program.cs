@@ -8,15 +8,36 @@ namespace Dynamic_Greedy_backtracking
         {
             Console.WriteLine("Hello World!");
             DynamicProgramming dp = new DynamicProgramming();
+             BackTracking bt = new BackTracking();
             /* Knapsack problems1*/
             var result = dp.KnapSack01(7, new int[]{1,3,4,5} , new int[] {1,4,5,7}, 4);
             Console.WriteLine($"Maximum value from knapSack {result}");
             
+            /*sum exists for a given number */
+            var isExists = dp.SubSetSum1(new int [] {1,5,5,11}, 11);
+            Console.WriteLine($"Subset sum for {11} exists {isExists}");
+
+            /*count number of combinations number k can be generated */
+            var isExists2 = dp.SubSetSumCount(new int [] {2,2,2,2}, 4);
+            Console.WriteLine($"Number of way of making {4} from array {isExists2}");
             
+            /*split an array numbers to two sets so that difference of their sum is minimum*/
+            /*using backtracking*/
+            var diff = bt.MinSubSetSum(new int [] {1,5,6,11});
+            Console.WriteLine($"result is {diff}");
+            var minResult = dp.MinSubSetSum(new int[]{1,5,6,11});
+            Console.WriteLine($"result is a {minResult.a} b {minResult.b} ");
             
+            /* Unbounded knapsack with wieghts*/
+            var tots = dp.UnboundedKnapsack(10, new int[]{1,2,3}, new int[]{3,7,1}, 3);
+            Console.WriteLine($"Unbounded result value {tots}");
             
+            /*Coin change make value n with minimum number of coins*/
+            var tots2 = dp.CoinChange(new int []{2,5,1} , 11);
+            Console.WriteLine($"Minimum number of coins needed {tots2}");
+
+
             /*
-            BackTracking bt = new BackTracking();
             var arr = new int[]{1,2,3};
             var res = bt.Permute(arr );
             var str ="AAB";

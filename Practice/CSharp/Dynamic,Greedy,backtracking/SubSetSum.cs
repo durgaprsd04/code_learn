@@ -89,26 +89,26 @@ namespace Dynamic_Greedy_backtracking
         {
             // to create an array of size arraylenth * target+1
             var len  = arr.Length;
-            var targetSum = new int[len][];
+            var targetSum = new int[len+1][];
             var flag=false;
-            for(int i=0;i<len;i++)
+            for(int i=0;i<(len+1);i++)
             {
                 targetSum[i] = new int[target+1];
             }
-            for(int i=0;i<len;i++)
+            for(int i=0;i<(len+1);i++)
             {
                 targetSum[i][0] =0;
             }
-            for(int i=0;i<len;i++)
+            for(int i=1;i<len+1;i++)
             {
-                for(int j=0;j<target+1;j++)
+                for(int j=1;j<target+1;j++)
                 {
-                    if(arr[i]<j)
+                    if(arr[i-1]<=j)
                     {
-                        targetSum[i][j] = arr[i]+ targetSum[i][j-arr[i]];
+                        targetSum[i][j] = Math.Max(targetSum[i-1][j], arr[i-1]+targetSum[i-1][j-arr[i-1]]);
                     }
                     else{
-                        targetSum[i][j] = targetSum[i-1][j-1];
+                        targetSum[i][j] = targetSum[i-1][j];
                     }
                     if(targetSum[i][j]==target)
                     {
@@ -117,7 +117,172 @@ namespace Dynamic_Greedy_backtracking
                     }
                 }
             }
+            for(int i=0;i<len+1;i++)
+            {
+                if(i-1>=0)
+                    Console.Write("("+arr[i-1] +") ");
+                else 
+                    Console.Write("(0) ");
+                for(int j=0;j<target+1;j++)
+                    Console.Write(targetSum[i][j]+"  ");
+                Console.WriteLine();
+            }
             return flag;
+        }
+        public int SubSetSumCount(int [] arr , int target)
+        {
+            // to create an array of size arraylenth * target+1
+            var len  = arr.Length;
+            var targetSum = new int[len+1][];
+            for(int i=0;i<(len+1);i++)
+            {
+                targetSum[i] = new int[target+1];
+            }
+            for(int i=0;i<(len+1);i++)
+            {
+                targetSum[i][0] =1;
+            }
+            for(int i=1;i<len+1;i++)
+            {
+                for(int j=1;j<target+1;j++)
+                {
+                    if(arr[i-1]<=j)
+                    {
+                        targetSum[i][j] =  targetSum[i-1][j]+  targetSum[i-1][j-arr[i-1]];
+                    }
+                    else{
+                        targetSum[i][j] = targetSum[i-1][j];
+                    }
+                }
+            }
+
+            for(int i=0;i<len+1;i++)
+            {
+                if(i-1>=0)
+                    Console.Write("("+arr[i-1] +") ");
+                else 
+                    Console.Write("(0) ");
+                for(int j=0;j<target+1;j++)
+                    Console.Write(targetSum[i][j]+"  ");
+                Console.WriteLine();
+            }
+            return targetSum[len][target];
+        }        
+        public (int a, int b) MinSubSetSum(int [] arr)
+        {
+            var len = arr.Length;
+            var sum = arr.Sum();
+            var SubSetSum = new bool[sum+1];
+            SubSetSum[0]=true;
+            for(int i=0;i<len;i++)
+            {
+                for(int j=sum; j>=arr[i];j--)
+                {
+                    SubSetSum[j] = SubSetSum[j] || SubSetSum[j-arr[i]];
+                }
+            }
+            var min = Int32.MaxValue;
+            var mainA=0;
+            var mainB=0;
+            for(int i=0;i<=sum/2;i++)
+            {
+                if(SubSetSum[i])
+                {
+                    var a = i;
+                    var b = sum-i;
+                    if(Math.Abs(a-b)<min)
+                    {
+                        min = Math.Abs(a-b);
+                        mainA=a;
+                        mainB=b;
+                    }
+                }
+            }
+            return (mainA,mainB);
+        }
+        public int UnboundedKnapsack(int W, int []wt , int [] val, int n )
+        {
+             var dp = new int[W+1];
+             //for(int i=0;i<n+1;i++)
+              //  dp[i] = new int[W+1];
+            
+            //for(int i=0;i<n+1;i++)
+            //    dp[i][0]=0;
+            /*
+            for(int i=0;i<W+1;i++)
+            {
+                for(int j=1;j<n+1;j++)
+                {
+                    if(wt[j-1]<=i)
+                    {
+                        dp[i] = Math.Max(dp[i-1], val[j-1] + dp[i-wt[j-1]]);
+                    }
+                }
+                Console.WriteLine(string.Join(" ", dp));
+            }
+            */
+             for (int i=0; i<=W; i++)
+             {
+                for (int j=0; j<n; j++)
+                    if (wt[j] <= i)
+                        dp[i] = Math.Max(dp[i], dp[i-wt[j]] + val[j]);
+                Console.WriteLine(string.Join(" ", dp));
+             }
+            return dp[W];
+
+        }
+        public int CoinChange(int [] coins, int n)
+        {
+            var len = coins.Length;
+            var dp = new int[len+1][];
+            for(int i=0;i<len+1;i++)
+                dp[i] = new int[n+1];
+            
+            
+
+            for(int i=0;i<len+1;i++)
+            {
+                for(int j=1;j<n+1;j++)
+                {    //impossible condition
+                    dp[i][j] = Int32.MaxValue;
+                }
+            }
+            for(int i=0;i<len+1;i++)
+                dp[i][0]=0;
+
+                        
+            for(int i=1;i<len+1;i++)
+            {
+                for(int j=1;j<n+1;j++)
+                {
+                    dp[i][j] = dp[i - 1][j] != Int32.MaxValue ? dp[i - 1][j] : dp[i][j]; // exclude
+                    if(j>=coins[i-1])
+                    {
+                        if(dp[i][j-coins[i-1]]!=Int32.MaxValue)
+                            dp[i][j] = Math.Min(dp[i][j] ,dp[i][j-coins[i-1]]+1); 
+                    }
+                    
+                }
+            }
+            /*
+            for (int i = 1; i <= len; i++) {
+            for (int amt = 1; amt <= n; amt++) {
+                dp[i][amt] = dp[i - 1][amt] != Int32.MaxValue ? dp[i - 1][amt] : dp[i][amt]; // exclude
+                if (coins[i - 1] <= amt && dp[i][amt - coins[i - 1]] != Int32.MaxValue) {
+                    dp[i][amt] = Math.Min(dp[i][amt], dp[i][amt - coins[i - 1]] + 1); // include
+                }
+            }
+        }*/
+            for(int i=0;i<len+1;i++)
+            {
+                for(int j=0;j<n+1;j++)
+                {
+                    Console.Write(dp[i][j]+" ");
+                }
+                Console.WriteLine();
+            }
+            return dp[len][n];
+
         }
     }
      public class BackTracking
@@ -201,7 +366,6 @@ namespace Dynamic_Greedy_backtracking
                     
                 }
             }
-            
             public int GetMaximumGold(int[][] grid) {
                 
                 var m = grid.Length;
@@ -226,7 +390,6 @@ namespace Dynamic_Greedy_backtracking
                 }
                 return max;
             }
-            
             public int CollectGold( Tuple<int,int> tuple, int [][] grid,int m, int n)
             {
                 var isVisited = new bool[m][];
@@ -234,8 +397,6 @@ namespace Dynamic_Greedy_backtracking
                         isVisited[i]= new bool[n];
                 return CollectGold(tuple, grid, m, n, isVisited);
             }
-            
-           
             public IList<IList<int>> Combine(int n, int k) {
                 Stack<int> stack = new Stack<int>();
                 IList<IList<int>> solution =new List<IList<int>>();
@@ -278,8 +439,6 @@ namespace Dynamic_Greedy_backtracking
                     }
                 }
             }
-    
-
             public int CollectGold(Tuple<int,int> tuple, int [][] grid,int m, int n, bool [][] isVisited)
             {
                 isVisited[tuple.Item1][tuple.Item2]=true;
@@ -295,7 +454,6 @@ namespace Dynamic_Greedy_backtracking
                 Console.WriteLine();
                 return max;
             }
-            
             public Tuple<int,int> GetAdjCell(Tuple<int,int> tuple, int [][] grid,int m, int n,bool[][] isVisited)
             {
                 var max =0;
@@ -331,7 +489,7 @@ namespace Dynamic_Greedy_backtracking
                 }
                 return result;
             }
-             public IList<IList<string>> Partition(string s) {
+            public IList<IList<string>> Partition(string s) {
         var len = s.Length;
         var sb = new StringBuilder();
         var dict = new Dictionary<int,List<string>>();
@@ -348,54 +506,54 @@ namespace Dynamic_Greedy_backtracking
         return result;
         //return dict.Values.ToList();
     }
-        public void Func(string s, int len, StringBuilder sb, Dictionary<int, List<string>> dict, bool [] isMarked)
-        {
-            sb = new StringBuilder(sb.ToString());
-            if(sb.Length>len)
-                return ;
-            for(int i=0;i<len;i++)
+            public void Func(string s, int len, StringBuilder sb, Dictionary<int, List<string>> dict, bool [] isMarked)
             {
-                if(!isMarked[i])
+                sb = new StringBuilder(sb.ToString());
+                if(sb.Length>len)
+                    return ;
+                for(int i=0;i<len;i++)
                 {
-                    isMarked[i]=true;
-                    sb.Append(s[i]);
-                    Console.Write(sb.ToString()+ "  ");
-                    if(IsPal(sb.ToString()))
+                    if(!isMarked[i])
                     {
-                        dict[sb.Length].Add(sb.ToString());
+                        isMarked[i]=true;
+                        sb.Append(s[i]);
+                        Console.Write(sb.ToString()+ "  ");
+                        if(IsPal(sb.ToString()))
+                        {
+                            dict[sb.Length].Add(sb.ToString());
+                        }
+                        Func(s, len, new StringBuilder(sb.ToString()), dict, isMarked);
+                        if(sb.Length>=1)
+                            sb.Remove(sb.Length-1,1);
                     }
-                    Func(s, len, new StringBuilder(sb.ToString()), dict, isMarked);
-                    if(sb.Length>=1)
-                        sb.Remove(sb.Length-1,1);
+                    isMarked[i]=false;
                 }
-                isMarked[i]=false;
             }
-        }
-        public bool IsPal(string s)
-        {
-            bool flag=true; 
-            for(int i=0;i<s.Length/2;i++)
+            public bool IsPal(string s)
             {
-                if(s[i]!=s[s.Length-i-1])
+                bool flag=true; 
+                for(int i=0;i<s.Length/2;i++)
                 {
-                    flag=false;
-                    break;
+                    if(s[i]!=s[s.Length-i-1])
+                    {
+                        flag=false;
+                        break;
+                    }
                 }
+                return flag;
             }
-            return flag;
-        }
-        public int MaxUniqueSplit(string s) {
+            public int MaxUniqueSplit(string s) {
+                        
+                    int len = s.Length;
+                    var isMarked = new bool [len];
+                    HashSet<string> hs = new HashSet<string>();
                     
-                int len = s.Length;
-                var isMarked = new bool [len];
-                HashSet<string> hs = new HashSet<string>();
-                
-                var res = Func(s, 0, len, isMarked, hs);
-                Console.WriteLine(string.Join(",", hs));
-                return hs.Count();
-            }
-        public bool Func(string s,int start,  int len , bool [] isMarked, HashSet<string> hs)
-        {
+                    var res = Func(s, 0, len, isMarked, hs);
+                    Console.WriteLine(string.Join(",", hs));
+                    return hs.Count();
+                }
+            public bool Func(string s,int start,  int len , bool [] isMarked, HashSet<string> hs)
+            {
             var sb = new StringBuilder();
             for(int i=start;i<len;i++)
             {
@@ -432,6 +590,32 @@ namespace Dynamic_Greedy_backtracking
                 }
             }
             return true;
+        }
+            public int MinSubSetSum(int [] nums)
+            {
+                var len = nums.Length;
+                var isMarked = new bool[len];
+                var sum = nums.Sum();
+                List<int> l = new List<int>();
+                var tupleList = new List<Tuple<int,int>>();
+                Func(nums, len, isMarked, sum, l, tupleList);
+                Console.WriteLine(string.Join(", ", tupleList));
+                return 0;
+            }
+            public void Func(int [] nums, int len, bool [] isMarked, int sum, List<int> list, List<Tuple<int,int>> pairList)
+        {
+            for(int i=0;i<len;i++)
+            {
+                 if(!isMarked[i])
+                 {
+                    isMarked[i]=true;
+                    list.Add(nums[i]);
+                    pairList.Add(new Tuple<int, int>(list.Sum(), sum - list.Sum()));
+                    Func(nums, len , isMarked, sum, new List<int>(list), pairList);
+                    list.RemoveAt(list.Count()-1);
+                    isMarked[i]=false;
+                 }
+            }
         }
         }
         
