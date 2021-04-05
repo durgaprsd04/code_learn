@@ -284,6 +284,119 @@ namespace Dynamic_Greedy_backtracking
             return dp[len][n];
 
         }
+        public int LongestCommonSubsequence(string text1, string text2) {
+       
+        var m = text1.Length;
+        var n = text2.Length;
+       
+        var dp = new int[m+1][];
+        
+        for(int i=0;i<m+1;i++)
+            dp[i] = new int[n+1];
+        
+        for(int i=0;i<m+1;i++)
+            dp[i][0]=0;
+        
+        for(int i=1;i<m+1;i++)
+        {
+            for(int j=1;j<n+1;j++)
+            {
+                if(text1[i-1] == text2[j-1])
+                {
+                    if(text1[i-1] == text2[j-1])
+                    {
+                        dp[i][j]= dp[i-1][j-1]+1;                  
+                    }
+                    else
+                        dp[i][j] = Math.Max(dp[i-1][j], dp[i][j-1]);
+                }
+                else
+                {
+                    dp[i][j] = Math.Max(dp[i-1][j], dp[i][j-1]);
+                }
+            }
+        }
+        for(int i=0;i<m+1;i++)
+        {
+            for(int j=0;j<n+1;j++)
+                Console.Write(dp[i][j] +" ");
+            Console.WriteLine();
+        }
+        return dp[m][n];
+    }
+        
+        public int LongestPalindromeSubseq(string text)
+        {
+            int n = text.Length;
+            var dp = new int[n][];
+            for(int i=0;i<n+1;i++)
+            {
+                dp[i] = new int[n];
+            }
+
+            for(int i=1;i<n+1;i++)
+            {
+               dp[i][i]=1;
+            }
+
+            for(int i=1;i<n;i++)
+            {
+                for(int j=1;j<n;j++)
+                {
+                    //if(text[i-1] == text[j-1])
+                       // dp[i][j]=
+                }
+            }
+
+            return 0;
+        }
+        public bool isPal(string s)
+        {
+            bool flag=true;
+            for(int i=0;i<s.Length/2;i++)
+            {
+                if(s[i]!=s[s.Length-i-1])
+                    {
+                        flag=false;
+                        break;
+                    }
+            }
+            return flag;
+        }
+        public int LongestIncreasingSubSequence(int [] array)
+        {
+            var len = array.Length;
+            var dp = new int[len];
+            var stack  =new Stack<int>();
+            for(int i=0;i<len;i++)
+                dp[i]=1;
+            
+            for(int i=1;i<len;i++)
+            {
+                var prev = array[i];
+                for(int j=0;j<i;j++)
+                {
+                    if(array[i]>array[j])
+                    {
+                        dp[i]=Math.Max(dp[i], dp[j]+1);
+                    }
+                }
+                if(array[i]>prev)
+                    stack.Push(array[i]);
+                if( array[i]==prev)
+                {
+                    if(stack.Count()>0)
+                        stack.Pop();
+                    stack.Push(array[i]);
+                }
+                stack.Push(array[i]);
+                Console.WriteLine(string.Join(", ", dp));
+            }
+            Console.WriteLine(string.Join(",", stack));
+            return dp[len-1];
+ 
+
+        }
     }
      public class BackTracking
         {
