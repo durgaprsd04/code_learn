@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using  System.Collections.Generic;
 
 namespace Dynamic_Greedy_backtracking
@@ -31,6 +32,7 @@ namespace Dynamic_Greedy_backtracking
                 Console.WriteLine($"The max sub sum of {string.Join(",", v)} is {result2}");
             }
             */
+            /*
             var arr = new int[][]
             {
                 new int []{10, 9, 4, 5, 4, 8, 6},
@@ -40,7 +42,18 @@ namespace Dynamic_Greedy_backtracking
             {
                 var result2 = dp2.GetLongestSubSequenceWithDifference1(v);
                 Console.WriteLine($"The max sub sum of {string.Join(",", v)} is {result2}");
-            }
+            }*/
+            var dp = new DynamicProgramming2();
+              var data = new int [][]{new int[]{5, 24}, 
+                                new int[]{39, 60}, 
+                                new int[]{ 15, 28}, 
+                                new int[] {27, 40}, 
+                                new int[]{50, 90}};
+                                //new int [] {110,200}};
+        //When
+        var result = dp.GetLongestPairLength(data);
+        var result3 = dp.GetLongestPair(data);
+        Console.WriteLine(string.Join(", ", result3.Select(x => "("+x[0]+","+ x[1]+")")));
 
         }
         static void Main1(string[] args)

@@ -122,7 +122,7 @@ namespace Dynamic_Greedy_backtracking
            return dp.Max();
        }
     //longest  sequence of pair that can be formed given pairs (a,b) , (c,d) a < b always can be a chain only if b<c
-       public int GetLongestPair(int [][] pairs)
+       public int GetLongestPairLength(int [][] pairs)
        {
            var len = pairs.Length;
            var dp =new int[len];
@@ -135,7 +135,42 @@ namespace Dynamic_Greedy_backtracking
                         dp[i]= Math.Max(dp[i], dp[j]+1);
                }
            }
-           return dp[len-1];
+           Console.WriteLine(string.Join("," , dp));
+           return dp.Max();
        }
+        // longest pair length
+
+        public List<int[]> GetLongestPair(int [][] pairs)
+        {
+            var len = pairs.Length;
+            List<List<int[]>> result= new List<List<int[]>>();
+            for(int i=0;i<len;i++)
+                result.Add(new List<int[]>());
+            var dp = new int[len];
+            dp[0]=1;
+            for(int i=1;i<len;i++)
+            {
+                for(int j=0;j<i;j++)
+                {
+                    if(pairs[i][0]>pairs[j][1])
+                    {
+                        dp[i] = Math.Max(dp[i], dp[j]+1);
+                        result[i].Add(pairs[j]);
+                    }
+                }
+            }
+            Console.WriteLine(string.Join(",", dp));
+            var maxI=0;
+            var len1=0;
+            for(int i=0;i<result.Count;i++)
+            {
+                if(result[i].Count>len1)
+                {
+                    len1=result[i].Count;
+                    maxI=i;
+                }    
+            }
+            return result[maxI];
+        }
     }
 }
