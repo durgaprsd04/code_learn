@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace CSharp
 {
-    public class JaggedArrayTest
+    public class JaggedArrayTest<T>
     {
-        public  char[][] ConvertToJagged(List<List<char>> l)
+        public  T[][] ConvertToJagged(List<List<T>> l)
         {
-            var jagged = new char [l.Count][];
+            var jagged = new T [l.Count][];
             int i=0;
             foreach(var k in l)
             {
                 var c = k.ToArray();
-                jagged[i] = new char [k.Count];
+                jagged[i] = new T [k.Count];
                 for(int j = 0; j< k.Count;j++)
                     jagged[i][j] = k[j];
                 i++;

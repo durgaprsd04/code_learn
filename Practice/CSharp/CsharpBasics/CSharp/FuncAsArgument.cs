@@ -42,7 +42,7 @@ namespace CSharp
         }
         public IEnumerable<int> GetAllPrimeInts( Predicate<int> predicate, IEnumerable<int> list) 
         {
-            return list.Where(x => !predicate(x));
+            return list.Where(x => predicate(x));
         }
     }
 }

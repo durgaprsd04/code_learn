@@ -32,9 +32,6 @@ namespace CSharp
     }
     public class LinqPractise
     {
-
-        private static Predicate<Employee> predicate ;
-
         public static bool FindEmployees(Employee e)
         {
             return e.salary>10000;

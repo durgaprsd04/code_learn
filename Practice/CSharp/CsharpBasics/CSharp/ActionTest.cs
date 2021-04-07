@@ -8,15 +8,8 @@ namespace CSharp
 {
     public class ActionTest
     {
-        public void MainActionTest()
+       public void AddStrings(string []a , string [] b, char c,StringBuilder result )
         {
-            Action<string[], string [], char> op=null;
-            op += AddStrings;
-            op.Invoke( new string []{"a", "B","c"}, new string [] {"d", "E", "f"} , '&');
-        }
-        public void AddStrings(string []a , string [] b, char c)
-        {
-            var result =new StringBuilder();
             int i=0;
             foreach(string s in a)
             {
@@ -24,7 +17,6 @@ namespace CSharp
                 result.Append(s).Append(c.ToString()).Append(b1); 
                 i++;
             }
-            Console.WriteLine($"total result {result}");
         }
     }
 }

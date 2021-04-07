@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 namespace CSharp
 {
-
     interface TestInterface
     {
         public void firstmethod();
@@ -19,10 +18,7 @@ namespace CSharp
         }
 
         public abstract void firstmethod();
-       
-
-        // public abstract void firstmethod();
-
+        // public abstract void firstmethod()
         public  void secondMethod(){
             Console.WriteLine("hello world");
         }
@@ -32,9 +28,9 @@ namespace CSharp
         }
 
     }
-    public class TestA:TestAbstract1
+    public class TestAAbstract:TestAbstract1
     {
-        public TestA():base()
+        public TestAAbstract():base()
         {
             
         }
@@ -49,13 +45,11 @@ namespace CSharp
         }
     }
 
-    public class TestB:TestAbstract1
+    public class TestBAbstract:TestAbstract1
     {
-        public TestB():base()
-        {
-            
+        public TestBAbstract():base()
+        {   
         }
-
         public override void firstmethod()
         {
            Console.WriteLine("First method in TEST B");
