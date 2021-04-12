@@ -19,7 +19,7 @@
 ## Courses
 1. [Grokking the System Design Interview](https://www.educative.io/courses/grokking-the-system-design-interview)
 ## Some more links
-1. [Microsoft architecture links]https://docs.microsoft.com/en-us/azure/architecture/patterns/index-patterns
-2. [System design Channel]https://www.youtube.com/channel/UC9vLsnF6QPYuH51njmIooCQ
-3. [Code Karle channel]https://www.youtube.com/channel/UCZEfiXy7PmtVTezYUvc4zZw
-4. [Awesome Scalablility]https://github.com/binhnguyennus/awesome-scalability
+1. [Microsoft architecture links](https://docs.microsoft.com/en-us/azure/architecture/patterns/index-patterns)
+2. [System design Channel](https://www.youtube.com/channel/UC9vLsnF6QPYuH51njmIooCQ)
+3. [Code Karle channel](https://www.youtube.com/channel/UCZEfiXy7PmtVTezYUvc4zZw)
+4. [Awesome Scalablility](https://github.com/binhnguyennus/awesome-scalability)
