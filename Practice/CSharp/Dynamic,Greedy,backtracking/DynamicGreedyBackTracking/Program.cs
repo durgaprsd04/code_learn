@@ -45,6 +45,7 @@ namespace Dynamic_Greedy_backtracking
             }*/
             
             var dp = new DynamicProgramming2();
+            //var arr = new int[]{4,2,5,9};
            
              /*var data = new int [][]{new int[]{5, 24}, 
                                 new int[]{39, 60}, 
@@ -111,7 +112,7 @@ namespace Dynamic_Greedy_backtracking
             //Console.WriteLine($"longest increasing sub sequence length {lisLength}");
             
             /*Longest common subsequence */
-
+            
 
             //dp.LongestCommonSubsequence("bsbininm","jmjkbkjkv");
             

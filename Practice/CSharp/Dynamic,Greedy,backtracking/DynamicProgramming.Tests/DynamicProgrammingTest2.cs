@@ -37,7 +37,6 @@ namespace DynamicProgramming.Tests
         Assert.Equal(3,result);
         }
         [Fact(Skip = "issue with code need to check")]
-        
         public void GetLongestPair_Test()
         {
          //Given
@@ -141,7 +140,7 @@ namespace DynamicProgramming.Tests
         //Then
         Assert.Equal(23, res);
         }
-         [Fact]
+        [Fact]
         public void MaximumTrianglePathTest_Test2()
         {
         //Given
@@ -182,6 +181,15 @@ namespace DynamicProgramming.Tests
         //Then
         Assert.Equal(3, result);
         }
-        
+        [Fact]
+        public void MaxJumpPositions_Test1()
+        {
+        //Given
+        var arr = new int[]{2, 3, 1, 4, 6, 5};
+        //When
+        var res =dp.MaxJumpPositions(arr);
+        //Then
+        Assert.Equal(new int[]{2,5,3,9,8,10}, res);
+        }
     }
 }

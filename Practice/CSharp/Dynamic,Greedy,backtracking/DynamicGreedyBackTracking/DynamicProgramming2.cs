@@ -323,6 +323,59 @@ namespace Dynamic_Greedy_backtracking
             }
             return max;
         }
-
+        //Maximum Sum in a 2d Grid
+        public int MaxSumIn2dGrid(int [][] grid)
+        {
+            var odd = Math.Max(grid[0][0], grid[1][0]);
+            var even =0;
+            var excl =0;
+            var len = grid.FirstOrDefault().Count();
+            for(int i=1;i<len;i++)
+            {
+                excl = odd>even? odd:even;
+                odd = even+Math.Max(grid[i][0], grid[i][1]);
+                even =excl;
+            }
+            return Math.Max(even, odd); 
+        }
+        // Max Sum in 1d array incorrect logic in gfg.
+        public int MaxSumIn1dGrid(int [] grid)
+        {
+            var odd = grid[0];
+            var even =0;
+            var excl =0;
+            var len = grid.Count();
+            for(int i=1;i<len;i++)
+            {
+                Console.WriteLine($"excl {excl} even {even} odd {odd}");
+               if(i%2==1)
+                    even+=grid[i];
+                else
+                    odd+=grid[i];
+                
+            }
+             Console.WriteLine($"excl {excl} even {even} odd {odd}");
+            return Math.Max(even, odd); 
+        }
+        //Max jump position at each position in an array. - unfinished
+        public int [] MaxJumpPositions(int []arr)
+        {
+            //arr = new int[]{2,3,1,4,6,5};
+            int[] dp = new int[arr.Length];
+            dp[0]=arr[0];
+            for(int i=1;i<arr.Length;i++)
+            {
+                //dp[i]=arr[i];
+                for(int j=1;j<=Math.Sqrt(i+1);j++)
+                {
+                    if((i+1)%j==0)
+                    {
+                        dp[i] = Math.Max(dp[j-1]+arr[i], dp[i]);
+                    }
+                }
+            }
+            Console.WriteLine(string.Join(",",dp));
+            return dp;
+        }
     }
 }
