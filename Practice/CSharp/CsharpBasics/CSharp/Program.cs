@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
-using System.Collections.Generic;
 using System.Threading;
+using CSharp.ThreadingConcepts;
+using CSharp.GeneralTrivia;
 namespace CSharp
 {
     public class Program
@@ -235,10 +236,30 @@ namespace CSharp
     /*var w = new Worker();
     w.WorkerTask(100);
     */
+    /*
     FuncAsArgument f  = new FuncAsArgument();
 
     var result = f.GetAllPrimeInts(f.IsPrime, Enumerable.Range(1,200));
     Console.WriteLine(string.Join(", ", result));
+    */
+    /*
+    var stack = new System.Collections.Generic.Stack<int>();
+    for(int i=0;i<10;i++)
+    stack.Push(i);
+    Console.WriteLine(string.Join(",", stack.Reverse().ToArray()));
+    */
+    //Threading1 t = new Threading1();
+    //t.Main1();
+    /*
+    TaskRunTest t = new TaskRunTest();
+    t.TestTask();
+    PliqExample p = new PliqExample();
+    p.PlinQCall();
+    ClassicThreading ct  = new ClassicThreading();
+    ct.ThreadCall();
+    */
+    ExceptionHandling eh = new ExceptionHandling();
+    eh.TryWithoutCatch();
     }
 
   }

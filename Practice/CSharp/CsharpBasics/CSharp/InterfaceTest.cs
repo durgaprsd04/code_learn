@@ -4,6 +4,7 @@ namespace CSharp
 {
     interface IInterfaceTest
     {
+        static string hellostring;
         void TestMethod();
     }
     public class Testclass :IInterfaceTest, IDisposable

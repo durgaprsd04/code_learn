@@ -10,7 +10,7 @@ namespace Dynamic_Greedy_backtracking
         public static void Main(string [] args)
         {
             // simple dp questions
-            DynamicProgramming2 dp2 = new DynamicProgramming2();
+            //DynamicProgramming2 dp2 = new DynamicProgramming2();
             /* some simple question*/
             //var result = dp2.GetTotalNumberOfSequences(5,3, new HashSet<int>());
             //Console.WriteLine($"The number for sum {10} and n count {4} is result {result}");
@@ -43,18 +43,36 @@ namespace Dynamic_Greedy_backtracking
                 var result2 = dp2.GetLongestSubSequenceWithDifference1(v);
                 Console.WriteLine($"The max sub sum of {string.Join(",", v)} is {result2}");
             }*/
+            
             var dp = new DynamicProgramming2();
-              var data = new int [][]{new int[]{5, 24}, 
+           
+             /*var data = new int [][]{new int[]{5, 24}, 
                                 new int[]{39, 60}, 
                                 new int[]{ 15, 28}, 
                                 new int[] {27, 40}, 
                                 new int[]{50, 90}};
+                */
+             //var data = new int [][]{new int[]{11, 20}, 
+                            //    new int[]{10, 40}, 
+                              //.  new int[]{ 45,60}, 
+                                //new int[] {39, 40}};
                                 //new int [] {110,200}};
         //When
-        var result = dp.GetLongestPairLength(data);
+        /*var result = dp.GetLongestPairLength(data);
         var result3 = dp.GetLongestPair(data);
         Console.WriteLine(string.Join(", ", result3.Select(x => "("+x[0]+","+ x[1]+")")));
-
+        */
+        //var res = dp.SubArrayWithMaxSum(new int[]{1, -2, 1, 1, -2, 1});
+        //Console.WriteLine($" res {res}");
+       
+       /*
+         var dp1 = new int[3][];
+        for(int i=0;i<3;i++)
+        {
+                dp1[i] = new int[3]{3*i+1,3*i+2, 3*i+3};
+        }
+        var res = dp2.MaximumAverageValue(dp1,3);
+        */
         }
         static void Main1(string[] args)
         {

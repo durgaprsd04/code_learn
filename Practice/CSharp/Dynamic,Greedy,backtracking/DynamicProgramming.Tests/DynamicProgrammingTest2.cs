@@ -63,7 +63,7 @@ namespace DynamicProgramming.Tests
         }
         Assert.Equal(correctResult.Count, count);
         }
-        [Fact (Skip = "issue with push logic")]
+        [Fact]
         public void GetLongestPair_Test2()
         {
          //Given
@@ -87,6 +87,100 @@ namespace DynamicProgramming.Tests
                 count++;
         }
         Assert.Equal(correctResult.Count, count);
+        }
+        [Fact(Skip="invalid testcase")]
+        public void GetLongestPair_Test3()
+        {
+         //Given
+        var data = new int [][]{new int[]{11, 20}, 
+                                new int[]{10, 40}, 
+                                new int[]{ 45,60}, 
+                                new int[] {39, 40}};
+        //When
+        var result = dp.GetLongestPair(data);
+        
+        var correctResult = new List<int[]>(){new int[]{11,20}, new int[] {39,40}, new int[] {45,60}};
+        correctResult = correctResult.OrderBy(x =>x[0]).ToList();
+        result = result.OrderBy(x => x[0]).ToList();
+        //Then
+        Assert.Equal(correctResult.Count,result.Count);
+        var count=0;
+        for(int i=0;i<result.Count;i++)
+        {
+            if(result[i][0]==correctResult[i][0] && result[i][1]== correctResult[i][1])
+                count++;
+        }
+        Assert.Equal(correctResult.Count, count);
+        }
+        [Fact]
+        public void TestName()
+        {
+        //Given
+        var dp1 = new int[3][];
+        for(int i=0;i<3;i++)
+        {
+                dp1[i] = new int[3]{3*i+1,3*i+2, 3*i+3};
+        }
+        //When
+        var res = dp.MaximumAverageValue(dp1,3);
+        //Then
+         Assert.Equal(5.8,res);
+        }
+        [Fact]
+        public void MaximumTrianglePathTest_Test1()
+        {
+        //Given
+        var triangle = new int [4] [];
+        triangle[0]=new int [] {3};
+        triangle[1] =new int []  {7,4};
+        triangle[2] = new int[]{2,4,6};
+        triangle[3] =new int[]{8,5,9,3};
+        
+        //When
+        var res = dp.MinimumPathSumTriangle(triangle);
+        //Then
+        Assert.Equal(23, res);
+        }
+         [Fact]
+        public void MaximumTrianglePathTest_Test2()
+        {
+        //Given
+        var triangle = new int [4] [];
+        triangle[0]=new int [] {8};
+        triangle[1] =new int []  {-4,4};
+        triangle[2] = new int[]{2,2,6};
+        triangle[3] =new int[]{1,1,1,1};
+        
+        //When
+        var res = dp.MinimumPathSumTriangle(triangle);
+        //Then
+        Assert.Equal(19, res);
+        }
+        [Fact]
+        public void MaximumSumofArrayWithSpecificDifference_Test1()
+        {
+        //Given
+         var arr =new int [] {3, 5, 10, 15, 17, 12, 19};
+        //When
+         var res = dp.MaximumSumofArrayWithSpecificDifference(arr, 4);
+        //Then
+        Assert.Equal(71,res);
+        }
+        [Fact]
+        public void SizeOfMaxMatrix_Test1()
+        {
+        //Given
+        int [][]arr = new int[6][];
+            arr[0] =new int[]{0,1,1,0,1};
+            arr[1] =new int[]{1,1,0,1,0};
+            arr[2] =new int[]{0,1,1,1,0};
+            arr[3] =new int[]{1,1,1,1,0};
+            arr[4] =new int[]{1,1,1,1,1};
+            arr[5] =new int[]{0,0,0,0,0};
+        //When
+        var result = dp.SizeOfMaxMatrix(arr);
+        //Then
+        Assert.Equal(3, result);
         }
         
     }

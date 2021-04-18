@@ -6,11 +6,9 @@ namespace Dynamic_Greedy_backtracking
 {
     public class DynamicProgramming2
     {
-        /*
-         given n and m find squences of length n were max value is lessser than m. 2nd element is twice or more than the first element.
-        */    
-      
-       public int GetTotalNumberOfSequences(int m, int n, HashSet<int> hs)
+        
+        //given n and m find squences of length n were max value is lessser than m. 2nd element is twice or more than the first element.
+        public int GetTotalNumberOfSequences(int m, int n, HashSet<int> hs)
        {
             if(m==0)
                 return 0;
@@ -33,9 +31,8 @@ namespace Dynamic_Greedy_backtracking
 
            return 1+GetTotalNumberOfSequences(m/2, n-1, hs)+GetTotalNumberOfSequences((m-1)/2, n-1, hs);
        }
-  
-    //LIS only
-     public int MaximumProductOfLongestIncreasingSubSeq(int [] arr)
+       //LIS only
+        public int MaximumProductOfLongestIncreasingSubSeq(int [] arr)
        {
            //10, 22, 9, 33, 21, 50, 41, 60
             int n = arr.Length;
@@ -58,7 +55,7 @@ namespace Dynamic_Greedy_backtracking
             Console.WriteLine(string.Join(",",l));
             return dp[n-1];
        }
-       public int ProductLessThanK(int [] arr, int k)
+        public int ProductLessThanK(int [] arr, int k)
        {
             var n = arr.Length;
             var dp = new int [k+1][];
@@ -83,7 +80,7 @@ namespace Dynamic_Greedy_backtracking
 
        }
        //Max sub sequence sum no 3 are consecutive.
-       public int MaxSubSequenceSum(int [] arr)
+        public int MaxSubSequenceSum(int [] arr)
        {
            var len  = arr.Length;
            var dp = new int[len];
@@ -106,7 +103,7 @@ namespace Dynamic_Greedy_backtracking
             return dp[len-1];
        }
        //Longest Sub sequence such taht diff between adj is 1
-       public int GetLongestSubSequenceWithDifference1(int []arr)
+        public int GetLongestSubSequenceWithDifference1(int []arr)
        {
            var len = arr.Length;
            var dp = new int[len];
@@ -121,8 +118,8 @@ namespace Dynamic_Greedy_backtracking
            }
            return dp.Max();
        }
-    //longest  sequence of pair that can be formed given pairs (a,b) , (c,d) a < b always can be a chain only if b<c
-       public int GetLongestPairLength(int [][] pairs)
+       //longest  sequence of pair that can be formed given pairs (a,b) , (c,d) a < b always can be a chain only if b<c
+        public int GetLongestPairLength(int [][] pairs)
        {
            var len = pairs.Length;
            var dp =new int[len];
@@ -138,8 +135,7 @@ namespace Dynamic_Greedy_backtracking
            Console.WriteLine(string.Join("," , dp));
            return dp.Max();
        }
-        // longest pair length
-
+        // longest pair  taht has the above property.
         public List<int[]> GetLongestPair(int [][] pairs)
         {
             var len = pairs.Length;
@@ -148,29 +144,185 @@ namespace Dynamic_Greedy_backtracking
                 result.Add(new List<int[]>());
             var dp = new int[len];
             dp[0]=1;
+            result[0].Add(pairs[0]);
             for(int i=1;i<len;i++)
             {
                 for(int j=0;j<i;j++)
                 {
-                    if(pairs[i][0]>pairs[j][1])
+                    if(pairs[i][0]>pairs[j][1] && result[j].Count > result[i].Count)
                     {
                         dp[i] = Math.Max(dp[i], dp[j]+1);
-                        result[i].Add(pairs[j]);
+                        result[i]  = new List<int[]>(result[j]){};
                     }
                 }
+                result[i].Add(pairs[i]);
             }
             Console.WriteLine(string.Join(",", dp));
-            var maxI=0;
+            var maxIndex=0;
             var len1=0;
             for(int i=0;i<result.Count;i++)
             {
                 if(result[i].Count>len1)
                 {
                     len1=result[i].Count;
-                    maxI=i;
+                    maxIndex=i;
                 }    
             }
-            return result[maxI];
+            return result[maxIndex];
         }
+        //Maximum average value in a matrix of size N
+        public double MaximumAverageValue(int [][] arr, int N)
+        {
+            // maxmise from Arr[N-1][N-1] to arr[0][0]
+           
+            double sum = arr[N-1][N-1];
+            var dp = new int[N][];
+ 
+            for(int i=0;i<N;i++)
+                dp[i] = new int[N];
+            dp[0][0]=arr[0][0];
+            for(int i=1;i<N;i++)
+                dp[0][i] = dp[0][i-1]+arr[0][i];
+            for(int i=1;i<N;i++)
+                dp[i][0]= dp[i-1][0]+arr[i][0];
+            
+            for(int i=1;i<N;i++)
+            {
+                for(int j=1;j<N;j++)
+                {
+                    dp[i][j] = Math.Max(dp[i][j-1], dp[i-1][j])+arr[i][j];
+                }
+            }
+            return (double)(dp[N-1][N-1]*1.0/(2*N-1));
+        }
+        //Subarray with maximum sum(Kadanes)
+        public (int start, int end) SubArrayWithMaxSum(int [] arr)
+        {
+            var len =arr.Length;
+            var start =0;
+            var end = 0;
+            var sum=0;
+            var maxSum=0;
+            var s=0;
+            for(int i =0;i<len;i++)
+            {
+                sum+=arr[i];
+                if(sum>maxSum)
+                {
+                    maxSum=sum; 
+                    start =s;
+                    end =i;
+                }
+                if(sum<0)
+                {
+                    sum=0;
+                    s=i+1;    
+                }    
+
+            }
+            return (start,end);
+
+        }
+        // Path Sum in a triangle
+        public int MinimumPathSumTriangle(int [][] triangle)
+        {
+            var width = triangle[triangle.Length-1].Length;
+            var dp = new int[triangle.Length][] ;
+            for(int i=0;i<width;i++)
+                dp[i] = new int[width];
+            for(int i=0;i<width;i++)
+                dp[triangle.Length-1][i] = triangle[triangle.Length-1][i];
+
+            var len = triangle.Length;
+            for(int i=len-2;i>=0;i--)
+            {
+                for(int j=0;j<triangle[i].Length;j++)
+                {
+                    dp[i][j]= Math.Max(dp[i+1][j] , dp[i+1][j+1])+triangle[i][j];
+                }
+                Console.WriteLine(string.Join(", ",dp[i]));
+            }
+            return dp[0].Max();
+        }
+        //Max sum with specific difference
+        public int MaximumSumofArrayWithSpecificDifference(int [] arr, int k)
+        {
+            Array.Sort(arr);
+            //int i=0;
+            /*List<int> pairs = new List<int>();
+            while(i<arr.Length-1)
+            {
+                if(arr[i]+k> arr[i+1])
+                    {
+                        pairs.Add(arr[i]);
+                        pairs.Add(arr[i+1]);
+                        i+=2;
+                    }
+                    else{
+                        i=i+1;
+                    }
+            }
+            Console.WriteLine(string.Join(", ", pairs));
+            return pairs.Sum();
+            */
+            int []dp = new int[arr.Length];
+            dp[0]=arr[0];
+            for(int i=1;i<arr.Length;i++)
+            {
+                dp[i] =dp[i-1];
+                if(arr[i]-arr[i-1]<k)
+                {
+                    if(i>2)
+                    {
+                        dp[i] = Math.Max(dp[i], arr[i] +arr[i-1]+dp[i-2]);
+                    }
+                    else
+                    {
+                        dp[i] = Math.Max (dp[i], arr[i]+arr[i-1]);
+                    }
+                }   
+            }
+            //Console.WriteLine(string.Join(",", dp));
+            return dp[arr.Length-1];
+
+        }
+        //Size of a maximum matrix with all 1s
+        public int SizeOfMaxMatrix(int [][] A)
+        {
+            var m = A.Length;
+            var n = A.FirstOrDefault().Length;
+            var S = new int[m][];
+            for(int i=0;i<m;i++)
+                S[i] = new int[n];
+            for(int i=0;i<n;i++)
+                S[0][i] = A[0][i];
+            for(int j=0;j<m;j++)
+                S[j][0] = A[j][0];
+            for(int i=1;i<m;i++)
+            {
+                for(int j=1;j<n;j++)
+                {
+                    if(A[i][j]==1)
+                        S[i][j] = Math.Min(S[i][j-1], Math.Min(S[i-1][j], S[i-1][j-1]))+1;
+                    else
+                        S[i][j]=0;
+                }
+            }
+            for(int i=0;i<m;i++)
+            {
+                for(int j=0;j<n;j++)
+                    Console.Write(S[i][j] +" ");
+                Console.WriteLine();
+            }
+            var max=0;
+            for(int i=0;i<m;i++)
+            {
+                var m1 = S[i].Max();
+                if(m1>max)
+                    max=m1;
+            }
+            return max;
+        }
+
     }
 }

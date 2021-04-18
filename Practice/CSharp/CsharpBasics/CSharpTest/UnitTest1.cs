@@ -71,7 +71,7 @@ namespace CsharpTest1.cs
         Assert.Equal(str, sb.ToString());
         }
         [Fact (Skip ="not working")]
-        public void TestName()
+        public void EventTest()
         {
         //Given
         
@@ -81,7 +81,40 @@ namespace CsharpTest1.cs
         //Then
         Assert.Equal(1, 1);
         }
-    
+        [Fact]
+        public void DelegateTest2Test1()
+        {
+        //Given
+            var dt2 = new DelegateTest2();
+        //When
+            testdelegate1 t1 = new testdelegate1((int x) => {
+                return x*x;
+            });
+        //Then
+        Assert.Equal(9,t1(3));
+        }
+        [Fact]
+        public void DelegateTest2Test2()
+        {
+        //Given
+            var dt2 = new DelegateTest2();
+        //When
+            testdelegate2 t1 = new testdelegate2((string x) => {
+                return "hello "+x;
+            });
+        //Then
+        Assert.Equal("hello ramesh",t1("ramesh"));
+        }
+        [Fact]
+        public void TestName()
+        {
+        //Given
+        var tf = new Testfunc();
+        //When
+        var result = tf.FuncTest(tf.func1,"3","12");
+        //Then
+        Assert.Equal(15, result);
+        }
         public void TestAction(IEnumerable<EmployeeEvent> eventList)
         {
             eventList.FirstOrDefault();
