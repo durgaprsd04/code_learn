@@ -6,10 +6,7 @@ namespace interview
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter n!");
-            interview1 i = new interview1();
-            var n = Convert.ToInt32 (Console.ReadLine());
-            Console.WriteLine($"factorial { i.WaitForFact(n)} ");
+           var interview2= new interview2();
         }
     }
 }
