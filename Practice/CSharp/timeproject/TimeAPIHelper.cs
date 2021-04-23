@@ -1,7 +1,4 @@
-using System;
-using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Timeproject.Interface;
 using Timeproject.Models;
@@ -12,10 +9,17 @@ namespace Timeproject
     {
         private HttpClient client = new HttpClient();
         private readonly string uri;
+
+        public string Uri => uri;
+
         public TimeAPIHelper(string uri)
         {
             this.uri = uri;
-        } 
+        }
+        public override string ToString()
+        {
+            return uri.ToString();
+        }
         public async Task<string> GetUTCTimeFromAPI()
         {
             

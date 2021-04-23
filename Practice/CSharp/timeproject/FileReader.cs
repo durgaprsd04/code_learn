@@ -1,7 +1,5 @@
-using System;
 using System.Xml.Linq;
 using Timeproject.Interface;
-using System.Configuration;
 namespace Timeproject
 {
     public class FileReader : IFileReader
@@ -10,6 +8,11 @@ namespace Timeproject
         public FileReader(string filepath)
         {
             this.filepath = filepath;
+        }
+
+        public override string ToString()
+        {
+            return filepath;
         }
         public string GetExecutionTimeFromXML()
         {
