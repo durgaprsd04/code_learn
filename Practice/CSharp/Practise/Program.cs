@@ -118,6 +118,7 @@ namespace Practise
             var c1 = linkedList.GetLast();
             Console.WriteLine("node last "+c1.ToString());
             */
+            /*
             Trees<string> tree = new Trees<string>("a");
             foreach(var str in "bcdefg")
             {
@@ -126,7 +127,8 @@ namespace Practise
                 Console.WriteLine();
             }
 
-            tree.DFS();
+            tree.DFS();*/
+            Console.WriteLine($"Version: {Environment.Version}");
         }
     }
 }

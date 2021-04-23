@@ -23,8 +23,8 @@ namespace CSharp
         public void WorkerThread(int limit)
         {
             ThreadingTest3 th = new ThreadingTest3();
-            var cworker1 = new Thread(new ThreadStart(() => th.PrintNumbersBy2(0, limit)));
-            var cworker2 = new Thread(new ThreadStart(() => th.PrintNumbersBy2(1, limit)));
+            var cworker1 = new Thread(() => th.PrintNumbersBy2(0, limit));
+            var cworker2 = new Thread(() => th.PrintNumbersBy2(1, limit));
             cworker1.Start();
             cworker2.Start();
             cworker1.Join();
