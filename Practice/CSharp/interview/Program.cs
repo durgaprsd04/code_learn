@@ -6,10 +6,12 @@ namespace interview
     {
         static void Main(string[] args)
         {
-           var interview2= new interview2();
-          interview2.Method();
+           //var interview2= new interview2();
+          //interview2.Method();
            //var work = new Worker();
            //work.Method();
+           var reverse = new ReverseInRange();
+           reverse.ReverseInRangeHelper();
         }
     }
 }
