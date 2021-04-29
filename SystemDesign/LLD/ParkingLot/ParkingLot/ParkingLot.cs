@@ -49,14 +49,13 @@ namespace ParkingLot
         }
         public (ErrorCodes code,double parkingCost) UnParkVehicle(IVehicle vehicle)
         {
-            double cost = 0;
             if(parkedVehicleCollection.ContainsKey(vehicle.GetId()))
             {
                 if(parkedVehicleCollection[vehicle.GetId()] is ParkedVehicle)
                 {
                     var  item = (ParkedVehicle)parkedVehicleCollection[vehicle.GetId()];
-                    cost = item.GetParkingCost();
-                    return (ErrorCodes.Success, cost);
+                    parkedVehicleCollection.Remove(vehicle.GetId());
+                    return (ErrorCodes.Success, item.GetParkingCost());
                 }
                 else
                     return (ErrorCodes.UnknownVehicle, -1);
