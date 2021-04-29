@@ -4,7 +4,7 @@ namespace ParkingLot
 {
     public class Bike:Vehicle
     {
-        public Bike(int size, string id):base(size,id)
+        public Bike(int size, string id):base(id,size)
         {
 
         }

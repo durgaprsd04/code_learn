@@ -25,13 +25,26 @@ namespace ParkingLot
 
         public ErrorCodes ParkVehicle(IVehicle vehicle)
         {
+           return ParkVehicle(vehicle, DateTime.Now, DateTime.Now + new TimeSpan(0,ParkingRate.MinTimeSpanInMinutes,0), ParkingRate.VehicleRate[0]);
+        }
+        public ErrorCodes ParkVehicle(IVehicle vehicle, DateTime startTime)
+        {
+           return ParkVehicle(vehicle, startTime, DateTime.Now + new TimeSpan(0,ParkingRate.MinTimeSpanInMinutes,0), ParkingRate.VehicleRate[0]);
+        }
+        public ErrorCodes ParkVehicle(IVehicle vehicle, DateTime startTime, DateTime endTime)
+        {
+           return ParkVehicle(vehicle, startTime, endTime, ParkingRate.VehicleRate[0]);
+        }
+        public ErrorCodes ParkVehicle(IVehicle vehicle, DateTime startTime, DateTime endTime, double rate)
+        {
+             var parkedVehicle  = new ParkedVehicle(vehicle, startTime, endTime, rate);
             if(this.GetFreeParkingSpots()< vehicle.GetSize())
                 return ErrorCodes.RanOutOfSPace;
             else
                 if(parkedVehicleCollection.ContainsKey(vehicle.GetId()))
                     return ErrorCodes.VehicleAlreadyExists;
                 else
-                    parkedVehicleCollection.Add(vehicle.GetId(), vehicle);
+                    parkedVehicleCollection.Add(vehicle.GetId(), parkedVehicle);
             return ErrorCodes.Success;
         }
         public (ErrorCodes code,double parkingCost) UnParkVehicle(IVehicle vehicle)
@@ -39,9 +52,14 @@ namespace ParkingLot
             double cost = 0;
             if(parkedVehicleCollection.ContainsKey(vehicle.GetId()))
             {
-                var  item = (ParkedVehicle)parkedVehicleCollection[vehicle.GetId()];
-                cost = item.GetParkingCost();
-                return (ErrorCodes.Success, cost);
+                if(parkedVehicleCollection[vehicle.GetId()] is ParkedVehicle)
+                {
+                    var  item = (ParkedVehicle)parkedVehicleCollection[vehicle.GetId()];
+                    cost = item.GetParkingCost();
+                    return (ErrorCodes.Success, cost);
+                }
+                else
+                    return (ErrorCodes.UnknownVehicle, -1);
             }
             else
                 return (ErrorCodes.VehicleNotFound, -1);

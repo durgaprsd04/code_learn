@@ -6,7 +6,7 @@ namespace ParkingLot
     {
         private int size;
         private string id;
-        public Vehicle(int size, string id)
+        public Vehicle(string id,int size)
         {
             this.size = size;
             this.id = id;
