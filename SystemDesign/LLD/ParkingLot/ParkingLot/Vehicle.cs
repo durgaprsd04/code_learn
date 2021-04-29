@@ -5,9 +5,16 @@ namespace ParkingLot
     public abstract class Vehicle:IVehicle
     {
         private int size;
-        public Vehicle(int size)
+        private string id;
+        public Vehicle(int size, string id)
         {
             this.size = size;
+            this.id = id;
+        }
+
+        public virtual string GetId()
+        {
+            return id;
         }
 
         public virtual int GetSize()
