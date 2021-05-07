@@ -21,8 +21,7 @@ namespace HotelManagement
         {
             return DateTime.Now > startDate && DateTime.Now< endDate;
         }
-
-        public double Bill()
+        public double GetBill(bool isCanceled)
         {
             throw new NotImplementedException();
         }
@@ -38,7 +37,7 @@ namespace HotelManagement
         }
         public Booking(IBooking booking)
         {
-            
+
         }
     }
 }

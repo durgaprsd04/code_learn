@@ -7,18 +7,31 @@ namespace HotelManagement
     public class UserAction : IUserAction
     {
         private IBookingHelper  bookingHelper;
+        private IPaymentService paymentService;
         public UserAction(IBookingHelper bookingHelper)
         {
             this.bookingHelper = bookingHelper;
         }
-        public bool CancelReservation(string id)
+        public (bool isCancelled, double billAmount) CancelReservation(string id)
         {
-            throw new NotImplementedException();
+            var booking = bookingHelper.GetBookingForId(id);
+            var billAmount = booking.GetBill(true);
+            return (true, billAmount);
         }
 
         public IBooking CreateReservation(IHotel hotel,RoomType roomType, IEnumerable<IPerson> persons, DateTime startDate, DateTime endDate)
         {
-            return new Booking(hotel, roomType,persons,startDate, endDate);
+            if(bookingHelper.IsRoomAvailable(hotel, roomType, startDate, endDate))
+            {
+                var booking = new Booking(hotel, roomType,persons,startDate, endDate);
+                paymentService.RecievePayment(booking);
+                bookingHelper.UpdateInventory(booking);
+                return booking;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public IBooking ModifyReservation(string id)

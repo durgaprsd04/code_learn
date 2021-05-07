@@ -6,6 +6,7 @@ namespace HotelManagement.Interace
     {
         IBooking GetBookingForId(string id);
         bool IsRoomAvailable(IHotel hotel, RoomType roomType , DateTime startDate, DateTime endDate);
+        IBooking UpdateInventory(IBooking booking);
 
     }
 }

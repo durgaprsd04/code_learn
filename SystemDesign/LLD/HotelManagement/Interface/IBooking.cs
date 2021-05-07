@@ -6,6 +6,6 @@ namespace HotelManagement.Interace
     {
         string Id();
         bool IsActive();
-        double Bill();
+        double GetBill(bool isCanceled);
     }    
 }
