@@ -44,7 +44,7 @@ namespace ParkingLotTest
             Assert.Equal(100.0 , result1.parkingCost);
         }
         [Fact]
-        public void ParkVehicle_Test4()
+        public void ParkVehicle_CapacityTest_Test4()
         {
             var id = Guid.NewGuid().ToString();
             var car = new Car(4, id);
