@@ -1,14 +1,22 @@
-## C# topics and some business 
-1. Events, Delegates & Func.
-2. ThreadPool and TPL.
-3. Extension Method
-4. Activator CreateInstance
-5. Reflection
-6. Lambda expressions
-7. RabbitMQ and Kafka read up on these
-8. Bussiness level overview of derivatives.
-9. Autofac/any IOC containers for that matter
-10. Specific topics to look up from documentation
-        1. Appcontext Switch
-        2. Array Segment
-        3. 
+# C# topics
+1. Events, Delegates & Func
+        a.Predicate
+        b.Action
+        c.Event
+2. ThreadPool and TPL
+        a.Threads
+        b.Task with Await
+        c.Odd Even with AutoReset
+3.Advanced Concepts
+        a. Extension Methods
+        b. Activator CreateInstance
+        c. Reflection
+        4. Span<T>
+4. Lambda expressions
+        a.Simple Linq
+        b.Aggregate Methods
+        c.Enumerable Methods
+5. Autofac/any IOC containers for that matter
+6.Patterns
+        a. Garbage Collection Disposable Pattern
+        b. SingleTon Pattern

@@ -8,6 +8,7 @@ namespace CsharpTest1.cs
 {
     public class UnitTest1
     {
+        /*
         [Fact]
         public void FuncAsArgumentTest()
         {
@@ -105,8 +106,10 @@ namespace CsharpTest1.cs
         //Then
         Assert.Equal("hello ramesh",t1("ramesh"));
         }
-        [Fact]
-        public void TestName()
+        
+        
+        //[Fact]
+        //public void TestName()
         {
         //Given
         var tf = new Testfunc();
@@ -115,10 +118,11 @@ namespace CsharpTest1.cs
         //Then
         Assert.Equal(15, result);
         }
-        public void TestAction(IEnumerable<EmployeeEvent> eventList)
+        //public void TestAction(IEnumerable<EmployeeEvent> eventList)
         {
             eventList.FirstOrDefault();
             //list.Add(eventList.FirstOrDefault().Id);
         }
+        */
     }
 }

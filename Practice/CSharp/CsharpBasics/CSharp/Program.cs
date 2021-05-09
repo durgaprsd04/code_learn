@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading;
 using CSharp.ThreadingConcepts;
 using CSharp.GeneralTrivia;
+using CSharp.OOP;
 namespace CSharp
 {
     public class Program
@@ -258,8 +259,13 @@ namespace CSharp
     ClassicThreading ct  = new ClassicThreading();
     ct.ThreadCall();
     */
+    /*
     ExceptionHandling eh = new ExceptionHandling();
     eh.TryWithoutCatch();
+    */
+    DestructorTest dt = new DestructorTest("hello");
+    
+  
     }
 
   }
