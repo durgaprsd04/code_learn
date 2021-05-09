@@ -9,6 +9,8 @@
 ## Youtube channels
 1. [Gurav Sen](https://www.youtube.com/watch?v=mhUQe4BKZXs&list=PLkQkbY7JNJuBoTemzQfjym0sqbOHt5fnV)
 2. [Tech Dummies](https://www.youtube.com/channel/UCn1XnDWhsLS5URXTi5wtFTA)
+3. [System Design Interview](https://www.youtube.com/channel/UC9vLsnF6QPYuH51njmIooCQ)
+4. [Code Karle](https://www.youtube.com/channel/UCZEfiXy7PmtVTezYUvc4zZw)
 
 ## Books
 1. [Software Architecture Patterns](https://www.oreilly.com/library/view/software-architecture-patterns/9781491971437/)
@@ -20,6 +22,4 @@
 1. [Grokking the System Design Interview](https://www.educative.io/courses/grokking-the-system-design-interview)
 ## Some more links
 1. [Microsoft architecture links](https://docs.microsoft.com/en-us/azure/architecture/patterns/index-patterns)
-2. [System design Channel](https://www.youtube.com/channel/UC9vLsnF6QPYuH51njmIooCQ)
-3. [Code Karle channel](https://www.youtube.com/channel/UCZEfiXy7PmtVTezYUvc4zZw)
-4. [Awesome Scalablility](https://github.com/binhnguyennus/awesome-scalability)
+2. [Awesome Scalablility](https://github.com/binhnguyennus/awesome-scalability)
