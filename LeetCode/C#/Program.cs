@@ -1299,17 +1299,26 @@ namespace LeetCode
                 Console.Write("["+string.Join(", ", l.ToArray())+"]");
               }
             }
-            */
-             StreamReader sr = new StreamReader(@"inputs/input_KthSmallest.txt");
+            
+            StreamReader sr = new StreamReader(@"inputs/input_KthSmallest.txt");
              var a = new int [3][];
-            int i=0;
+            int i=0;5
             while(sr.Peek()>0)
             {
                 a[i] =sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
                 i++;
             }
             KthSmallestClass kth = new KthSmallestClass();
-            kth.KthSmallest(a,8);
+            kth.KthSmallest(a,8);*/
+            PostPreTreeConstruction pst = new PostPreTreeConstruction();
+            using (StreamReader sr = new StreamReader(@"inputs/input_postpreTree.txt"))
+            {
+                 var pre = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+                 var post = sr.ReadLine().Split(',').Select(x => Convert.ToInt32(x)).ToArray();
+                 var tree = pst.ConstructFromPrePost(pre, post);
+            }
+            
+            
 
         }
     }
