@@ -1,22 +1,23 @@
 # C# topics
+
 1. Events, Delegates & Func
-        a.Predicate
-        b.Action
-        c.Event
+        1. Predicate
+        2. Action
+        3. Event
 2. ThreadPool and TPL
-        a.Threads
-        b.Task with Await
-        c.Odd Even with AutoReset
+        1. Threads
+        2. Task with Await
+        3. Odd Even with AutoReset
 3.Advanced Concepts
-        a. Extension Methods
-        b. Activator CreateInstance
-        c. Reflection
+        1. Extension Methods
+        2. Activator CreateInstance
+        3. Reflection
         4. Span<T>
 4. Lambda expressions
-        a.Simple Linq
-        b.Aggregate Methods
-        c.Enumerable Methods
+        1.Simple Linq
+        2.Aggregate Methods
+        3.Enumerable Methods
 5. Autofac/any IOC containers for that matter
 6.Patterns
-        a. Garbage Collection Disposable Pattern
-        b. SingleTon Pattern
+        1. Garbage Collection Disposable Pattern
+        2. SingleTon Pattern
