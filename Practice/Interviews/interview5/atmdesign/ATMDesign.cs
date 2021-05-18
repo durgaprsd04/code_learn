@@ -28,15 +28,20 @@ namespace interview5
             this.currencyCount  = currencyCount;
             supportedDenomination.OrderByDescending(x => ((Denomination)x).GetValue());
         }
+
+        public Dictionary<string, int> CurrencyCount => currencyCount;
+
+        //public IList<IDenomination> SupportedDenomination => supportedDenomination;
+
         public IATMDesign Dispense(int amount)
         {
             //var denominations = (Denomination)
             int i=0;
             var result = new Dictionary<string,int>();
             var dict =  new Dictionary<string,int>( currencyCount);
-            while(amount>0)
+            while(amount>0 && i< supportedDenomination.Count())
             {
-                if(amount>supportedDenomination[i].GetValue())
+                if(amount>=supportedDenomination[i].GetValue())
                 {
                     var val = amount/supportedDenomination[i].GetValue();
                     if(val < currencyCount[supportedDenomination[i].GetKey()])
