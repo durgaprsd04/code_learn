@@ -25,6 +25,17 @@
 2. [Awesome Scalablility](https://github.com/binhnguyennus/awesome-scalability)
 
 ### Minor Implementations
-1. Parking Lot 
-2. Hotel Management
-3. Snake and ladder ( under Practise/interview6)
+|Problem               | Status  |
+|--------------------- |:--------|
+|Snake and Ladder Game | Done(Practise/interview6) |
+|Bill Sharing/Expense Sharing like Splitwise 	| Pending |
+|Implement a logger | Pending |
+|Cab Booking like Uber, Ola 	| Pending |
+|Parking lot system 	| done |
+|hotel booking system 	| done |
+|Design a Vending Machine 	| Pending |
+|Design a Json Parser from scratch 	| Pending |
+|Design Lift| Pending |
+|Image/Video Uploading| Pending |
+|Movie Ticket Booking 	| Pending |
+|Food Delivery| Pending |
