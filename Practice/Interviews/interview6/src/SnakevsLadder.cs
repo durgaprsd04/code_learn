@@ -7,6 +7,7 @@ namespace interview6
     public class SnakevsLadder : ISnakevsLadder
     {
         private int diceSize;
+        private int endPos;
         private Random random = new Random();
         private List<IColumnType> grid;
         private List<IPlayer> players;
@@ -15,17 +16,19 @@ namespace interview6
             this.grid= grid;
             this.players = players;
             this.diceSize = diceSize;
+            this.endPos = grid.Count()-1;
         }
 
         public IPlayer GamePlay(IPlayer player, int diceValue)
         {
             var pos = player.GetCurrentPosition();
             IPlayer newPlayer =null;
-            if(pos + diceSize<=99)
+            var endPos =grid.Count()-1;
+            if(pos + diceSize<=endPos)
             {
                 var newPos = grid[pos+diceSize].GetNextPosition();
                 newPlayer = player.UpdateCurrentPosition(newPos);
-                if(newPos ==99)
+                if(newPos ==endPos)
                 {
                     newPlayer.SetWinner();
                 }
@@ -53,7 +56,9 @@ namespace interview6
         }
         public int rollDice()
         {           
-            return random.Next(diceSize);
+            var result = random.Next(diceSize); 
+            Console.WriteLine("result is "+result);
+            return result;
         }
     }
 }
