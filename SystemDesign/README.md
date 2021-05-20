@@ -23,3 +23,8 @@
 ## Some more links
 1. [Microsoft architecture links](https://docs.microsoft.com/en-us/azure/architecture/patterns/index-patterns)
 2. [Awesome Scalablility](https://github.com/binhnguyennus/awesome-scalability)
+
+### Minor Implementations
+1. Parking Lot 
+2. Hotel Management
+3. Snake and ladder ( under Practise/interview6)
