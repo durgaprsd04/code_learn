@@ -17,28 +17,30 @@ namespace interview6
             this.diceSize = diceSize;
         }
 
-        public void GamePlay(IPlayer player, int diceValue)
+        public IPlayer GamePlay(IPlayer player, int diceValue)
         {
             var pos = player.GetCurrentPosition();
+            IPlayer newPlayer =null;
             if(pos + diceSize<=99)
             {
                 var newPos = grid[pos+diceSize].GetNextPosition();
-                player.UpdateCurrentPosition(newPos);
+                newPlayer = player.UpdateCurrentPosition(newPos);
                 if(newPos ==99)
                 {
-                    player.SetWinner();
+                    newPlayer.SetWinner();
                 }
             }
+            return (newPlayer==null)? player: newPlayer;
         }
 
-        public void Play()
+        public IPlayer Play()
         {
             while(players.Where(x => x.IsWinner()).Count()==0)
             {
                 for(int i=0;i<players.Count();i++)
                 {
                     var number = rollDice();
-                    GamePlay(players[i], number);
+                    players[i] = GamePlay(players[i], number);
                     if(players[i].IsWinner())
                         break;
                     
@@ -47,6 +49,7 @@ namespace interview6
             var winner = players.Where(x => x.IsWinner()).FirstOrDefault();
             Console.WriteLine("Winner is ");
             Console.WriteLine(winner);
+            return winner;
         }
         public int rollDice()
         {           
