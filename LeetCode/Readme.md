@@ -2,8 +2,9 @@
 1. Basics  (under python) :heavy_check_mark:
 2. Few problems (under python) :heavy_check_mark:
 3. Solutions to classic problems :question:
+
 |Topics | Rating(10)|
-|-------------------|:-|
+|:-------------------|:-|
 |Arrays				|5|
 |Stack				|6|
 |Linked list 		|7|	
