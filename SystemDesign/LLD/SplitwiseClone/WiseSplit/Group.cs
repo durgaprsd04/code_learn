@@ -30,7 +30,6 @@ namespace WiseSplit
                 if(!userList.Contains(users[i]))
                     userList.Add(users[i]);
             return new Group(this.id, userList);
-
         }
     }
 }
