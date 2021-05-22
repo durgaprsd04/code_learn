@@ -28,14 +28,14 @@
 |Problem               | Status  |
 |--------------------- |:--------|
 |Snake and Ladder Game | Done(Practise/interview6) |
-|Bill Sharing/Expense Sharing like Splitwise 	| Pending |
+|Bill Sharing/Expense Sharing like Splitwise 	| Half Done |
 |Implement a logger | Pending |
 |Cab Booking like Uber, Ola 	| Pending |
-|Parking lot system 	| done |
-|hotel booking system 	| done |
-|Design a Vending Machine 	| Pending |
+|Parking lot system 	| Done |
+|hotel booking system 	| Done |
+|Design a Vending Machine 	| Done |
 |Design a Json Parser from scratch 	| Pending |
 |Design Lift| Pending |
 |Image/Video Uploading| Pending |
-|Movie Ticket Booking 	| Pending |
+|Movie Ticket Booking 	| Pending|
 |Food Delivery| Pending |
