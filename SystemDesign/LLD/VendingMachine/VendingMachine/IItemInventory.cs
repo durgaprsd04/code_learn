@@ -34,7 +34,8 @@ namespace VendingMachine
         }
         public virtual IItemInventory UpdateCount( int count)
         {
-            this.count -=count;
+            if(this.count>count)
+                this.count = this.count - count;
             return this;
         }
         
