@@ -1,0 +1,14 @@
+using System;
+using Xunit;
+
+namespace VendingMachineTest
+{
+    public class UnitTest1
+    {
+        [Fact]
+        public void Test1()
+        {
+
+        }
+    }
+}
