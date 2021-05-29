@@ -191,5 +191,52 @@ namespace DynamicProgramming.Tests
         //Then
         Assert.Equal(new int[]{2,5,3,9,8,10}, res);
         }
+
+        [Fact]
+        public void MaxSubArrayRepeatedConcate()
+        {
+        //Given
+        var a = new int[]{-1,10,20};
+        var k=2;
+        DynamicProgramming2 d = new DynamicProgramming2();
+        //When
+        var result =d.MaxSubArrayKTimes(a, k);
+        //Then
+        Assert.Equal(59, result);
+        }
+        [Fact]
+        public void GetNumberOfWaystoClimbStairs_Test()
+        {
+        //Given
+        DynamicProgramming2 d = new DynamicProgramming2();
+        //When
+        //Then
+        Assert.Equal(2, d.GetNumberOfWaystoClimbStairs(2));
+        Assert.Equal(5, d.GetNumberOfWaystoClimbStairs(4));
+        Assert.Equal(34, d.GetNumberOfWaystoClimbStairs(8));
+        }
+        [Fact]
+        public void GetNumberOfWaystoClimbStairsWithk_Test()
+        {
+        //Given
+        var k=2;
+        DynamicProgramming2 d = new DynamicProgramming2();
+        //When
+        //Then
+        Assert.Equal(2, d.GetNumberOfWaystoClimbStairs(2,k));
+        Assert.Equal(5, d.GetNumberOfWaystoClimbStairs(4,k));
+        Assert.Equal(34, d.GetNumberOfWaystoClimbStairs(8,k));
+        }
+        [Fact]
+        public void GetNumberOfWaystoClimbStairsWithkAndblocklist_Test()
+        {
+        //Given
+        var k=3;
+        DynamicProgramming2 d = new DynamicProgramming2();
+        //When
+        //Then
+        Assert.Equal(2, d.GetNumberOfWaystoClimbStairs(7,k, new int []{1,3,4}));
+        
+        }
     }
 }

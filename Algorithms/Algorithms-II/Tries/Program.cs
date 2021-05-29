@@ -6,6 +6,7 @@ namespace Tries
     {
         static void Main(string[] args)
         {
+          #region first
             Console.WriteLine("Hello World!");
             var str = "A quick brown fox jumped over a lazy fox";
             var dict = new Dictionary<string, int>();
@@ -45,6 +46,14 @@ namespace Tries
             tt.Add("hello",1);
             tt.Add("abcd",2);
             tt.Print();
+            #endregion first
+          #region newtrie
+          var trie  =new Trie("cat");
+          trie.Add("cater");
+          trie.Add("caterer");
+          trie.Add("bat");
+          trie.Add("ate");
+          #endregion newtrie
         }
     }
 }

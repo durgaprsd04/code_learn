@@ -377,5 +377,110 @@ namespace Dynamic_Greedy_backtracking
             Console.WriteLine(string.Join(",",dp));
             return dp;
         }
+        //kadanes algorithm for small array multiplied k times
+        public int MaxSubArrayKTimes(int [] arr, int k)
+        {
+            var maxsofar = 0;
+            var maxtillnow = 0;
+            for(int i=0;i<arr.Length*k;i++)
+            {
+                maxtillnow  += arr[i%arr.Length];
+                if(maxtillnow > maxsofar)
+                    maxsofar = maxtillnow;
+                if(maxtillnow<0)
+                    maxtillnow=0;
+            }
+            return maxsofar;
+        }
+        // Max value path in matix of m*m
+        public int GetMaxValuePath(int[][] arr)
+        {
+            var dp = new int[arr.Length+1][];
+            for(int i=0;i<arr.Length;i++)
+                arr[i] = new int[arr.Length+1];
+            for(int i=1;i<dp.Length;i++)
+            {
+                for(int j=1;j<dp.Length;j++)
+                {
+                    dp[i][j] = dp[i-1][j-1] ; 
+                }
+            }
+            return dp[arr.Length+1].Max();
+        }
+        // How many way to climb n stairs if you can go only 1 or 2 steps at a time.
+        public int GetNumberOfWaystoClimbStairs(int n)
+        {
+            var dp = new int[n+1];
+            dp[0]=1;
+            dp[1] =1;
+            for(int i=2;i<=n;i++)
+            {
+                dp[i] = dp[i-1] +dp[i-2];
+            }
+            return dp[n];
+        }
+        // How many way to climb n stairs if you can go k steps at a time.
+        public int GetNumberOfWaystoClimbStairs(int n, int k)
+        {
+            var dp = new int[n+1];
+            dp[0]=1;
+            for(int i=1;i<=n;i++)
+            {
+                for(int j=1;j<=k;j++)
+                    if(i>=j)
+                        dp[i] +=dp[i-j];
+            }
+            return dp[n];
+        }
+        // How many way to climb n stairs with movement possible to k stairs from zero with exclusion list 
+        public int GetNumberOfWaystoClimbStairs(int n, int k , int [] blockedStairs)
+        {
+            var dp = new int[n+1];
+            dp[0]=1;
+            for(int i=1;i<=n;i++)
+            {
+                for(int j=1;j<=k;j++)
+                {
+                    if(blockedStairs.Contains(i))
+                    {    
+                        dp[i]=0;
+                        continue;
+                    }
+                    if(i>=j)
+                        dp[i] +=dp[i-j];
+                }
+            }
+            return dp[n];
+        }
+         // How many way to climb n stairs with movement possible to k stairs from zero with exclusion list 
+        public int GetNumberOfWaysstoClimbStairs(int n , int [] price)
+        {
+            //k=2;
+            var stack = new Stack<int>();
+            var dp  = new int[n+1];
+            dp[0]=0;
+            stack.Push(0);
+            dp[1] = price[1];
+            var list = new List<int>();
+            //dp[n] = Min(dp[n-1], dp[n-2]) + price[n];
+            for(int i=2;i<=n;i++)
+            {
+                if(dp[i-1]<dp[i-2])
+                {
+                    if(stack.Peek()!=i-1)
+                        stack.Push(i-1);
+                }
+                else
+                {
+                    if(stack.Peek()!=i-2)
+                        stack.Push(i-2);
+                }
+                dp[i] = Math.Min(dp[i-1], dp[i-2]) + price[i];
+            }
+            Console.WriteLine(string.Join(",",dp));
+            Console.WriteLine(string.Join(",",stack));
+            return dp[n];
+        }
+
     }
 }

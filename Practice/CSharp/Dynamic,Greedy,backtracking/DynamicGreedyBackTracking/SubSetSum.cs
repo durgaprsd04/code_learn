@@ -41,7 +41,7 @@ namespace Dynamic_Greedy_backtracking
             return result[len][m];
 
         }
-        //a knapsack can stand a maximum weight of W has corresponding values in val array, what is the maximum value that can be selected under the given weight 
+        //a zack can stand a maximum weight of W has corresponding values in val array, what is the maximum value that can be selected under the given weight 
         //[W=7 , n =4 , wt = [1,3,4,5], val=[1,4,5,7]]
         public int KnapSack01(int W, int []wt , int [] val, int n)
         {

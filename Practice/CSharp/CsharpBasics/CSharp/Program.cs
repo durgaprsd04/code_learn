@@ -267,8 +267,10 @@ namespace CSharp
     //DestructorTest dt = new DestructorTest("hello");
     //BoxingUnboxing b = new BoxingUnboxing();
     //b.BoxingUnboxingInt32();  
-    OverrideActionClass ov = new OverrideActionClass();
-    ov.OverrideAction();
+    //OverrideActionClass ov = new OverrideActionClass();
+    //ov.OverrideAction();
+    TestFuncAbstract t = new TestFuncAbstract();
+    t.Testfunc2();
     }
 
   }

@@ -44,7 +44,7 @@ namespace Dynamic_Greedy_backtracking
                 Console.WriteLine($"The max sub sum of {string.Join(",", v)} is {result2}");
             }*/
             
-            var dp = new DynamicProgramming2();
+            //var dp = new DynamicProgramming2();
             //var arr = new int[]{4,2,5,9};
            
              /*var data = new int [][]{new int[]{5, 24}, 
@@ -74,6 +74,9 @@ namespace Dynamic_Greedy_backtracking
         }
         var res = dp2.MaximumAverageValue(dp1,3);
         */
+         var dp1 = new DynamicProgramming2();
+            var result = dp1.GetNumberOfWaystoClimbStairs(8, new int[]{0,3,2,4,6,3,7,5,3});
+            Console.WriteLine("Result is "+result);
         }
         static void Main1(string[] args)
         {
@@ -140,6 +143,7 @@ namespace Dynamic_Greedy_backtracking
             //bitmanip.BitShift(20);
             //var result = bitmanip.GetSum(6,5);
             //Console.WriteLine("result of sum"+result);
+           
         }
     }
 }
