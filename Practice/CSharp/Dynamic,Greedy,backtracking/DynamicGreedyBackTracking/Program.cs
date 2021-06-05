@@ -75,8 +75,20 @@ namespace Dynamic_Greedy_backtracking
         var res = dp2.MaximumAverageValue(dp1,3);
         */
          var dp1 = new DynamicProgramming2();
-            var result = dp1.GetNumberOfWaystoClimbStairs(8, new int[]{0,3,2,4,6,3,7,5,3});
-            Console.WriteLine("Result is "+result);
+         //   var result = dp1.GetNumberOfWaystoClimbStairs(8, new int[]{0,3,2,4,6,3,7,5,3});
+          //  Console.WriteLine("Result is "+result);
+            /*var arr = new int [4] [] ;
+             arr [0]= new int [] { 4, 2, 3, 4 };
+             arr[1] = new int [] { 2, 9, 1, 10 };
+             arr[2] = new int [] { 15, 1, 3, 0 };
+             arr[3] = new int [] { 16, 92, 41, 44 };
+             var result = dp1.GetMaxValuePath(arr);*/
+            
+
+            //Console.WriteLine($"result {result}");
+             var arr = new int []{1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9};
+             var result = dp1.MinimumNumberOfJumpstoReachEnd(arr);
+            Console.WriteLine("result "+result);
         }
         static void Main1(string[] args)
         {

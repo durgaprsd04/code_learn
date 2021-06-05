@@ -395,17 +395,30 @@ namespace Dynamic_Greedy_backtracking
         // Max value path in matix of m*m
         public int GetMaxValuePath(int[][] arr)
         {
-            var dp = new int[arr.Length+1][];
-            for(int i=0;i<arr.Length;i++)
-                arr[i] = new int[arr.Length+1];
-            for(int i=1;i<dp.Length;i++)
+            var dp = new int[arr.Length + 1][];
+            for(int i=0;i<arr.Length+1;i++)
+                dp[i] = new int[arr.Length+2];
+            
+            for (int i = 0; i < arr.Length; i++)
+                dp[0][i + 1] = arr[0][i];
+
+            for(int i=1;i<arr.Length;i++)
             {
-                for(int j=1;j<dp.Length;j++)
+                for(int j=1;j<arr.Length+1 ;j++)
                 {
-                    dp[i][j] = dp[i-1][j-1] ; 
+                    dp[i][j] = Math.Max(dp[i-1][j-1], Math.Max(dp[i-1][j], dp[i-1][j+1]));
+                    if(i< arr.Length && j< arr.Length)
+                      dp[i][j]+= arr[i][j];
+                    //    Console.WriteLine($"{arr[i][j]}");
                 }
             }
-            return dp[arr.Length+1].Max();
+            for(int i=0;i<arr.Length+1;i++)
+            {
+                for(int j=0;j<arr.Length+2;j++)
+                    Console.Write(dp[i][j]+"  ");
+                Console.WriteLine();
+            }
+            return dp[arr.Length-1].Max();
         }
         // How many way to climb n stairs if you can go only 1 or 2 steps at a time.
         public int GetNumberOfWaystoClimbStairs(int n)
@@ -480,6 +493,75 @@ namespace Dynamic_Greedy_backtracking
             Console.WriteLine(string.Join(",",dp));
             Console.WriteLine(string.Join(",",stack));
             return dp[n];
+        }
+        // Minimum value to path to reach [m,n]
+        public int GetMinValuePathToReachMN(int [][]arr, int m ,int n)
+        {
+            var N  = arr.Length;
+            var M = arr.FirstOrDefault().Length;
+            var dp = new int [N+1][];
+            for(int i=0;i<=N;i++)
+                dp[i] = new int[M+1];
+            //dp[m][n] = Min(dp[m-1][n], dp[m][n-1], dp[m-1][n-1])+arr[m][n];
+            for (int i = 1; i <= M; i++)
+                dp[i][0] = dp[i - 1][0] + arr[i-1][0];
+ 
+            /* Initialize first row of tc array */
+            for (int j = 1; j <= N; j++)
+                dp[0][j] = dp[0][j - 1] + arr[0][j-1];
+
+            for(int i=1;i<=N;i++)
+            {
+                for(int j=1;j<=M;j++)
+                {
+                    dp[i][j] = Math.Min(dp[i-1][j-1], Math.Min(dp[i-1][j], dp[i][j-1]))+ arr[i-1][j-1];
+                }
+            }
+            for(int i=0;i<N+1;i++)
+            {
+                for(int j=0;j<M+1;j++)
+                    Console.Write(dp[i][j]+"  ");
+                Console.WriteLine();
+            }
+            return dp[m][n];
+        }
+        //Partition array for max sum
+        public int MaxSumAfterPartitioning(int[] arr, int k) {
+            var dp = new int[k][];
+            for(int i=0;i<k;i++)
+                dp[i] = new int[arr.Length];
+            return 0;
+        }
+        //Minimum number of jumps to reach end
+        public int MinimumNumberOfJumpstoReachEnd(int []arr)
+        {
+            var jumps = new int[arr.Length];
+            var n = arr.Length;
+            jumps[n - 1] =0;
+            Console.WriteLine(string.Join(", ", arr));
+
+            for(int i=n-2;i>=0;i--)
+            {
+                if(arr[i]==0)
+                    jumps[i]=Int32.MaxValue;
+                else if(arr[i]> n-i-1)
+                    jumps[i]=1;
+                else 
+                {
+                    var min = Int32.MaxValue;
+                    for(int j=i+1;j< arr.Length && j<=arr[i] +i;j++)
+                    {
+                        if(min>jumps[j])
+                            min = jumps[j];
+                    }
+                    if(min!=Int32.MaxValue)
+                        jumps[i] = 1+min;
+                    else
+                        jumps[i] = min;
+                }
+            }
+            Console.WriteLine(string.Join(", ", jumps));
+            return jumps[0];
         }
 
     }

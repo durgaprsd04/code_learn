@@ -238,5 +238,30 @@ namespace DynamicProgramming.Tests
         Assert.Equal(2, d.GetNumberOfWaystoClimbStairs(7,k, new int []{1,3,4}));
         
         }
+        [Fact]
+        public void GetMinValuePathToReachMN()
+        {
+        //Given
+        var arr = new int [3] [] ;
+             arr [0]= new int [] { 1, 2, 3};
+             arr[1] = new int [] { 4, 8, 2};
+             arr[2] = new int [] { 1, 5, 3};
+        DynamicProgramming2 dp = new DynamicProgramming2();
+        //When
+         var result = dp.GetMinValuePathToReachMN(arr, 3,3);
+        //Then
+        Assert.Equal(8, result);
+        }
+         [Fact]
+        public void MinimumNumberOfJumpstoReachEnd_Test1()
+        {
+        //Given
+        var arr = new int []{1, 3, 5, 8, 9, 2, 6, 7, 6, 8, 9};
+        DynamicProgramming2 dp = new DynamicProgramming2();
+        //When
+         var result = dp.MinimumNumberOfJumpstoReachEnd(arr);
+        //Then
+        Assert.Equal(3, result);
+        }
     }
 }
