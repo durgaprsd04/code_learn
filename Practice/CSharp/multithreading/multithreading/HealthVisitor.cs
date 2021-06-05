@@ -36,7 +36,7 @@ namespace multithreading
                 while(temp1 !=null && temp1.order == minValues[pellet.source])
                 {
                     var result = minOrderPerShip[pellet.source].RemoveMin(true);
-                    Console.WriteLine($"Reducing health by {result}");
+                    Console.WriteLine($"Reducing health by {result} for ship with shipid {result.source} details =>{battleShip}");
                     battleShip.ReduceHealth(result);
 
                     if(result.order> max)
@@ -44,13 +44,13 @@ namespace multithreading
                     minValues[pellet.source]++;
                 }
                 minOrderPerShip[pellet.source].Clear();
-                Console.WriteLine($"Health of ship with id {pellet.source} "+battleShip);
+                Console.WriteLine($"Health of ship with shipId {pellet.source} "+battleShip);
             }
         }
         private bool PelletsAreInOrder(int id)
         {
-            Console.WriteLine($"Pellet p added {pellet}");
-            Console.ReadKey();
+            //Console.WriteLine($"Pellet p added {pellet}");
+            //Console.ReadKey();
 
             return minOrderPerShip[id].RemoveMin(false).order == minValues[id];
         }

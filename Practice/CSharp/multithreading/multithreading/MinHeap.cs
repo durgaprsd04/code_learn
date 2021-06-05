@@ -6,33 +6,43 @@ namespace multithreading.interfaces
     public class MinHeap<T> where  T:IComparable<T>
     {
         private List<T> minHeap;
+        private readonly object balanceLock = new object();
         public MinHeap()
         {
             minHeap = new List<T>();
         }
         public void Add(T element)
         {   
-            minHeap.Add(element);
-            minHeap.Sort();
+            lock(balanceLock)
+            {
+                minHeap.Add(element);
+                minHeap.Sort();
+            }
         }
         public T RemoveMin(bool flag)
         {
-            var min = minHeap.Min();
-            var index=-1;
-            for(int i=0;i<minHeap.Count();i++)
+            T min;
+            lock(balanceLock)
             {
-                if(minHeap[i].CompareTo(min)==0)
+                min = minHeap.Min();
+                var index=-1;
+                for(int i=0;i<minHeap.Count();i++)
                 {
-                    index = i;
-                    break;
+                    if(minHeap[i].CompareTo(min)==0)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+                if(flag)
+                {
+                    if(index<minHeap.Count())
+                        minHeap.RemoveAt(index);
+                    minHeap.Sort();
                 }
             }
-            if(flag)
-            {
-                minHeap.RemoveAt(index);
-                minHeap.Sort();
-            }
             return min;
+            
         }
         public List<T> GetList()
         {

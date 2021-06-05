@@ -8,6 +8,7 @@ namespace multithreading
         private Random random = new Random();
         private int battleShipCount;
         private int bulletLimit;
+        private readonly object balanceLock = new object();
         private int id;
  
         private int [] order ;
@@ -24,7 +25,10 @@ namespace multithreading
         public void Shoot()
         {
             var pellet = GetRandomPellet();
-            healthVisitor.Recieve(pellet);
+            lock (balanceLock)
+            {
+                healthVisitor.Recieve(pellet);
+            }
         }
         public Pellet GetRandomPellet()
         {
@@ -36,7 +40,7 @@ namespace multithreading
             if(orderIndex>=order.Length)
                 orderIndex=0;
             var tempOrder =order[orderIndex++];
-            return new Pellet(id, battleShipId, bulletLimit, order[battleShipId]++);
+            return new Pellet(id, battleShipId, bulletSize, order[battleShipId]++);
         }
         
     }
