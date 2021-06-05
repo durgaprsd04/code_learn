@@ -14,7 +14,7 @@ namespace multithreading
             {
                new BattleShip(10),
                new BattleShip(12),
-                new BattleShip(14)
+               new BattleShip(14)
             };
             var healthVisitor = new HealthVisitor(battleShips.ToArray());
             var client = new Client[3];
@@ -23,10 +23,8 @@ namespace multithreading
             client[2] = new Client(healthVisitor, 3, battleShips.Count, 5);
             while(battleShips.Where( x=> x.IsSunk()).Count()!=battleShips.Count)
             {
-                //Console.WriteLine("itrnation ");
                 var temp =new List<int>(){0,1};
                 Parallel.ForEach(temp , i  => client[i].Shoot());
-                //client[0].Shoot();
             }
         }
     }

@@ -13,17 +13,15 @@ namespace multithreading.interfaces
         }
         public void Add(T element)
         {   
-            lock(balanceLock)
-            {
+           
                 minHeap.Add(element);
                 minHeap.Sort();
-            }
+            
         }
         public T RemoveMin(bool flag)
         {
             T min;
-            lock(balanceLock)
-            {
+            
                 min = minHeap.Min();
                 var index=-1;
                 for(int i=0;i<minHeap.Count();i++)
@@ -40,7 +38,7 @@ namespace multithreading.interfaces
                         minHeap.RemoveAt(index);
                     minHeap.Sort();
                 }
-            }
+            
             return min;
             
         }
