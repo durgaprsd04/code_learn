@@ -64,5 +64,39 @@ namespace Trie
                 flag=false;
             return flag;
         }
+        public List<string> AutoComplete(string stub)
+        {
+            var list = new List<string>();
+            var temp = this;
+            var flag = true;
+            foreach(char ch1 in stub)
+            {
+                if(temp.children[ch1-'a']!=null)
+                    temp = temp.children[ch1-'a'];
+                else
+                {
+                    flag=false;
+                    break;
+                }
+            }
+            if(!flag || temp==null)
+                return list;
+            var sb  = new StringBuilder(stub);
+            AutoComplete(sb, temp, list);
+            return list;
+        }
+        private void AutoComplete(StringBuilder sb,  Trie temp, List<string> list)
+        {
+            foreach(var trie in temp.children)
+            {
+                if(trie==null)
+                    continue;
+                sb.Append(trie.ch);
+                if(trie.isEnd)
+                    list.Add(sb.ToString());
+                AutoComplete(new StringBuilder(sb.ToString()), trie, list);
+                sb.Remove(sb.Length -1 , 1);
+            }
+        }
     }
 }
