@@ -4,7 +4,8 @@ namespace mineSweeper
 {
     public interface ICommand
     {
-       public ICell Execute();
-       public ICell Undo();
+       public IGrid Execute();
+       public IGrid Undo();
+       public ICell GetCell();
     }
 }

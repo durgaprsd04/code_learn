@@ -6,21 +6,23 @@ namespace mineSweeper
 {
     public class MarkCommand : ICommand
     {
+        private IGrid grid;
         private ICell cell;
-        private List<ICell> cells ;
-        private Dictionary<int, List<ICell>> associatedLists;
-        public MarkCommand(ICell cell)
+        public MarkCommand(IGrid grid,  ICell cell)
         {
+            this.grid = grid;
             this.cell = cell;
         }
-        public ICell Execute()
+        public IGrid Execute()
         {
-            var id = cell.GetId();
-            cells[id].Mark();
-            return cells[id];
+            grid.Mark(cell);
+            return grid;
         }
-
-        public ICell Undo()
+        public ICell GetCell()
+        {
+            return cell;
+        }
+        public IGrid Undo()
         {
             throw new NotImplementedException();
         }

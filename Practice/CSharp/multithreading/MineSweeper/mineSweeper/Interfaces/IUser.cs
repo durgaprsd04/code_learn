@@ -4,7 +4,7 @@ namespace mineSweeper
 {
     public interface IUser
     {
-        public ICommand GetInput(ICell cell);
-        public int GetCellId();
+        public ICommand GetInput(IGrid grid);
+        public ICell GetCell();
     }
 }

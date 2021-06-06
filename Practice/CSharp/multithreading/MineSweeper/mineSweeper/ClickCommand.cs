@@ -6,18 +6,23 @@ namespace mineSweeper
 {
     public class ClickCommand : ICommand
     {
+        private IGrid  grid;
         private ICell cell;
-        public ClickCommand(ICell cell)
+        public ClickCommand(IGrid grid,  ICell cell)
         {
+            this.grid = grid;
             this.cell = cell;
         }
-        public ICell Execute()
+        public IGrid Execute()
         {
-            cell.Open();
+            grid.MarkAsOpen(cell);
+            return grid;
+        }
+        public ICell GetCell()
+        {
             return cell;
         }
-
-        public ICell Undo()
+        public IGrid Undo()
         {
             throw new NotImplementedException();
         }
