@@ -11,6 +11,15 @@ namespace Pictionary
         string id;
         private bool IsWinner;
         int attemptCount;
+        public Client(IImage image, IServer server, bool isProvider, string id, bool IsWinner, int attemptCount)
+        {
+            this.localCopy = image;
+            this.server = server;
+            this.isProvider  = isProvider;
+            this.id = id;
+            this.IsWinner = IsWinner;
+            this.attemptCount = attemptCount;
+        }
         public void RecieveImage(IImage image)
         {
             localCopy.UpdateImage(image);
@@ -27,7 +36,8 @@ namespace Pictionary
 
         public void SendResponse(IResponse response)
         {
-            server.RecieveResponse(response);
+            if(attemptCount>0)
+                server.RecieveResponse(response);
         }
          public void RecieveResponse(IResponse response)
         {
@@ -47,6 +57,9 @@ namespace Pictionary
             }
         }
 
-        
+        public void UpdateAsProvider()
+        {
+            this.isProvider=true;
+        }
     }
 }

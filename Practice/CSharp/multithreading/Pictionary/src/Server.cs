@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 namespace Pictionary
 {
     public class Server : IServer
@@ -8,6 +9,18 @@ namespace Pictionary
         private string winnerId;
         private Dictionary<string , IClient>  clients ;
         private string providerIndex;
+        public Server(IImage image)
+        {
+            this.currentImage = image;
+        }
+        public void Register(string id, List<IClient> clientList)
+        {
+            foreach(var client in clientList)
+            {
+                clients.Add(client.GetId(), client);
+            }
+            this.providerIndex = id;
+        }
         public void RecieveImage(IImage image)
         {
             currentImage = image;
@@ -31,6 +44,11 @@ namespace Pictionary
                 }
             }
         }
+        public void GamePlay()
+        {
+            clients[providerIndex].SendImage();
+            //incomplete
+        }
         public void EndGame()
         {
             
@@ -51,7 +69,13 @@ namespace Pictionary
 
         public void SendImage()
         {
-            clients[providerIndex].RecieveImage(currentImage);
+            var keys = clients.Keys;
+            Parallel.ForEach(keys , key => {
+               if(key!=providerIndex)
+               {
+                   clients[key].RecieveImage(currentImage);
+               } 
+            });
         }
         public void SendResponse( IResponse response)
         {
