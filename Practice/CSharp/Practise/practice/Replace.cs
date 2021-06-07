@@ -6,36 +6,31 @@ IMplementation of replace in string
 */
 public static class Replace
 {
-    public static string MyReplace(this string str1, string str2 )
+    public static string MyReplace(this string str1, string str2, string str3)
     {
         int j=0;
         var sb = new StringBuilder();
         var sb2 = new StringBuilder();
-        var i=0;
-        while(i<str1.Length)
+        int count=0;
+        for(int i=0;i< str1.Length;i++)
         {
-            if(str2[j]==str1[i])
+            if(j< str2.Length && str1[i]==str2[j])
             {
-                sb2.Append(str2[j++]);
+                count++;
+                j++;
             }
             else
             {
-                if(sb2.Length>0)
-                {
-                    if(sb2.Length!=str2.Length)
-                    {
-                        sb2.Clear();
-                        i = i-j;
-                    }
-                    else
-                    {
-                        sb.Append(sb2.ToString());
-                        sb2.Clear();
-                        j=0;
-                    }
-                }
+                if(count==str2.Length) 
+                    sb.Append(str3);
                 else
-                    sb.Append(str1[i]);
+                    {
+                        for(int k=i-count;k<i;k++)
+                            sb.Append(str1[k]);
+                    }
+                count=0;
+                j=0;
+                sb.Append(str1[i]);
             }
         }
         return sb.ToString();
