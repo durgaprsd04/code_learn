@@ -34,7 +34,7 @@ namespace ElevatorDesign
             return currentFloor< targetFloor;
         }
 
-        public void Move(int floor)
+        public void Move()
         {
             targetFloor = floorManager.GetMostPriorityFloor(this);
             //calll api to Move to target floor

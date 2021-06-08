@@ -16,13 +16,30 @@ namespace ElevatorDesign
             this.floorCount = floorCount;
             this.elevators = elevators;
         }
+        public void SimulatePushFromNthFloor(int sourceFloor, int targetFloor)
+        {
+            var liftInFloorN = elevators.Where(x => x.GetSourceDest().source==x.GetSourceDest().destination && x.GetSourceDest().source==sourceFloor).Min();
+            if(liftInFloorN==null)
+                liftInFloorN =elevators.Where( x => !isOccupied.Contains(x.GetId())).Min();
+            liftInFloorN.PressButton(targetFloor);
+            liftInFloorN.Move();
+        }
 
         public void ExternalButtonPush(int floor, bool up)
         {
             PutLeastPriorityFloor(floor);
             // check log for any active lifts going that way
-            var nextElevator = elevators.Where( x => !isOccupied.Contains(x.GetId())).Min();
-            nextElevator.Move(floor);
+            var occupiedList = elevators.Where(x => isOccupied.Contains(x.GetId()) && x.IsGoingUp()==up);
+            IElevator elevator;
+            if(up)
+                elevator =occupiedList.Where(x => x.GetSourceDest().source> floor).Min();
+            else
+                elevator =occupiedList.Where(x => x.GetSourceDest().source< floor).Min();
+                
+            if(elevator==null)
+                elevator = elevators.Where( x => !isOccupied.Contains(x.GetId())).Min();
+            elevator.PressButton(floor);
+            elevator.Move();
         }
 
         public int GetMostPriorityFloor(IElevator elevator)
