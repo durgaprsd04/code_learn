@@ -1,6 +1,6 @@
 using System;
 using Xunit;
-using Practise;;
+using Practise;
 
 namespace practiceTest
 {

@@ -7,12 +7,16 @@ namespace CSharp.Basics
         private int a;
         public OrderOfInvocationParent()
         {
-            Console.Write("another parent");
+            Console.Write("another parent"+this.SamplePrint());
         }
         public OrderOfInvocationParent(int a)
         {
             this.a=a;
-            Console.Write("another parent param");
+            Console.Write("another parent param"+SamplePrint());
+        }
+        public virtual string SamplePrint()
+        {
+            return "sampleprint";
         }
     }
     public class OrderOfInvocation : OrderOfInvocationParent
@@ -27,6 +31,10 @@ namespace CSharp.Basics
         {
             Console.WriteLine("non empty contstructor");
             this.t =t;
+        }
+         public virtual string SamplePrint()
+        {
+            return "sampleprint2";
         }
     }
 }

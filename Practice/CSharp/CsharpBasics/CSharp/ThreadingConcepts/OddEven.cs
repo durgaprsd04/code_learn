@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
 using System.Threading.Tasks;
-namespace CSharp.Basics
+namespace CSharp.ThreadingConcepts
 {
     public class ThreadingTest3
     {

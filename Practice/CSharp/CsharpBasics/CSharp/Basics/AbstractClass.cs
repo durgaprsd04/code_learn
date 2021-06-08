@@ -8,10 +8,15 @@ namespace CSharp.Basics
         public AbstractClassTest(string name)
         {
             this.name = name;
+            Console.WriteLine("constructor of "+this);
         }
         public virtual  void PrintLine()
         {
             Console.WriteLine("hello form print line");
+        }
+        public override string ToString()
+        {
+            return "abstractclass";
         }
     }
     public class SolidClass : AbstractClassTest
@@ -20,13 +25,17 @@ namespace CSharp.Basics
         {
 
         }
-         public override void PrintLine()
+        public override void PrintLine()
         {
             Console.WriteLine("hello form print  in Solid "+base.name);;
         }
         public void PrintLine1()
         {
                 base.PrintLine();
+        }
+        public override string ToString()
+        {
+            return "Solidclass";
         }
 
     }

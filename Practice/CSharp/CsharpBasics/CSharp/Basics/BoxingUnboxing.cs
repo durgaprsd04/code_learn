@@ -7,7 +7,9 @@ namespace CSharp.Basics
         public void BoxingUnboxingInt32()
         {
             Int32 num = 30;
-            var obj = (object)num;
+            //boxing
+            var obj = num;
+            //unboxing
             Int16 num1 = (Int16)num;
             Console.WriteLine($"num {num} num1 {num}");
         }
