@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 namespace ElevatorDesign
 {
@@ -19,6 +20,12 @@ namespace ElevatorDesign
             this.currentFloor =currentFloor;
             this.maxFloorcount = maxFloorcount;
         }
+
+        public int CompareTo(IElevator other)
+        {
+            return this.id-other.GetId();
+        }
+
         public int GetId()
         {
             return id;
@@ -38,7 +45,7 @@ namespace ElevatorDesign
         {
             targetFloor = floorManager.GetMostPriorityFloor(this);
             //calll api to Move to target floor
-            lift.Move(targetFloor);
+            Task.WaitAll( lift.Move(targetFloor, this.GetId()));
             currentFloor = targetFloor;
             floorManager.Notify(this);
         }
