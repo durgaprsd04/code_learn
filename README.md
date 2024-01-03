@@ -11,7 +11,7 @@
 
 ## Hackerrank and LeetCode
 
-> Solutioin to certain problems attempted.
+> Solution to certain problems attempted.
 
 ## Practice
 
@@ -33,7 +33,7 @@
 	c. Stacks, Queues, Linked Lists 
 	d. Math           
 	e. Tree, DFS/BFS           
-    f. Hashtable      
+   f. Hashtable      
    g. Greedy         
    h. Dynamic        
    i. Binary Searching         
@@ -53,25 +53,25 @@
 	a. Conflict resolution
 
 > Generally the trend is to focus on certain key areas in coding
-1. Algorithms
-    i.   Arrays
-    ii.  Trees
-    iii. Stacks, Queues, Linked list
-    iv.  String manipulation
-    v.   Dictionary/hashset/hashtable
-2. System Design 
-    i. LB/CDN/Scalability/Reliability/Maintainability
-   ii. User/size/memory estimation/ network traffic/ peak load/worst performance
-  iii. 
-3. .NET Questions
+6. Algorithms
+	1. Arrays
+ 	2. Tree
+ 	3. stacks, Queues, Linked list
+ 	4. sTring manipulation
+ 	5. dIctionary/hashset/hashtable
+7. System Design 
+	1. LB/CDN/Scalability/Reliability/Maintainability
+ 	2. User/size/memory estimation/ network traffic/ peak load/worst performancE
+	3. Error handling, logging, monitoring.
+8. .NET Questions
     i. C# basics
    ii. Basics of tech stack ASP.NET, REST over WCF, MVC.
-4. SQL
+9. SQL
     i. Best Practises
    ii. Queries
   iii. Performance tweaking
-5. Cloud tech 
+10. Cloud tech 
     i. AWS/CDN/ Rate limiting /
-6. Deployment practices
+11. Deployment practices
    
 
